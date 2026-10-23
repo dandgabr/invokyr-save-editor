@@ -121,6 +121,13 @@ Campos ainda "hipótese" aparecem na UI com um selo "experimental".
 - **Ética multiplayer**: o editor mexe nos SteamIDs de outros jogadores e em saves de partidas co-op. Vale avisar e não incentivar a edição de saves alheios.
 - **Licença**: MIT?
 
+## Política de dependências
+
+- **Sempre a versão mais recente** de cada dependência (versões exatas, resolvidas no registro npm), e **zero vulnerabilidades conhecidas** (`npm audit --audit-level=low` no CI).
+- O Dependabot não ganha regras de `ignore`. Se uma dependência não tem versão compatível com o resto, ela é **substituída por uma alternativa**, nunca congelada.
+- Aplicado em 2026-10-23: o `typescript-eslint` não suporta TypeScript 7 (peer `<6.1.0`, nem no canary), então o ESLint foi trocado pelo **Biome** e o projeto usa TypeScript 7.0.2.
+- GitHub Actions fixadas por SHA de commit.
+
 ## Verificação
 
 - `npm test`: round-trip byte a byte, cruzado Python↔TS e invariantes.

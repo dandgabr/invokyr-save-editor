@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
+
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 // CSP estrita só no build: o app nunca faz requisições de rede (o save não sai da máquina).
 const CSP =
@@ -9,7 +10,11 @@ const cspPlugin = {
   name: 'invokyr-csp',
   apply: 'build' as const,
   transformIndexHtml: () => [
-    { tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP }, injectTo: 'head-prepend' as const },
+    {
+      tag: 'meta',
+      attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP },
+      injectTo: 'head-prepend' as const,
+    },
   ],
 };
 
