@@ -1,12 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
-import { type OpenedFile, saveFile } from '../platform/files';
+import { type KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { backupName, download, type OpenedFile, saveFile } from '../platform/files';
+import { diffDocs } from '../state/document';
 import { useEditor } from '../state/store';
 import { SaveDialog } from './SaveDialog';
 import { SCREENS } from './screens/registry';
 import { Welcome } from './Welcome';
 
+const isEditable = (t: EventTarget | null) =>
+  t instanceof HTMLElement && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName));
+
 export function App() {
-  const { doc, values, fileHandle, past, future, open, close, undo, redo, changes, serialize, markSaved } =
+  const { doc, values, original, fileHandle, past, future, open, close, undo, redo, serialize, markSaved } =
     useEditor();
   const [opened, setOpened] = useState<OpenedFile | null>(null);
   const [tab, setTab] = useState(SCREENS[0]?.id ?? '');
@@ -14,6 +18,10 @@ export function App() {
   const [notice, setNotice] = useState<string | null>(null);
   const [reviewing, setReviewing] = useState(false);
   const [busy, setBusy] = useState(false);
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  const changes = useMemo(() => (original && values ? diffDocs(original, values) : []), [original, values]);
+  const dirty = changes.length > 0;
 
   const handleOpen = (f: OpenedFile) => {
     try {
@@ -27,27 +35,31 @@ export function App() {
   };
 
   const confirmSave = useCallback(async () => {
-    if (!doc || !opened) return;
+    if (!doc || !opened || !values) return;
+    // Snapshot: o que é gravado é exatamente o que é marcado como salvo, mesmo se o estado mudar durante o await.
+    const snapshot = values;
+    const bytes = serialize();
     setBusy(true);
     try {
-      const out = await saveFile(opened, doc.raw, serialize());
-      markSaved();
+      const out = await saveFile(opened, doc.raw, bytes);
+      markSaved(snapshot, bytes);
+      if (out.meta) setOpened({ ...opened, ...out.meta });
       setReviewing(false);
       setNotice(
         out.mode === 'in-place'
-          ? `Salvo. Backup: ${out.backup ?? '—'}`
-          : `Arquivos baixados (backup: ${out.backup}). Copie o save editado para a pasta de saves.`,
+          ? `Salvo. Backup: ${out.backup}.${out.diskChanged ? ' Atenção: o arquivo no disco havia mudado desde a abertura (Steam Cloud ou o jogo); o backup guarda essa versão.' : ''}`
+          : 'Save editado baixado. Copie-o para a pasta de saves do jogo, substituindo o original.',
       );
     } catch (e) {
       setError(`Falha ao salvar: ${(e as Error).message}`);
     } finally {
       setBusy(false);
     }
-  }, [doc, opened, serialize, markSaved]);
+  }, [doc, opened, values, serialize, markSaved]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (!(e.ctrlKey || e.metaKey) || !doc) return;
+    const onKey = (e: KeyboardEvent | globalThis.KeyboardEvent) => {
+      if (!(e.ctrlKey || e.metaKey) || !doc || reviewing || busy || isEditable(e.target)) return;
       const k = e.key.toLowerCase();
       if (k === 'z' && !e.shiftKey) {
         e.preventDefault();
@@ -62,13 +74,48 @@ export function App() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [doc, undo, redo]);
+  }, [doc, reviewing, busy, undo, redo]);
+
+  // Soltar um arquivo fora da zona de drop faria o navegador navegar para ele e perder as edições.
+  useEffect(() => {
+    const stop = (e: DragEvent) => {
+      if (!(e.target instanceof HTMLElement && e.target.closest('[data-dropzone]'))) e.preventDefault();
+    };
+    window.addEventListener('dragover', stop);
+    window.addEventListener('drop', stop);
+    return () => {
+      window.removeEventListener('dragover', stop);
+      window.removeEventListener('drop', stop);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (e: BeforeUnloadEvent) => e.preventDefault();
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [dirty]);
+
+  const onTabKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    const i = SCREENS.findIndex((s) => s.id === tab);
+    let next = i;
+    if (e.key === 'ArrowRight') next = (i + 1) % SCREENS.length;
+    else if (e.key === 'ArrowLeft') next = (i - 1 + SCREENS.length) % SCREENS.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = SCREENS.length - 1;
+    else return;
+    e.preventDefault();
+    const target = SCREENS[next];
+    if (!target) return;
+    setTab(target.id);
+    tabRefs.current[target.id]?.focus();
+  };
 
   const banner = (
     <>
       {error && (
         <div className="banner banner-error" role="alert">
-          {error}
+          <span>{error}</span>
           <button type="button" onClick={() => setError(null)} aria-label="Fechar aviso">
             ✕
           </button>
@@ -76,7 +123,7 @@ export function App() {
       )}
       {notice && (
         <div className="banner banner-ok" role="status">
-          {notice}
+          <span>{notice}</span>
           <button type="button" onClick={() => setNotice(null)} aria-label="Fechar aviso">
             ✕
           </button>
@@ -96,15 +143,14 @@ export function App() {
 
   const screen = SCREENS.find((s) => s.id === tab) ?? SCREENS[0];
   const version = (values.save as { version?: number } | undefined)?.version;
-  const dirty = past.length > 0 || changes().length > 0;
 
   return (
     <div className="shell">
       <header className="topbar">
         <div className="brand">
-          <span className="brand-title">Invokyr Archive Studio</span>
+          <h1 className="brand-title">Invokyr Archive Studio</h1>
           <span className="chip" data-testid="file-chip">
-            {doc.fileName}
+            Tomo: {doc.fileName}
             {version !== undefined ? ` (v${version})` : ''}
             {dirty ? ' •' : ''}
           </span>
@@ -128,8 +174,14 @@ export function App() {
           >
             Refazer
           </button>
-          <button type="button" className="btn btn-brass" onClick={() => close()}>
-            Fechar
+          <button
+            type="button"
+            className="btn btn-brass"
+            onClick={() => {
+              if (!dirty || window.confirm('Há alterações não salvas. Fechar mesmo assim?')) close();
+            }}
+          >
+            Abrir outro save
           </button>
           <button
             type="button"
@@ -142,16 +194,21 @@ export function App() {
         </div>
       </header>
       {banner}
-      <nav className="tabs" aria-label="Seções do save">
-        <div role="tablist">
+      <div className="tabs">
+        {/* biome-ignore lint/a11y/useSemanticElements: padrão APG de abas (tablist com roving tabindex) */}
+        <div role="tablist" aria-label="Seções do save" onKeyDown={onTabKey}>
           {SCREENS.map((s) => (
             <button
               key={s.id}
+              ref={(el) => {
+                tabRefs.current[s.id] = el;
+              }}
               type="button"
               role="tab"
               id={`tab-${s.id}`}
               aria-selected={s.id === tab}
               aria-controls="panel"
+              tabIndex={s.id === tab ? 0 : -1}
               className={`tab${s.id === tab ? ' active' : ''}`}
               onClick={() => setTab(s.id)}
             >
@@ -159,15 +216,18 @@ export function App() {
             </button>
           ))}
         </div>
-      </nav>
-      <main id="panel" role="tabpanel" aria-labelledby={`tab-${screen?.id}`} className="content">
-        {screen?.render()}
+      </div>
+      <main className="content">
+        <div id="panel" role="tabpanel" aria-labelledby={`tab-${screen?.id}`} tabIndex={0}>
+          {screen?.render()}
+        </div>
       </main>
       {reviewing && (
         <SaveDialog
-          changes={changes()}
+          changes={changes}
           busy={busy}
           inPlace={fileHandle !== null}
+          onBackup={() => download(backupName(doc.fileName), doc.raw)}
           onConfirm={confirmSave}
           onCancel={() => setReviewing(false)}
         />

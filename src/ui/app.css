@@ -84,10 +84,9 @@ code {
 }
 .dropzone {
   display: block;
-  cursor: pointer;
   margin-top: 1rem;
   padding: 1.5rem;
-  border: 2px dashed var(--border-brass-subtle);
+  border: 2px dashed var(--border-brass);
   border-radius: 10px;
   text-align: center;
   color: var(--text-sepia);
@@ -108,7 +107,7 @@ code {
   font: inherit;
   font-weight: 600;
   padding: 0.55rem 1rem;
-  min-height: 40px;
+  min-height: 44px;
   border-radius: 8px;
   border: 1px solid;
   cursor: pointer;
@@ -157,6 +156,8 @@ code {
   flex-wrap: wrap;
 }
 .brand-title {
+  margin: 0;
+  text-transform: uppercase;
   font-size: 1.15rem;
   color: var(--text-parchment);
   font-weight: 600;
@@ -281,4 +282,18 @@ code {
   .btn {
     min-height: 44px;
   }
+}
+
+.banner button,
+summary {
+  min-height: 44px;
+  min-width: 44px;
+}
+summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.tab {
+  min-height: 44px;
 }

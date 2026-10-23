@@ -5,6 +5,7 @@ import { readContainer } from '../src/codec/zip';
 import { useEditor } from '../src/state/store';
 
 const fixture = () => new Uint8Array(readFileSync(new URL('./fixtures/template.sav', import.meta.url)));
+type EditorValues = ReturnType<typeof useEditor.getState>['values'];
 type Meta = { score: number; characterOwners: unknown[] };
 const meta = () => useEditor.getState().values?.meta as Meta;
 
@@ -86,8 +87,49 @@ describe('store do editor', () => {
     useEditor.getState().edit((d) => {
       (d.meta as Meta).score = 5;
     });
-    useEditor.getState().markSaved();
+    const st = useEditor.getState();
+    st.markSaved(st.values as NonNullable<typeof st.values>, st.serialize());
     expect(useEditor.getState().changes()).toHaveLength(0);
     expect(useEditor.getState().past).toHaveLength(0);
+  });
+
+  it('markSaved atualiza o backup (doc.raw) para o conteúdo gravado', () => {
+    const before = useEditor.getState().doc?.raw.byteLength;
+    useEditor.getState().edit((d) => {
+      (d.meta as Meta).score = 123456789;
+    });
+    const bytes = useEditor.getState().serialize();
+    const st = useEditor.getState();
+    st.markSaved(st.values as NonNullable<typeof st.values>, bytes);
+    expect(useEditor.getState().doc?.raw).toBe(bytes);
+    expect(bytes.byteLength).not.toBe(before);
+  });
+
+  it('desfazer durante a gravação não marca como salvo o estado errado', () => {
+    useEditor.getState().edit((d) => {
+      (d.meta as Meta).score = 111;
+    });
+    const snapshot = useEditor.getState().values as NonNullable<EditorValues>;
+    const bytes = useEditor.getState().serialize();
+    useEditor.getState().undo(); // o usuário desfaz enquanto grava
+    useEditor.getState().markSaved(snapshot, bytes);
+    const st = useEditor.getState();
+    // o arquivo contém score=111, mas o estado atual voltou ao original: continua "sujo".
+    expect(st.changes().length).toBeGreaterThan(0);
+  });
+
+  it('patches do Immer preservam bigint e Uint8Array', () => {
+    useEditor.getState().edit((d) => {
+      (d.meta as Meta).characterOwners[1] = 76561198000000002n;
+      (d.meta as unknown as { blob: Uint8Array }).blob = new Uint8Array([1, 2, 3]);
+    });
+    expect(meta().characterOwners[1]).toBe(76561198000000002n);
+    useEditor.getState().undo();
+    expect(meta().characterOwners[1]).toBe(0);
+    useEditor.getState().redo();
+    expect(meta().characterOwners[1]).toBe(76561198000000002n);
+    expect((useEditor.getState().values?.meta as unknown as { blob: Uint8Array }).blob).toEqual(
+      new Uint8Array([1, 2, 3]),
+    );
   });
 });

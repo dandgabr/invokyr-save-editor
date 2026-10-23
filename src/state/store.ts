@@ -1,6 +1,7 @@
 import { applyPatches, enablePatches, type Patch, produceWithPatches } from 'immer';
 import { create } from 'zustand';
 import type { StreamName } from '../codec/zip';
+import type { FsFileHandle } from '../platform/files';
 import { type Change, diffDocs, openSave, type SaveDoc, serializeSave } from './document';
 
 enablePatches();
@@ -19,15 +20,16 @@ export interface EditorState {
   past: HistoryEntry[];
   future: HistoryEntry[];
   /** Handle do arquivo (File System Access), quando o navegador permite gravar no lugar. */
-  fileHandle: unknown | null;
-  open: (fileName: string, bytes: Uint8Array, fileHandle?: unknown) => void;
+  fileHandle: FsFileHandle | null;
+  open: (fileName: string, bytes: Uint8Array, fileHandle?: FsFileHandle | null) => void;
   close: () => void;
   edit: (recipe: (draft: Values) => void) => void;
   undo: () => void;
   redo: () => void;
   changes: () => Change[];
   serialize: () => Uint8Array;
-  markSaved: () => void;
+  /** Marca como salvo o snapshot que de fato foi gravado (valores + bytes), não o estado atual. */
+  markSaved: (snapshot: Values, raw: Uint8Array) => void;
 }
 
 export const useEditor = create<EditorState>((set, get) => ({
@@ -73,8 +75,11 @@ export const useEditor = create<EditorState>((set, get) => ({
     if (!doc || !values) throw new Error('Nenhum save aberto');
     return serializeSave(doc, values);
   },
-  markSaved() {
-    const { values } = get();
-    set({ original: values, past: [], future: [] });
+  markSaved(snapshot, raw) {
+    const { doc, values } = get();
+    if (!doc) return;
+    // Se o usuário desfez/refez durante a gravação, `values` pode diferir do snapshot gravado: mantém o histórico.
+    const same = values === snapshot;
+    set({ doc: { ...doc, raw }, original: snapshot, ...(same ? { past: [], future: [] } : {}) });
   },
 }));

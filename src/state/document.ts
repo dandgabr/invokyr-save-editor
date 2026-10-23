@@ -41,7 +41,15 @@ const isObj = (v: unknown): v is Record<string, unknown> =>
   typeof v === 'object' && v !== null && !Array.isArray(v) && !(v instanceof Uint8Array);
 
 /** Diferenças folha a folha entre dois valores (limitado, para exibir na confirmação de salvar). */
-export function diffValues(a: unknown, b: unknown, path = '', out: Change[] = [], max = 500): Change[] {
+export const MAX_CHANGES = 5000;
+
+export function diffValues(
+  a: unknown,
+  b: unknown,
+  path = '',
+  out: Change[] = [],
+  max = MAX_CHANGES,
+): Change[] {
   if (out.length >= max) return out;
   if (Object.is(a, b)) return out;
   if (Array.isArray(a) && Array.isArray(b)) {

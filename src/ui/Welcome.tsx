@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   canPickDirectory,
   canUseFsAccess,
@@ -24,6 +24,7 @@ export function Welcome({ onOpen, onError }: Props) {
   const [copied, setCopied] = useState(false);
   const [dir, setDir] = useState<{ handle: FsDirHandle; files: FsFileHandle[] } | null>(null);
   const [dragging, setDragging] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const guard = async (fn: () => Promise<void>) => {
     try {
@@ -84,28 +85,15 @@ export function Welcome({ onOpen, onError }: Props) {
       <section className="panel" aria-labelledby="open">
         <h2 id="open">Abrir save</h2>
         <div className="actions">
-          {canUseFsAccess() ? (
-            <button
-              type="button"
-              className="btn btn-green"
-              onClick={() => guard(async () => onOpen(await pickSaveFile()))}
-            >
-              Abrir arquivo .sav
-            </button>
-          ) : (
-            <label className="btn btn-green">
-              Abrir arquivo .sav
-              <input
-                type="file"
-                accept=".sav"
-                hidden
-                onChange={(e) => {
-                  const f = e.target.files?.[0];
-                  if (f) guard(async () => onOpen(await readFromInput(f)));
-                }}
-              />
-            </label>
-          )}
+          <button
+            type="button"
+            className="btn btn-green"
+            onClick={() =>
+              canUseFsAccess() ? guard(async () => onOpen(await pickSaveFile())) : inputRef.current?.click()
+            }
+          >
+            Abrir arquivo .sav
+          </button>
           {canPickDirectory() && (
             <button
               type="button"
@@ -145,7 +133,8 @@ export function Welcome({ onOpen, onError }: Props) {
           </div>
         )}
 
-        <label
+        <div
+          data-dropzone
           className={`dropzone${dragging ? ' dragging' : ''}`}
           onDragOver={(e) => {
             e.preventDefault();
@@ -159,19 +148,21 @@ export function Welcome({ onOpen, onError }: Props) {
             if (f) guard(async () => onOpen(await readFromInput(f)));
           }}
         >
-          …ou arraste o arquivo .sav para cá, ou clique para escolher
-          <input
-            type="file"
-            accept=".sav"
-            data-testid="file-input"
-            hidden
-            onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) guard(async () => onOpen(await readFromInput(f)));
-              e.target.value = '';
-            }}
-          />
-        </label>
+          …ou arraste o arquivo .sav para cá
+        </div>
+        <input
+          ref={inputRef}
+          type="file"
+          accept=".sav"
+          data-testid="file-input"
+          hidden
+          tabIndex={-1}
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            e.target.value = '';
+            if (f) guard(async () => onOpen(await readFromInput(f)));
+          }}
+        />
       </section>
 
       <section className="panel warn" aria-labelledby="care">
