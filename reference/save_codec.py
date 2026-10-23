@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """
-Invokyr Save Codec & Modifier Utility
-Compatível com Unity 6 / IL2CPP Metadata v39 / MessagePack-CSharp / Schema v15.
+Invokyr Save Codec (referência em Python, schema 15, build Steam 26154962).
 
-Este script realiza leitura, validação, exportação e empacotamento de saves de Invokyr
-com preservação estrita de tipos em ponto flutuante (float32 IEEE 754 / Single),
-backups automáticos atômicos e funções de conveniência para desbloqueios.
+Uso: oráculo dos testes do editor web (tests/cross-python.test.ts) e utilitário de linha de comando
+para inspecionar e exportar saves.
+
+ATENÇÃO: `--unlock-all` e `--import-json` regravam o arquivo no formato mínimo do `msgpack`, não no do jogo.
+Use-os só em CÓPIAS. Os presets do editor web são a referência (o saldo e os itens do `--unlock-all` daqui
+diferem dos do preset de lá). Para EDITAR saves reais, use o editor web: ele preserva as larguras
+de inteiro do serializer do jogo (GameDevWare), o que este script NÃO faz (o `msgpack` do Python grava
+o formato mínimo). O jogo aceitar esse formato é hipótese não verificada (docs/SCHEMA_VERIFIED.md §1).
+
+Formato (verificado no binário): contêiner ZIP com `meta`, `save` e `collection`, cada um um mapa
+MessagePack com chaves string. Floats em float32 (`use_single_float=True`).
+Os valores de desbloqueio abaixo usam o schema verificado (portas 1..2, 17 figuras, aliases de item).
 """
 
 import sys
@@ -184,8 +192,8 @@ def inspect_save(save_path: str):
     print("\n[4] COLEÇÃO E CONQUISTAS PERENES (collection)")
     figurines_mask = collection.get('monsterFigurines', 0)
     unlocked_bits = [bit for bit in range(32) if (figurines_mask & (1 << bit)) != 0]
-    print(f"  • Bitmask de Estatuetas:   {figurines_mask} (Bits ativos: {unlocked_bits})")
-    print(f"  • Total Estatuetas Ativas: {len(unlocked_bits)}")
+    print(f"  • Bitmask de Figuras:   {figurines_mask} (Bits ativos: {unlocked_bits})")
+    print(f"  • Total Figuras Ativas: {len(unlocked_bits)}")
     print(f"  • Melhor Ranque Endless:   {collection.get('bestEndlessRank', 0)}")
     print(f"  • Tabuleiros Concluídos:   {collection.get('completedBoardKeys', [])}")
     print(f"  • Regras da Casa Batidas:  {collection.get('completedHouseRuleIds', [])}")
@@ -195,7 +203,7 @@ def inspect_save(save_path: str):
 def unlock_all_features(save_path: str, output_path: str = None):
     """
     Desbloqueia automaticamente todas as portas do lobby, mobílias da sala,
-    troféus/estatuetas da coleção e injeta um saldo generoso no banco.
+    troféus/figuras da coleção e injeta um saldo generoso no banco.
     """
     if output_path is None:
         output_path = save_path
@@ -206,17 +214,17 @@ def unlock_all_features(save_path: str, output_path: str = None):
 
     print("[UNLOCK-ALL] Aplicando desbloqueio total de recursos...")
 
-    # 1. Destrancar todas as portas do Lobby (índices 0 a 4)
-    save['unlockedKeyDoors'] = [0, 1, 2, 3, 4]
-    print("  ✓ Todas as 5 portas da GameRoom destrancadas: [0, 1, 2, 3, 4]")
+    # 1. Destrancar as portas com chave (KeyName: 1 = Henry, 2 = Corridor)
+    save['unlockedKeyDoors'] = [1, 2]
+    print("  ✓ As 2 portas com chave destrancadas: [1, 2] (Henry, Corredor)")
 
     # 2. Desbloquear todas as mobílias da sala (1 a 8)
     save['furnitures'] = {'furnitures': [1, 2, 3, 4, 5, 6, 7, 8]}
     print("  ✓ Todas as 8 mobílias ativadas (Rádio, Armário, Espelho, Globo, Campainha, Caixas, Relógio)")
 
-    # 3. Desbloquear todas as estatuetas 3D na CollectionRoom (bitmask completa 31 bits)
-    collection['monsterFigurines'] = 2147483647  # 0x7FFFFFFF (31 bits ligados)
-    print("  ✓ Todas as estatuetas de monstros ativadas na CollectionRoom (bitmask 2147483647)")
+    # 3. Desbloquear as 17 figuras da CollectionRoom (bitmask 0x1FFFF)
+    collection['monsterFigurines'] = 0x1FFFF  # 131071: 17 bits válidos (MonsterCollectionId 0..16)
+    print("  ✓ As 17 figuras ativadas na CollectionRoom (bitmask 131071)")
 
     # 4. Injetar moedas no Banco se estiver baixo
     current_score = save.get('bank', {}).get('currentTotalScore', 0)
@@ -224,12 +232,12 @@ def unlock_all_features(save_path: str, output_path: str = None):
         save['bank']['currentTotalScore'] = 50000
         print(f"  ✓ Saldo no banco elevado de {current_score} para 50.000 moedas")
 
-    # 5. Adicionar armas raras nas ferramentas da sala se não existirem
+    # 5. Adicionar ferramentas à bancada da sala se não existirem (aliases = itemAlias do jogo)
     room_tools = save.setdefault('gameRoomTools', {'itemStringIds': [], 'itemBatteryLevels': []})
     existing = set(room_tools['itemStringIds'])
     bonus_tools = [
-        ("Data-Treasure-Flamethrower", 1.0),
-        ("PF_BoardItem_Jungle_Hunter", 1.0),
+        ("g_fire", 1.0),  # Lança-chamas (item com bateria)
+        ("g_hgun", 1.0),  # Arma de Caça (item com bateria)
         ("dice_boomheal", -1.0),
         ("dice_lightning", -1.0),
         ("ice", -1.0),
@@ -281,7 +289,7 @@ def main():
     group.add_argument("--inspect", "-i", metavar="SAVE_PATH", help="Inspeciona e exibe o conteúdo legível do save")
     group.add_argument("--export-json", "-e", nargs=2, metavar=("SAVE_PATH", "JSON_PATH"), help="Exporta o save .sav para um arquivo JSON legível")
     group.add_argument("--import-json", "-m", nargs=2, metavar=("JSON_PATH", "SAVE_PATH"), help="Reconstrói um save .sav binário a partir de um JSON")
-    group.add_argument("--unlock-all", "-u", metavar="SAVE_PATH", help="Destrava portas, mobílias, estatuetas e bônus no save")
+    group.add_argument("--unlock-all", "-u", metavar="SAVE_PATH", help="Destrava portas, mobílias, figuras e bônus no save")
     group.add_argument("--verify-save", "-v", metavar="SAVE_PATH", help="Testa a integridade de serialização e compatibilidade de tipos")
 
     args = parser.parse_args()

@@ -44,7 +44,7 @@ export function SaveDialog({ changes, issues, busy, inPlace, onBackup, onConfirm
         {truncated ? '+' : ''})
       </h2>
       {changes.length === 0 ? (
-        <p className="muted">Nenhuma alteração: o arquivo será regravado sem mudanças.</p>
+        <p className="muted">Nenhuma alteração: os dados do save não mudam (o arquivo é regravado).</p>
       ) : (
         <>
           <div className="changes" role="region" aria-label="Lista de alterações" tabIndex={0}>

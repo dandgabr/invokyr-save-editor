@@ -1,18 +1,18 @@
-# Schema de itens, loja, skins, portas e house rules (Fase 1, continuação)
+# Schema de itens, loja, skins, portas e regras da casa
 
-Build Steam **26154962**. Dados completos e legíveis por máquina: `docs/schema-items.json` (163 itens, 32 itens de loja, 6 skins, 37 house rules, upgrades, nomes pt-BR/en). Não substitui `SCHEMA_VERIFIED.md`/`schema.json`; complementa.
+Build Steam **26154962**. Dados completos e legíveis por máquina: `docs/schema-items.json` (163 itens, 32 itens de loja, 6 skins, 37 house rules, upgrades, nomes pt-BR/en). Não substitui [`SCHEMA_VERIFIED.md`](SCHEMA_VERIFIED.md)/`schema.json`; complementa. O catálogo do app (`src/catalog/items.generated.ts`) é gerado deste JSON por `node scripts/gen-catalog.mjs`.
 
 Legenda: **[bin]** metadata/GameAssembly (offsets VA com base 0x180000000); **[asset]** typetree UnityPy de ScriptableObject/MonoBehaviour nas bundles Addressables (`Invokyr_Data/StreamingAssets/aa/StandaloneWindows64/<hash>.bundle`, PathID de 64 bits) ou em `resources.assets`; **[save]** save real (só leitura, sem valores pessoais); **[hip]** hipótese.
 
-Método: o `rea` não foi usado (timeout em `GameAssembly.dll`). Todos os `MonoBehaviour` das 830 bundles foram indexados (112.663 objetos), agrupados pelo PathID do script e deserializados com `read_typetree`. As classes foram identificadas por nome de campo no `global-metadata.dat` (parser em `scratchpad/tools/meta.py`). Ferramentas novas em `scratchpad/tools/`: `rawscan.py`, `ttscripts.py`, `ttdump2.py`, `i2parse.py`, `bat.py`, `doors.py`, `build.py`.
+Método: o `rea` não foi usado (timeout em `GameAssembly.dll`). Todos os `MonoBehaviour` das 830 bundles foram indexados (112.663 objetos), agrupados pelo PathID do script e deserializados com `read_typetree` (UnityPy). As classes foram identificadas por nome de campo no `global-metadata.dat` (parser próprio). Os scripts de análise foram exploratórios (caminhos fixos, sem documentação) e **não estão versionados**; os resultados estão em `docs/schema-items.json`, e onde um dado da análise aparece sem arquivo no repo, ele é indicado como "não versionado".
 
 ## 1. Catálogo de itens
 
-### 1.1 Correção importante do modelo [bin][asset]
+### 1.1 Correção importante do modelo [bin] [asset]
 
 - O ScriptableObject de item **não se chama `ItemData`**. É `Items.SOTool` (base) com as subclasses `SODiceTool` (99 assets), `SOKeyTool` (2) e `SOScoreTool` (os tesouros `Data-Treasure-*`, 21 assets, serializados com o script de `SOScoreTool`), mais 41 `SOTool` simples; no total **163 assets** [asset].
 - `_200_Dev.Database.Item.ItemData` é um wrapper **de runtime** `{ int itemId; SOTool tool; bool canBeSpawnedByEvent; float eventSpawnChance; string itemAlias; }` [bin: metadata classe 2534]. Não existe como asset. O `itemId` int é gerado em runtime (hipótese: índice em `ItemManager.availableTools`) [hip].
-- O catálogo "oficial" é `ItemManager.availableTools` (`List<SOTool>`): **155 entradas** (bundle `9c8f02f7bbee5f55e513726bee96ad7c.bundle`, MonoBehaviour PathID 14421; lista completa e ordem em `availableToolsIndex` no JSON). 143 dos 163 assets estão na lista; os 20 que ficam de fora são `CheatCard_*`, `CheatObject`, `Club`, `Teddy`, `Nintendo-Switch`, `PadLock`, `EMFReader`, `AlarmClock`, `RubberDuck`, `CollectionFigurine`, `RuleBook_CustomMode`, `RuleBook_SaveInfo`, `Dice_Blursed_24` e 4 variantes duplicadas de dado (`Data-Dice_AntiGravGather`, `Data-Dice_AntigravityScanner`, `Data-Dice_RezGather`, `Data-Dice_TeleGather`) [asset].
+- O catálogo "oficial" é `ItemManager.availableTools` (`List<SOTool>`): **155 entradas** (bundle `9c8f02f7bbee5f55e513726bee96ad7c.bundle`, MonoBehaviour PathID 14421; lista completa e ordem em `availableToolsIndex` no JSON). 143 dos 163 assets estão na lista (as 155 entradas incluem repetições ou entradas sem asset resolvido; a diferença de 12 não foi investigada [hip]); os 20 que ficam de fora são `CheatCard_*`, `CheatObject`, `Club`, `Teddy`, `Nintendo-Switch`, `PadLock`, `EMFReader`, `AlarmClock`, `RubberDuck`, `CollectionFigurine`, `RuleBook_CustomMode`, `RuleBook_SaveInfo`, `Dice_Blursed_24` e 4 variantes duplicadas de dado (`Data-Dice_AntiGravGather`, `Data-Dice_AntigravityScanner`, `Data-Dice_RezGather`, `Data-Dice_TeleGather`) [asset].
 
 ### 1.2 O que vira `itemStringIds` no save
 
@@ -27,6 +27,7 @@ Método: o `rea` não foi usado (timeout em `GameAssembly.dll`). Todos os `MonoB
 `canBeSpawnedByEvent = true` em 63 dos 163. Ícone: `icon`/`iconUsed` são PPtr de Sprite (não extraídos).
 
 Tabela resumida dos grupos (lista completa no JSON):
+
 - Dados (`SODiceTool`, 99): `dice1..6`, `dice12`, `dice123`, `dice16`, `dice24`, `dice34`, `dice456`, `dice56`, `dice99`, `dice-1`, `dice1b`, `dice_tp`, `dice_gather`, `dice_cocoon`, `dice_boom`, `dice_boomheal`, `dice_heal*`, `dice_fire*`, `dice_freeze`, `dice_lightning*`, `dice_revive*`, `dice_scanner`, `dice_smoke`, `dice_push`, `dice_chaos*`, `haz1`, `haz16`, mais as variantes `normal*`, `blessed*`, `blursed*`, `cursed*`.
 - Cubos: `ice` (`Data-IceCube`), `iceb`, `playcube`, `playcubeb`.
 - Gadgets (alias `g_*`): `g_guitar`, `g_hgun`, `g_mask`, `g_mobradar`, `g_xray`, `g_compass`, `g_skull`, `g_megaphone`, `g_fire`, `g_camera`, `g_screambox`, `g_trap`.
@@ -36,18 +37,18 @@ Tabela resumida dos grupos (lista completa no JSON):
 
 ### 1.4 `itemBatteryLevels`
 
-- **[asset]** Só 6 itens têm componente `Items.BatteryTool` no prefab: `g_xray` (capacidade 45), `g_hgun` (5), `g_mobradar` (120), `g_fire` (15), `g_megaphone` (90), `g_mask` (30). `batteryDrainPerSecond` = 1.0 e `batteryStartLevel01` = 1.0 em todos (bundle/PathID em `scratchpad/bat.json`; script `BatteryTool`, campos `batteryCapacity`, `batteryDrainPerSecond`, `batteryStartLevel01`, `batteryLevel` float [bin]). Não é preciso um "tipo de carga": só a capacidade em segundos.
-- `PlayerInventorySaveState.itemBatteryLevels` é `List<float>` paralela a `itemStringIds` [bin][save].
+- **[asset]** Só 6 itens têm componente `Items.BatteryTool` no prefab: `g_xray` (capacidade 45), `g_hgun` (5), `g_mobradar` (120), `g_fire` (15), `g_megaphone` (90), `g_mask` (30). `batteryDrainPerSecond` = 1.0 e `batteryStartLevel01` = 1.0 em todos (dados da análise, não versionados; script `BatteryTool`, campos `batteryCapacity`, `batteryDrainPerSecond`, `batteryStartLevel01`, `batteryLevel` float [bin]). Não é preciso um "tipo de carga": só a capacidade em segundos.
+- `PlayerInventorySaveState.itemBatteryLevels` é `List<float>` paralela a `itemStringIds` [bin] [save].
 - **[save]** No save real todos os 8 itens (3 + 5) têm `-1.0` e nenhum é item de bateria. Semântica adotada **[hip]**: `-1.0` = "item sem bateria / sem estado" (sentinela); `0.0..1.0` = `batteryLevel` normalizado (`BatteryTool.BatteryLevel01`, 1.0 = cheio) apenas para os 6 itens acima. Para um item de bateria recém-colocado use `1.0`; para os demais mantenha `-1.0`. Confirmação por decompilação de `SrvCaptureGameRoomTools` (0x18330ea00) continua pendente.
 
 ## 2. Nomes para a UI (localização)
 
-- **Existem.** Plugin I2 Localization: `MonoBehaviour` "I2Languages" em `resources.assets` (PathID 1510, 588.624 bytes), **949 termos × 13 idiomas** [asset]. Ordem dos idiomas: 0 English, 1 French, **2 Portuguese_brazil (pt-BR)**, 3 Simplified_chinese, 4 Spanish, 5 Polish, 6 Russian, 7 Korean, 8 German, 9 Italian, 10 Japanese, 11 Ukrainian, 12 Traditional_chinese. Parser: `scratchpad/tools/i2parse.py`; dump completo `scratchpad/i2terms.json` (não vai ao repo; o JSON do repo já embute en/pt-BR dos termos usados).
+- **Existem.** Plugin I2 Localization: `MonoBehaviour` "I2Languages" em `resources.assets` (PathID 1510, 588.624 bytes), **949 termos × 13 idiomas** [asset]. Ordem dos idiomas: 0 English, 1 French, **2 Portuguese_brazil (pt-BR)**, 3 Simplified_chinese, 4 Spanish, 5 Polish, 6 Russian, 7 Korean, 8 German, 9 Italian, 10 Japanese, 11 Ukrainian, 12 Traditional_chinese. O dump completo dos termos não é versionado; o JSON do repo já embute en/pt-BR dos termos usados.
 - Itens: `elementNameTerm`/`elementDescription` do SOTool (`UI/die/die` = Die/Dado, `Item/desc/dice5`…). **59 dos 163 itens não têm nome localizado** (campo vazio ou termo ausente, ex.: `ice`, `dice_smoke`, os `tr_*`, `rulebook`); a UI precisa de rótulo próprio (derivar do alias). 7 gadgets sem nome no SOTool herdam o nome do item de loja equivalente (`source: "shopItem"`).
 - Loja/upgrades/mobílias: termos `Item/shopitem/*` (ex.: `upgrade_health`, `furniture_oldclock`, `consumable_fannypack`, `gadget_mob_radar`) mapeados em `shopItems[].name/desc`. Há também `Item/shopitem/gadget_key_henry` e `..._key_corridor`.
 - House rules: `HouseRules/houserules/name/*` e `desc/*` (nome/descrição por regra em `houseRules[]`).
-- Monstros: `BoardConfig/boardconfig/featured_monster_name/<id>` (19 termos: plant, horsemen, yeti, croco, hunter, ultimate, weeping, cursedplayer, penguin, moneyguy, snowman, alpinist, pharaoh, sandworm, tvghost, doormonster, spider, Bees, all) em `monsterNames`.
-- **Skins de sala: não existem nomes localizados** (`GameRoomSkin_*` não têm campo de termo; só aparece o termo genérico `Item/shopitem/gmskin/actif_skin`). Usar os nomes dos assets (Default, Blue, Red, Vegetation, White_Yellow, Yellow_Stone).
+- Monstros: o editor usa estes textos do jogo para os nomes (por exemplo `weeping` = "Manequim", `moneyguy` = "Abonado", `sandworm` = "Minhoca"). `BoardConfig/boardconfig/featured_monster_name/<id>` (19 termos: plant, horsemen, yeti, croco, hunter, ultimate, weeping, cursedplayer, penguin, moneyguy, snowman, alpinist, pharaoh, sandworm, tvghost, doormonster, spider, Bees, all) em `monsterNames`.
+- **Skins de sala: não existem nomes localizados** (`GameRoomSkin_*` não têm campo de termo; só aparece o termo genérico `Item/shopitem/gmskin/actif_skin`). O jogo só tem os nomes dos assets (Default, Blue, Red, Vegetation, White_Yellow, Yellow_Stone). Os rótulos pt-BR do editor (Clássico, Azul néon, Vermelho, Vegetação, Dourada, Pedra ocre) são do design do app, na mesma ordem, e não do jogo.
 - Cores de roupa (`ClothColor`) e heróis: não extraídos aqui.
 
 ## 3. Loja
