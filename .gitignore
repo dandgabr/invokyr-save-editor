@@ -1,6 +1,8 @@
 # Saves pessoais contêm SteamID64 de outras pessoas: nunca versionar.
 *.sav
 *.sav.bak*
+# Exceção: fixtures sintéticos de teste (apenas SteamIDs placeholder).
+!tests/fixtures/*.sav
 .tmp_*
 saves-local/
 
