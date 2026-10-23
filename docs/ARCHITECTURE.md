@@ -59,7 +59,7 @@ A interface se chama **Invokyr Archive Studio** (o repositório é `invokyr-save
 - CSP estrita no build: `default-src 'self'`, sem `unsafe-inline` em estilos, `connect-src 'none'`. Fontes (Cinzel, Inter) são auto-hospedadas.
 - **Dependências:** sempre a versão mais recente, versões exatas, **zero vulnerabilidades** (`npm audit --audit-level=low` no CI e no deploy), sem regras de `ignore` no Dependabot. Dependência sem versão compatível ou vulnerável é **substituída**, não congelada. Exemplos: o `typescript-eslint` não suporta TypeScript 7, então o lint usa o **Biome**; o `markdownlint-cli2` traz uma cadeia com vulnerabilidade (`katex`) sem correção, então a documentação usa o **rumdl**. Dependências sem uso são removidas.
 - **CI** (`.github/workflows/ci.yml`): `verify` (audit, árvore de dependências, lint, typecheck, testes, build, lint da documentação), `e2e` (Playwright) e `dependency-review` nos PRs. Ações do GitHub fixadas por SHA; permissões mínimas. A `main` exige os checks `verify` e `e2e`, histórico linear e sem force-push.
-- **Deploy** (`pages.yml`): GitHub Pages a partir da `main`, em <https://dan.seg.br/invokyr-save-editor/> (o `base` do Vite é `/invokyr-save-editor/` no CI).
+- **Deploy** (`pages.yml`): GitHub Pages a partir da `main`, em <https://invokyr.dan.seg.br/> (o `base` relativo do Vite serve tanto o domínio quanto o caminho legado do repositório).
 - Política de vulnerabilidades em [`SECURITY.md`](../SECURITY.md).
 
 ## Qualidade

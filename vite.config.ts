@@ -18,9 +18,9 @@ const cspPlugin = {
   ],
 };
 
-// Base do GitHub Pages: https://dandgabr.github.io/invokyr-save-editor/
+// Base relativa funciona no endereço de projeto e no domínio personalizado raiz.
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? '/invokyr-save-editor/' : '/',
+  base: process.env.GITHUB_ACTIONS ? './' : '/',
   plugins: [react(), cspPlugin],
   test: {
     environment: 'node',

@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/dandgabr/invokyr-save-editor/issues"
   },
-  "homepage": "https://dan.seg.br/invokyr-save-editor/",
+  "homepage": "https://invokyr.dan.seg.br/",
   "engines": {
     "node": ">=22"
   },
