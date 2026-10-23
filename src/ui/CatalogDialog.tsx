@@ -1,11 +1,14 @@
 import { type RefObject, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  CATEGORY_LABELS,
   type CatalogItem,
+  categoryName,
   type ItemCategory,
+  itemDescription,
+  itemName,
   SELECTABLE_ITEMS,
   searchItems,
 } from '../catalog/catalog';
+import { useLocale, useText } from '../i18n';
 import { HEROES } from '../schema/enums';
 import * as A from '../state/actions';
 import { useAnnounce } from './announce';
@@ -23,6 +26,8 @@ interface Props {
 }
 
 export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) {
+  const t = useText();
+  const { locale } = useLocale();
   const v = useValues();
   const edit = useEdit();
   const ref = useRef<HTMLDialogElement>(null);
@@ -55,14 +60,19 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
     const totals = new Map<string, number>();
     const seen = new Map<string, number>();
     const names = new Map<string, string>();
-    for (const item of pool) totals.set(item.label, (totals.get(item.label) ?? 0) + 1);
+    for (const item of pool)
+      totals.set(itemName(item, locale), (totals.get(itemName(item, locale)) ?? 0) + 1);
     for (const item of pool) {
-      const n = (seen.get(item.label) ?? 0) + 1;
-      seen.set(item.label, n);
-      names.set(item.alias, (totals.get(item.label) ?? 0) > 1 ? `${item.label} (variante ${n})` : item.label);
+      const name = itemName(item, locale);
+      const n = (seen.get(name) ?? 0) + 1;
+      seen.set(name, n);
+      names.set(
+        item.alias,
+        (totals.get(name) ?? 0) > 1 ? `${name} (${t('variant', 'variante', 'variante')} ${n})` : name,
+      );
     }
     return names;
-  }, [pool]);
+  }, [pool, locale]);
   const counts = useMemo(() => {
     const c = new Map<ItemCategory, number>();
     for (const i of pool) c.set(i.category, (c.get(i.category) ?? 0) + 1);
@@ -73,18 +83,26 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
       searchItems(
         pool.filter((i) => category === 'all' || i.category === category),
         query,
+        locale,
       ),
-    [pool, category, query],
+    [pool, category, query, locale],
   );
 
   const occupied = A.occupiedHeroes(v);
   const targets: { key: TargetKey; label: string }[] = [
-    { key: 'bench', label: 'Ferramentas na bancada/prateleira' },
+    {
+      key: 'bench',
+      label: t(
+        'Tools on the bench/shelf',
+        'Ferramentas na bancada/prateleira',
+        'Herramientas en la mesa/estante',
+      ),
+    },
     ...v.save.playerInventories.map((_, i) => ({
       key: `p${i}` as TargetKey,
       label: A.inventoryCapacity(v, { kind: 'player', index: i })?.certain
-        ? `Personagem ${i + 1} (${HEROES[occupied[i] as number]?.label})`
-        : `Jogador ${i + 1} — personagem não confirmado`,
+        ? `${t('Character', 'Personagem', 'Personaje')} ${i + 1} (${HEROES[occupied[i] as number]?.label})`
+        : `${t('Player', 'Jogador', 'Jugador')} ${i + 1} — ${t('character unconfirmed', 'personagem não confirmado', 'personaje no confirmado')}`,
     })),
   ];
   const validTarget = targets.some((t) => t.key === target) ? target : 'bench';
@@ -100,8 +118,8 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
     });
     say(
       ok
-        ? `${item.label} adicionado a ${targetLabel} (${current + 1} itens).`
-        : `Não foi possível adicionar ${item.label}: destino cheio ou item indisponível.`,
+        ? `${itemName(item, locale)} ${t('added to', 'adicionado a', 'agregado a')} ${targetLabel} (${current + 1} ${t('items', 'itens', 'objetos')}).`
+        : `${t('Could not add', 'Não foi possível adicionar', 'No se pudo agregar')} ${itemName(item, locale)}: ${t('destination full or item unavailable.', 'destino cheio ou item indisponível.', 'destino lleno u objeto no disponible.')}`,
     );
     if (ok && destination.kind === 'player') {
       closeAfterPlayer.current = true;
@@ -120,14 +138,16 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
       }}
     >
       <header className="dialog-head">
-        <h2 id="catalog-title">Índice geral de relíquias</h2>
+        <h2 id="catalog-title">
+          {t('General relic index', 'Índice geral de relíquias', 'Índice general de reliquias')}
+        </h2>
         <button type="button" className="btn btn-brass" onClick={onClose}>
-          ← Voltar ao inventário
+          ← {t('Back to inventory', 'Voltar ao inventário', 'Volver al inventario')}
         </button>
       </header>
       <div className="catalog-bar">
         <label className="inline">
-          <span>Destino:</span>
+          <span>{t('Destination', 'Destino', 'Destino')}:</span>
           <select
             className="input"
             value={validTarget}
@@ -143,27 +163,31 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
         <span className="muted">
           {capacity
             ? capacity.certain
-              ? `${current} de ${capacity.limit} slots ocupados`
-              : `${current} itens carregados; novas adições limitadas a 3 até confirmar o personagem`
-            : `${current} itens na bancada`}
+              ? `${current} ${t('of', 'de', 'de')} ${capacity.limit} ${t('slots occupied', 'slots ocupados', 'espacios ocupados')}`
+              : `${current} ${t('carried items; new additions limited to 3 until the character is confirmed', 'itens carregados; novas adições limitadas a 3 até confirmar o personagem', 'objetos cargados; nuevas adiciones limitadas a 3 hasta confirmar el personaje')}`
+            : `${current} ${t('items on the bench', 'itens na bancada', 'objetos en la mesa')}`}
         </span>
       </div>
       <input
         className="input"
         type="search"
-        placeholder="Buscar por nome ou descrição (ex.: cura, gelo, chave)…"
-        aria-label="Buscar relíquia"
+        placeholder={t(
+          'Search by name or description (e.g. heal, ice, key)…',
+          'Buscar por nome ou descrição (ex.: cura, gelo, chave)…',
+          'Busca por nombre o descripción (p. ej., cura, hielo, llave)…',
+        )}
+        aria-label={t('Search relic', 'Buscar relíquia', 'Buscar reliquia')}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <div className="chips" role="group" aria-label="Categoria">
+      <div className="chips" role="group" aria-label={t('Category', 'Categoria', 'Categoría')}>
         <button
           type="button"
           className={`chip-btn${category === 'all' ? ' selected' : ''}`}
           aria-pressed={category === 'all'}
           onClick={() => setCategory('all')}
         >
-          Todos ({pool.length})
+          {t('All', 'Todos', 'Todos')} ({pool.length})
         </button>
         {CATEGORIES.filter((c) => counts.has(c)).map((c) => (
           <button
@@ -173,7 +197,7 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
             aria-pressed={category === c}
             onClick={() => setCategory(c)}
           >
-            {CATEGORY_LABELS[c]} ({counts.get(c)})
+            {categoryName(c, locale)} ({counts.get(c)})
           </button>
         ))}
       </div>
@@ -182,31 +206,50 @@ export function CatalogDialog({ initialTarget, onClose, fallbackFocus }: Props) 
           <article key={item.alias} className="card">
             <header className="card-head">
               <h3>{displayNames.get(item.alias)}</h3>
-              <span className={`tag tag-${item.category}`}>{CATEGORY_LABELS[item.category]}</span>
+              <span className={`tag tag-${item.category}`}>{categoryName(item.category, locale)}</span>
             </header>
             <p className="muted">
-              {item.desc ?? (item.localized ? 'Sem descrição.' : 'Sem nome ou descrição no jogo.')}
+              {itemDescription(item, locale) ??
+                (item.localized
+                  ? t('No description.', 'Sem descrição.', 'Sin descripción.')
+                  : t(
+                      'No name or description in the game.',
+                      'Sem nome ou descrição no jogo.',
+                      'Sin nombre ni descripción en el juego.',
+                    ))}
             </p>
             <div className="card-foot">
               <span className={item.battery ? 'amber' : 'muted'}>
-                {item.battery ? `Carga: 100% (${item.battery.capacity}s)` : 'Carga: não se aplica'}
+                {item.battery
+                  ? `${t('Charge', 'Carga', 'Carga')}: 100% (${item.battery.capacity}s)`
+                  : t('Charge: not applicable', 'Carga: não se aplica', 'Carga: no aplica')}
               </span>
               <button
                 type="button"
                 className="btn btn-green btn-sm"
-                aria-label={`Requisitar ${displayNames.get(item.alias)} — ${item.desc ?? CATEGORY_LABELS[item.category]}`}
+                aria-label={`${t('Request', 'Requisitar', 'Solicitar')} ${displayNames.get(item.alias)} — ${itemDescription(item, locale) ?? categoryName(item.category, locale)}`}
                 disabled={full}
                 onClick={() => request(item)}
               >
-                <span aria-hidden="true">+ </span>Requisitar
+                <span aria-hidden="true">+ </span>
+                {t('Request', 'Requisitar', 'Solicitar')}
               </button>
             </div>
           </article>
         ))}
-        {shown.length === 0 && <p className="muted">Nenhum item encontrado.</p>}
+        {shown.length === 0 && (
+          <p className="muted">
+            {t('No items found.', 'Nenhum item encontrado.', 'No se encontraron objetos.')}
+          </p>
+        )}
       </div>
       <footer className="muted">
-        Exibindo {shown.length} de {pool.length} itens dos binários do jogo (build verificada).
+        {t('Showing', 'Exibindo', 'Mostrando')} {shown.length} {t('of', 'de', 'de')} {pool.length}{' '}
+        {t(
+          'items from the verified game build.',
+          'itens da build verificada do jogo.',
+          'objetos de la build verificada del juego.',
+        )}
       </footer>
     </dialog>
   );

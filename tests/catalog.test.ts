@@ -20,6 +20,14 @@ describe('catálogo oferecido pelo editor', () => {
     }
     expect(SELECTABLE_ITEMS.find((item) => item.alias === 'g_camera')?.descriptionSource).toBe('game');
     expect(SELECTABLE_ITEMS.find((item) => item.alias === 'dice_tp')?.descriptionSource).toBe('editorial');
+    expect(
+      SELECTABLE_ITEMS.every(
+        (item) =>
+          !/resultado exato não confirmado|alcance e duração não confirmados/i.test(
+            item.descriptions['pt-BR'] ?? '',
+          ),
+      ),
+    ).toBe(true);
   });
 
   it('não pesquisa por alias oculto ao usuário', () => {

@@ -104,6 +104,7 @@ describe('documentação: números afirmados batem com o código', () => {
     expect(read('README.md')).toContain(id);
     expect(read('docs/SCHEMA_VERIFIED.md')).toContain(id);
     expect(read('docs/SCHEMA_ITEMS.md')).toContain(id);
+    expect(read('src/ui/Welcome.tsx')).toContain(id);
     expect(String(items.meta.gameBuild ?? id)).toContain(id);
   });
 

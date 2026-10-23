@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+test.use({ locale: 'pt-BR' });
+
 const fixture = new URL('../tests/fixtures/template.sav', import.meta.url).pathname;
 
 test('boas-vindas mostra o caminho do SO e privacidade', async ({ page }) => {

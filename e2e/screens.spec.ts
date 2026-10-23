@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+test.use({ locale: 'pt-BR' });
+
 const fixture = new URL('../tests/fixtures/template.sav', import.meta.url).pathname;
 
 test.beforeEach(async ({ page }) => {
@@ -20,8 +22,8 @@ test('Sessão: atribuir herói vago, ver o diff e desfazer', async ({ page }) =>
   await ziggy.getByPlaceholder('Vago (SteamID64)').blur();
   await expect(page.getByRole('heading', { name: /2 heróis em campo/ })).toBeVisible();
   const dlg = await review(page);
-  await expect(dlg).toContainText('meta.playerCount');
-  await expect(dlg).toContainText('save.playerInventories');
+  await expect(dlg).toContainText('Número de jogadores');
+  await expect(dlg).toContainText('Itens carregados');
   await page.getByRole('button', { name: 'Cancelar' }).click();
   await page.getByRole('button', { name: 'Desfazer' }).click();
   await expect(page.getByRole('heading', { name: /1 herói em campo/ })).toBeVisible();
@@ -43,7 +45,7 @@ test('Status: maximizar herói preenche os níveis e aparece no diff', async ({ 
   await expect(page.getByText('Nível 7 de 7')).toBeVisible();
   await expect(page.getByRole('switch', { name: /Salto arcano: habilitado/ })).toBeVisible();
   const dlg = await review(page);
-  await expect(dlg).toContainText('save.upgrades.redUpgrades');
+  await expect(dlg).toContainText('Upgrades dos heróis');
 });
 
 test('Inventário: adiciona item pelo catálogo com bateria e ajusta a carga', async ({ page }) => {
@@ -148,7 +150,7 @@ test('Troféus: ativar todas as 17 figuras e desmarcar', async ({ page }) => {
   await page.getByRole('tab', { name: /Troféus/ }).click();
   await page.getByRole('button', { name: /Ativar todas as 17/ }).click();
   await expect(page.getByText('17 de 17 figuras')).toBeVisible();
-  await expect(page.getByText('0x1ffff')).toBeVisible();
+  await expect(page.getByText('Colete ou remova as figuras encontradas no jogo.')).toBeVisible();
   await page.getByRole('button', { name: /Desmarcar todas/ }).click();
   await expect(page.getByText('0 de 17 figuras')).toBeVisible();
 });
@@ -179,7 +181,7 @@ test('Presets: saldo inválido não vira 0 e valor acima do máximo é limitado'
   await expect(page.getByRole('alert')).toContainText('apenas números');
   await field.fill('99999999999');
   await field.blur();
-  await expect(page.getByRole('alert')).toContainText('2147483647');
+  await expect(page.getByRole('alert')).toContainText('2.147.483.647');
   await expect(field).toHaveValue('99999999999');
   await field.fill('-1');
   await field.blur();
