@@ -51,7 +51,12 @@ export function StatusScreen() {
               onClick={() => setHero(h.id)}
             >
               {h.label}
-              {hasAny(h.id) ? ' ✓' : ''}
+              {hasAny(h.id) && (
+                <>
+                  <span aria-hidden="true"> ★</span>
+                  <span className="visually-hidden"> (com upgrades)</span>
+                </>
+              )}
             </button>
           ))}
         </div>
@@ -83,7 +88,7 @@ export function StatusScreen() {
                 </div>
                 <span className="badge">
                   Nível {level} de {u.maxLevel}
-                  {u.uid === 1 && level > 0 ? ` (+${HEALTH_BONUS[level - 1]} PV)` : ''}
+                  {u.uid === 1 && level > 0 ? ` (+${HEALTH_BONUS[level - 1]} PV)` : ''} | Máx: {u.maxLevel}x
                 </span>
               </div>
               <div className="stepper">
@@ -123,12 +128,13 @@ export function StatusScreen() {
             <button
               type="button"
               className={A.getUpgradeLevel(v, hero, 5) > 0 ? 'btn btn-green' : 'btn btn-brass'}
-              aria-pressed={A.getUpgradeLevel(v, hero, 5) > 0}
+              role="switch"
+              aria-checked={A.getUpgradeLevel(v, hero, 5) > 0}
               onClick={() =>
                 edit((d) => A.setUpgradeLevel(d, hero, 5, A.getUpgradeLevel(v, hero, 5) > 0 ? 0 : 1))
               }
             >
-              {A.getUpgradeLevel(v, hero, 5) > 0 ? 'Habilitado & ativo' : 'Desabilitado'}
+              Salto arcano: {A.getUpgradeLevel(v, hero, 5) > 0 ? 'habilitado' : 'desabilitado'}
             </button>
           </div>
         </div>

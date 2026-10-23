@@ -364,6 +364,21 @@ const WIDEN: Partial<Record<NumFormat, NumFormat[]>> = {
   u32: ['u64'],
 };
 
+/** Faixa de cada tipo C# inteiro. Valor fora dela é erro (o jogo não leria o campo). */
+const CS_RANGE: Partial<Record<CsType, [bigint, bigint]>> = {
+  int: [-(1n << 31n), (1n << 31n) - 1n],
+  uint: [0n, 0xffffffffn],
+  long: [-(1n << 63n), (1n << 63n) - 1n],
+  ulong: [0n, (1n << 64n) - 1n],
+};
+
+function assertRange(big: bigint, type: CsType | undefined, path: string): void {
+  const r = type ? CS_RANGE[type] : undefined;
+  if (r && (big < r[0] || big > r[1])) {
+    throw new MsgpackError(`Valor ${big} fora da faixa de ${type} em ${path || '<raiz>'}`);
+  }
+}
+
 /** Formato que o serializer do jogo escreveria para um valor novo, dado o tipo C# (largura fixa acima do fixint). */
 export function formatForType(type: CsType, v: bigint): NumFormat | undefined {
   if (type === 'float' || type === 'double') return undefined;
@@ -410,6 +425,7 @@ function fits(big: bigint, fmt: NumFormat): boolean {
 
 /** Escreve o inteiro no formato pedido; se o valor não couber nele, cai no formato mínimo. */
 function writeInt(w: Writer, big: bigint, fmt: NumFormat | undefined, path: string, type?: CsType) {
+  assertRange(big, type, path);
   if (fmt && !fits(big, fmt)) {
     fmt = WIDEN[fmt]?.find((f) => fits(big, f)) ?? (type ? formatForType(type, big) : undefined);
   } else if (!fmt && type) {
@@ -522,7 +538,12 @@ export function encode(value: unknown, hints: Hints, options: EncodeOptions = {}
       const type = options.typeOf?.(path);
       if (!hint && (type === 'float' || type === 'double'))
         return w.float(type === 'float' ? 'f32' : 'f64', v);
-      if (!Number.isInteger(v)) return w.float(defaultFloat, v);
+      if (!Number.isInteger(v)) {
+        if (type && type !== 'float' && type !== 'double') {
+          throw new MsgpackError(`Valor fracionário ${v} em campo inteiro (${type}) em ${path || '<raiz>'}`);
+        }
+        return w.float(defaultFloat, v);
+      }
       if (!Number.isSafeInteger(v))
         throw new MsgpackError(`Inteiro além de 2^53 deve ser bigint em ${path || '<raiz>'}`);
       return writeInt(w, BigInt(v), hint, path, type);

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { findItem } from '../../catalog/catalog';
 import { HEROES } from '../../schema/enums';
 import * as A from '../../state/actions';
+import { useAnnounce } from '../announce';
 import { CatalogDialog } from '../CatalogDialog';
 import { useEdit, useValues } from '../hooks';
 
@@ -10,25 +11,32 @@ function ItemRow({
   level,
   target,
   index,
+  onRemoved,
 }: {
   alias: string;
   level: number;
   target: A.ItemTarget;
   index: number;
+  onRemoved: (label: string) => void;
 }) {
   const edit = useEdit();
   const item = findItem(alias);
+  const name = item?.label ?? alias;
   const battery = item?.battery ?? null;
   const pct = Math.round(Math.max(0, Math.min(1, level)) * 100);
+  const where = target.kind === 'bench' ? 'bancada' : `jogador ${target.index + 1}`;
   return (
     <article className="card">
       <header className="card-head">
-        <h3>{item?.label ?? alias}</h3>
+        <h3>{name}</h3>
         <button
           type="button"
           className="btn btn-wax btn-sm"
-          aria-label={`Remover ${item?.label ?? alias}`}
-          onClick={() => edit((d) => A.removeItem(d, target, index))}
+          aria-label={`Remover ${name} (posição ${index + 1}, ${where})`}
+          onClick={() => {
+            edit((d) => A.removeItem(d, target, index));
+            onRemoved(name);
+          }}
         >
           ✕ Remover
         </button>
@@ -39,15 +47,22 @@ function ItemRow({
       </p>
       {battery ? (
         <label className="battery">
-          <span className="field-label">Carga da bateria: {pct}%</span>
+          <span className="field-label">
+            Carga da bateria de {name}: {pct}%
+          </span>
           <input
             type="range"
             min={0}
             max={100}
             step={1}
             value={pct}
-            aria-label={`Carga de ${item?.label}`}
-            onChange={(e) => edit((d) => A.setBattery(d, target, index, Number(e.target.value) / 100))}
+            aria-valuetext={`${pct}%`}
+            onChange={(e) =>
+              edit(
+                (d) => A.setBattery(d, target, index, Number(e.target.value) / 100),
+                `battery:${where}:${index}`,
+              )
+            }
           />
         </label>
       ) : (
@@ -62,6 +77,14 @@ export function InventoryScreen() {
   const edit = useEdit();
   const [player, setPlayer] = useState(0);
   const [catalog, setCatalog] = useState<A.ItemTarget | null>(null);
+  const say = useAnnounce((x) => x.say);
+  const itemsHeading = useRef<HTMLHeadingElement>(null);
+  const benchHeading = useRef<HTMLHeadingElement>(null);
+  /** Depois de remover, o botão sai do DOM: o foco vai para o título da seção e a remoção é anunciada. */
+  const removed = (name: string, ref: React.RefObject<HTMLHeadingElement | null>) => {
+    say(`${name} removido.`);
+    setTimeout(() => ref.current?.focus(), 0);
+  };
   const occupied = A.occupiedHeroes(v);
   const idx = Math.min(player, Math.max(0, v.save.playerInventories.length - 1));
   const inv = v.save.playerInventories[idx];
@@ -90,7 +113,9 @@ export function InventoryScreen() {
 
       <section className="panel">
         <header className="panel-head">
-          <h2>Itens na pasta ({inv?.itemStringIds.length ?? 0})</h2>
+          <h2 ref={itemsHeading} tabIndex={-1}>
+            Itens na pasta ({inv?.itemStringIds.length ?? 0})
+          </h2>
           <button
             type="button"
             className="btn btn-green"
@@ -109,6 +134,7 @@ export function InventoryScreen() {
                 level={inv.itemBatteryLevels[i] ?? -1}
                 target={{ kind: 'player', index: idx }}
                 index={i}
+                onRemoved={(n) => removed(n, itemsHeading)}
               />
             ))}
           </div>
@@ -120,7 +146,9 @@ export function InventoryScreen() {
       <section className="panel">
         <header className="panel-head">
           <div>
-            <h2>Ferramentas na bancada do hub (gameRoomTools)</h2>
+            <h2 ref={benchHeading} tabIndex={-1}>
+              Ferramentas na bancada do hub (gameRoomTools)
+            </h2>
             <p className="muted">Itens disponíveis no lobby para qualquer herói equipar antes da partida.</p>
           </div>
           <button type="button" className="btn btn-green" onClick={() => setCatalog({ kind: 'bench' })}>
@@ -134,7 +162,7 @@ export function InventoryScreen() {
               <button
                 type="button"
                 className="pill-x"
-                aria-label={`Remover ${findItem(alias)?.label ?? alias}`}
+                aria-label={`Remover ${findItem(alias)?.label ?? alias} da bancada (posição ${i + 1})`}
                 onClick={() => edit((d) => A.removeItem(d, { kind: 'bench' }, i))}
               >
                 ✕

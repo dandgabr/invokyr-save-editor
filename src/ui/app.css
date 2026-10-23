@@ -694,3 +694,119 @@ summary {
   overflow-wrap: anywhere;
   min-width: 0;
 }
+
+/* ───── Ajustes da revisão (a11y e fidelidade) ───── */
+.row {
+  flex-wrap: wrap;
+}
+.row select,
+.input-sm {
+  max-width: 100%;
+  min-width: 0;
+}
+.btn-sm,
+.input-sm {
+  min-height: 44px;
+}
+.pill-x {
+  min-width: 44px;
+  min-height: 44px;
+}
+.battery input[type="range"] {
+  min-height: 44px;
+}
+.alias {
+  margin: 0;
+}
+.alias code {
+  font-size: 0.9rem;
+  color: var(--text-sepia);
+  overflow-wrap: anywhere;
+}
+/* estado selecionado: cor + marca ✓ (não depende só de borda) e verde sólido como no design */
+.chip-btn.selected {
+  background: var(--btn-green-bg);
+  border-color: var(--btn-green-border);
+  color: var(--btn-green-text);
+  font-weight: 600;
+}
+.chip-btn.selected::before {
+  content: "✓ ";
+}
+.card-active {
+  border-width: 2px;
+}
+/* pips e badges com contraste ≥ 3:1 sobre o trilho */
+.tone-red .badge,
+.tone-red .pip.on {
+  color: #e05555;
+}
+.tone-red .pip.on {
+  background: #e05555;
+  border-color: #e05555;
+}
+.tone-violet .badge {
+  color: #c4a1ff;
+}
+.tone-violet .pip.on {
+  background: #b070cc;
+  border-color: #b070cc;
+}
+.tone-teal .pip.on {
+  background: #2bb386;
+  border-color: #2bb386;
+}
+.swatch-blue {
+  background: #3b82f6;
+}
+.tag-dice {
+  border-color: var(--border-brass);
+  color: var(--text-gold);
+}
+.tag-plain-dice {
+  color: var(--text-sepia);
+}
+.tag-gadget {
+  border-color: #d97706;
+  color: #fbbf24;
+}
+.tag-treasure {
+  border-color: #b070cc;
+  color: #d3a8e6;
+}
+.tag-key {
+  border-color: var(--btn-green-border);
+  color: var(--btn-green-text);
+}
+.tag-other {
+  color: var(--text-sepia);
+}
+/* abas cabem em 1180px como no design */
+.tab {
+  padding: 0.55rem 0.7rem;
+  font-size: 0.9rem;
+}
+.tabs [role="tablist"] {
+  gap: 0.25rem;
+}
+.issues {
+  border: 1px solid var(--border-brass);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+  max-height: 22vh;
+  overflow: auto;
+}
+.issues-error {
+  border-color: var(--btn-wax-border);
+  background: var(--btn-wax-bg);
+}
+.issues h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.95rem;
+}
+.issues ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}

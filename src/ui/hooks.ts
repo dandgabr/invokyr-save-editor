@@ -8,8 +8,8 @@ export function useValues(): SaveValues {
   return v as unknown as SaveValues;
 }
 
-/** Executa uma ação de edição (src/state/actions.ts) dentro de um passo de undo/redo. */
-export function useEdit(): (fn: (d: SaveValues) => void) => void {
+/** Executa uma ação de edição (src/state/actions.ts) dentro de um passo de undo/redo. Retorna `true` se mudou algo. */
+export function useEdit(): (fn: (d: SaveValues) => void, coalesceKey?: string) => boolean {
   const edit = useEditor((s) => s.edit);
-  return (fn) => edit((d) => fn(d as unknown as SaveValues));
+  return (fn, coalesceKey) => edit((d) => fn(d as unknown as SaveValues), coalesceKey);
 }

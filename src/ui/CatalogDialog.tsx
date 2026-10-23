@@ -9,6 +9,7 @@ import {
 } from '../catalog/catalog';
 import { HEROES } from '../schema/enums';
 import * as A from '../state/actions';
+import { useAnnounce } from './announce';
 import { useEdit, useValues } from './hooks';
 
 type TargetKey = 'bench' | `p${number}`;
@@ -29,9 +30,9 @@ export function CatalogDialog({ initialTarget, onClose }: Props) {
     initialTarget.kind === 'bench' ? 'bench' : `p${initialTarget.index}`,
   );
   const [query, setQuery] = useState('');
+  const say = useAnnounce((x) => x.say);
   const [category, setCategory] = useState<ItemCategory | 'all'>('all');
   const [internal, setInternal] = useState(false);
-  const [added, setAdded] = useState<string | null>(null);
 
   useEffect(() => {
     const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -66,13 +67,19 @@ export function CatalogDialog({ initialTarget, onClose }: Props) {
       label: `Inventário do jogador ${i + 1}${occupied[i] !== undefined ? ` (${HEROES[occupied[i] as number]?.label})` : ''}`,
     })),
   ];
-  const current = (A.inventoryOf(v, toTarget(target))?.itemStringIds.length ?? 0) as number;
+  const validTarget = targets.some((t) => t.key === target) ? target : 'bench';
+  const targetLabel = targets.find((t) => t.key === validTarget)?.label ?? '';
+  const current = A.inventoryOf(v, toTarget(validTarget))?.itemStringIds.length ?? 0;
 
   const request = (item: CatalogItem) => {
-    edit((d) => {
-      A.addItem(d, toTarget(target), item.alias);
+    const ok = edit((d) => {
+      A.addItem(d, toTarget(validTarget), item.alias);
     });
-    setAdded(item.label);
+    say(
+      ok
+        ? `${item.label} adicionado a ${targetLabel} (${current + 1} itens).`
+        : `Não foi possível adicionar ${item.label}.`,
+    );
   };
 
   return (
@@ -94,7 +101,11 @@ export function CatalogDialog({ initialTarget, onClose }: Props) {
       <div className="catalog-bar">
         <label className="inline">
           <span>Destino:</span>
-          <select className="input" value={target} onChange={(e) => setTarget(e.target.value as TargetKey)}>
+          <select
+            className="input"
+            value={validTarget}
+            onChange={(e) => setTarget(e.target.value as TargetKey)}
+          >
             {targets.map((t) => (
               <option key={t.key} value={t.key}>
                 {t.label}
@@ -137,28 +148,30 @@ export function CatalogDialog({ initialTarget, onClose }: Props) {
         <input type="checkbox" checked={internal} onChange={(e) => setInternal(e.target.checked)} /> Mostrar
         também itens internos/de teste do jogo ({ITEM_CATALOG.length - OFFICIAL_ITEMS.length})
       </label>
-      <p className="visually-hidden" role="status">
-        {added ? `${added} adicionado.` : ''}
-      </p>
       <div className="catalog-grid">
         {shown.map((item) => (
           <article key={item.alias} className="card">
             <header className="card-head">
               <h3>{item.label}</h3>
-              <span className="tag tag-gold">{CATEGORY_LABELS[item.category]}</span>
+              <span className={`tag tag-${item.category}`}>{CATEGORY_LABELS[item.category]}</span>
             </header>
             <p className="muted">
               {item.desc ?? (item.localized ? 'Sem descrição.' : 'Sem nome ou descrição no jogo.')}
             </p>
-            <p className="tiny muted">
+            <p className="alias">
               <code>{item.alias}</code>
             </p>
             <div className="card-foot">
               <span className={item.battery ? 'amber' : 'muted'}>
-                {item.battery ? `Bateria (${item.battery.capacity}s)` : 'Sem bateria'}
+                {item.battery ? `Bateria (${item.battery.capacity}s)` : 'Carga: passivo'}
               </span>
-              <button type="button" className="btn btn-green btn-sm" onClick={() => request(item)}>
-                + Requisitar
+              <button
+                type="button"
+                className="btn btn-green btn-sm"
+                aria-label={`Requisitar ${item.label} (${item.alias})`}
+                onClick={() => request(item)}
+              >
+                <span aria-hidden="true">+ </span>Requisitar
               </button>
             </div>
           </article>

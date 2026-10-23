@@ -7,10 +7,12 @@ function SteamIdField({
   value,
   onCommit,
   label,
+  id,
 }: {
   value: string;
   onCommit: (text: string) => string | null;
   label: string;
+  id: string;
 }) {
   const [text, setText] = useState(value);
   const [error, setError] = useState<string | null>(null);
@@ -37,13 +39,17 @@ function SteamIdField({
           placeholder="Vago (SteamID64)"
           value={text}
           aria-invalid={error ? true : undefined}
-          onChange={(e) => setText(e.target.value)}
+          aria-describedby={error ? `${id}-error` : undefined}
+          onChange={(e) => {
+            setText(e.target.value);
+            setError(null);
+          }}
           onBlur={commit}
           onKeyDown={(e) => e.key === 'Enter' && commit()}
         />
       </label>
       {error && (
-        <p className="field-error" role="alert">
+        <p id={`${id}-error`} className="field-error" role="alert">
           {error}
         </p>
       )}
@@ -87,23 +93,19 @@ export function SessionScreen() {
                 </span>
               </header>
               <SteamIdField
-                label="Jogador atribuído (Steam)"
+                id={`steam-${hero.id}`}
+                label={`Jogador atribuído a ${hero.label} (Steam)`}
                 value={taken ? owner : ''}
                 onCommit={(text) => {
                   const t = text.trim();
-                  if (t === '') {
-                    let ok = true;
-                    edit((d) => {
-                      ok = A.setOwner(d, hero.id, 0n);
-                    });
-                    return ok ? null : 'É preciso manter ao menos um jogador na sessão.';
-                  }
+                  if (t === '') return taken ? 'Para liberar o herói use o botão “Liberar slot”.' : null;
                   const id = A.parseSteamId(t);
-                  if (id === null || id === 0n) return 'Informe um SteamID64 numérico (até 20 dígitos).';
+                  if (id === null) return 'Informe um SteamID64 de 17 dígitos (ex.: 7656119…).';
+                  let ok = true;
                   edit((d) => {
-                    A.setOwner(d, hero.id, id);
+                    ok = A.setOwner(d, hero.id, id);
                   });
-                  return null;
+                  return ok ? null : 'Este SteamID64 já está em outro herói.';
                 }}
               />
               <div className="card-foot">
@@ -114,6 +116,9 @@ export function SessionScreen() {
                     value={color}
                     onChange={(e) => edit((d) => A.setClothColor(d, hero.id, Number(e.target.value)))}
                   >
+                    {!CLOTH_COLORS.some((c) => c.id === color) && (
+                      <option value={color}>Desconhecida (#{color})</option>
+                    )}
                     {CLOTH_COLORS.map((c) => (
                       <option key={c.id} value={c.id}>
                         {c.label}
@@ -125,6 +130,7 @@ export function SessionScreen() {
                   <button
                     type="button"
                     className="btn btn-wax btn-sm"
+                    aria-label={`Liberar slot de ${hero.label}`}
                     onClick={() =>
                       edit((d) => {
                         A.setOwner(d, hero.id, 0n);

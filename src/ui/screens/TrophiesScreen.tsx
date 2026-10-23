@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BIOMES, BOARD_MONSTERS, DIFFICULTIES, FIGURINES, labelOf } from '../../schema/enums';
 import * as A from '../../state/actions';
 import { useEdit, useValues } from '../hooks';
@@ -6,6 +7,32 @@ const boardLabel = (key: string) => {
   const [b, m] = key.split(':').map(Number);
   return `${labelOf(BIOMES, b ?? -1)} • ${labelOf(BOARD_MONSTERS, m ?? -1)}`;
 };
+
+/** Campo numérico com estado local: confirma no blur/Enter, sem uma entrada de desfazer por tecla. */
+function RankField({ value, onCommit }: { value: number; onCommit: (n: number) => void }) {
+  const [text, setText] = useState(String(value));
+  const [synced, setSynced] = useState(value);
+  if (value !== synced) {
+    setSynced(value);
+    setText(String(value));
+  }
+  const commit = () => {
+    const n = Number(text);
+    if (text.trim() === '' || !Number.isFinite(n)) return setText(String(value));
+    onCommit(n);
+    setText(String(Math.max(0, Math.min(A.MAX_INT32, Math.trunc(n)))));
+  };
+  return (
+    <input
+      className="input"
+      inputMode="numeric"
+      value={text}
+      onChange={(e) => setText(e.target.value)}
+      onBlur={commit}
+      onKeyDown={(e) => e.key === 'Enter' && commit()}
+    />
+  );
+}
 
 export function TrophiesScreen() {
   const v = useValues();
@@ -59,7 +86,9 @@ export function TrophiesScreen() {
                     <strong>{f.label}</strong>
                     <span className="tiny muted"> Bit {f.id}</span>
                   </span>
-                  <span className={on ? 'tag tag-gold' : 'tag'}>{on ? 'Ativo' : 'Off'}</span>
+                  <span className={on ? 'tag tag-gold' : 'tag'} aria-hidden="true">
+                    {on ? 'Ativo' : 'Off'}
+                  </span>
                 </label>
               </li>
             );

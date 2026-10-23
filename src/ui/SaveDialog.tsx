@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { hasErrors, type Issue } from '../schema/validate';
 import { type Change, MAX_CHANGES } from '../state/document';
 import { formatValue } from './format';
 
 interface Props {
   changes: Change[];
+  issues: Issue[];
   busy: boolean;
   inPlace: boolean;
   onBackup: () => void;
@@ -11,7 +13,7 @@ interface Props {
   onCancel: () => void;
 }
 
-export function SaveDialog({ changes, busy, inPlace, onBackup, onConfirm, onCancel }: Props) {
+export function SaveDialog({ changes, issues, busy, inPlace, onBackup, onConfirm, onCancel }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -25,6 +27,7 @@ export function SaveDialog({ changes, busy, inPlace, onBackup, onConfirm, onCanc
   }, []);
 
   const truncated = changes.length >= MAX_CHANGES;
+  const blocked = hasErrors(issues);
 
   return (
     <dialog
@@ -73,6 +76,19 @@ export function SaveDialog({ changes, busy, inPlace, onBackup, onConfirm, onCanc
           )}
         </>
       )}
+      {issues.length > 0 && (
+        <section className={blocked ? 'issues issues-error' : 'issues'} aria-labelledby="issues-title">
+          <h3 id="issues-title">{blocked ? 'Corrija antes de salvar' : 'Avisos'}</h3>
+          <ul>
+            {issues.map((i) => (
+              <li key={`${i.severity}-${i.path}-${i.message}`}>
+                <strong>{i.severity === 'error' ? 'Erro' : 'Aviso'}:</strong> <code>{i.path}</code> —{' '}
+                {i.message}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <p className="muted">
         {inPlace
           ? 'Um backup (.bak_data) será criado ao lado e o arquivo será gravado no lugar. Feche o jogo antes.'
@@ -87,7 +103,7 @@ export function SaveDialog({ changes, busy, inPlace, onBackup, onConfirm, onCanc
             Baixar backup do original
           </button>
         )}
-        <button type="button" className="btn btn-green" onClick={onConfirm} disabled={busy}>
+        <button type="button" className="btn btn-green" onClick={onConfirm} disabled={busy || blocked}>
           {busy ? 'Salvando…' : inPlace ? 'Confirmar e salvar' : 'Baixar save editado'}
         </button>
       </div>

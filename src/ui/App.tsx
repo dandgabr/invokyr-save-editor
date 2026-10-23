@@ -1,7 +1,10 @@
 import { type KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { backupName, download, type OpenedFile, saveFile } from '../platform/files';
+import type { SaveValues } from '../schema/types';
+import { type Issue, validate } from '../schema/validate';
 import { diffDocs } from '../state/document';
 import { useEditor } from '../state/store';
+import { useAnnounce } from './announce';
 import { SaveDialog } from './SaveDialog';
 import { SCREENS } from './screens/registry';
 import { Welcome } from './Welcome';
@@ -19,9 +22,26 @@ export function App() {
   const [reviewing, setReviewing] = useState(false);
   const [busy, setBusy] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const announcement = useAnnounce((x) => x.message);
+  const announceN = useAnnounce((x) => x.n);
+  const say = useAnnounce((x) => x.say);
 
   const changes = useMemo(() => (original && values ? diffDocs(original, values) : []), [original, values]);
   const dirty = changes.length > 0;
+  const issues = useMemo<Issue[]>(() => {
+    if (!values) return [];
+    try {
+      return validate(values as unknown as SaveValues);
+    } catch (e) {
+      return [
+        {
+          severity: 'error',
+          path: '(save)',
+          message: `Estrutura do save inesperada: ${(e as Error).message}`,
+        },
+      ];
+    }
+  }, [values]);
 
   const handleOpen = (f: OpenedFile) => {
     try {
@@ -36,6 +56,7 @@ export function App() {
 
   const confirmSave = useCallback(async () => {
     if (!doc || !opened || !values) return;
+    if (issues.some((i) => i.severity === 'error')) return;
     // Snapshot: o que é gravado é exatamente o que é marcado como salvo, mesmo se o estado mudar durante o await.
     const snapshot = values;
     const bytes = serialize();
@@ -45,6 +66,7 @@ export function App() {
       markSaved(snapshot, bytes);
       if (out.meta) setOpened({ ...opened, ...out.meta });
       setReviewing(false);
+      say(out.mode === 'in-place' ? 'Save gravado com backup.' : 'Save editado baixado.');
       setNotice(
         out.mode === 'in-place'
           ? `Salvo. Backup: ${out.backup}.${out.diskChanged ? ' Atenção: o arquivo no disco havia mudado desde a abertura (Steam Cloud ou o jogo); o backup guarda essa versão.' : ''}`
@@ -55,21 +77,25 @@ export function App() {
     } finally {
       setBusy(false);
     }
-  }, [doc, opened, values, serialize, markSaved]);
+  }, [doc, opened, values, issues, serialize, markSaved, say]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent | globalThis.KeyboardEvent) => {
-      if (!(e.ctrlKey || e.metaKey) || !doc || reviewing || busy || isEditable(e.target)) return;
+      if (!(e.ctrlKey || e.metaKey) || !doc || reviewing || busy) return;
+      if (document.querySelector('dialog[open]')) return; // modal aberto (catálogo): não age por baixo dele
       const k = e.key.toLowerCase();
+      if (k === 's') {
+        e.preventDefault(); // também dentro de campos: evita o "Salvar página" do navegador
+        setReviewing(true);
+        return;
+      }
+      if (isEditable(e.target)) return; // desfazer/refazer nativos dos campos de texto
       if (k === 'z' && !e.shiftKey) {
         e.preventDefault();
         undo();
       } else if (k === 'y' || (k === 'z' && e.shiftKey)) {
         e.preventDefault();
         redo();
-      } else if (k === 's') {
-        e.preventDefault();
-        setReviewing(true);
       }
     };
     window.addEventListener('keydown', onKey);
@@ -111,8 +137,14 @@ export function App() {
     tabRefs.current[target.id]?.focus();
   };
 
+  const statusRegion = (
+    <div className="visually-hidden" role="status" aria-live="polite" aria-atomic="true" key={announceN}>
+      {announcement}
+    </div>
+  );
   const banner = (
     <>
+      {statusRegion}
       {error && (
         <div className="banner banner-error" role="alert">
           <span>{error}</span>
@@ -122,7 +154,7 @@ export function App() {
         </div>
       )}
       {notice && (
-        <div className="banner banner-ok" role="status">
+        <div className="banner banner-ok">
           <span>{notice}</span>
           <button type="button" onClick={() => setNotice(null)} aria-label="Fechar aviso">
             ✕
@@ -152,7 +184,12 @@ export function App() {
           <span className="chip" data-testid="file-chip">
             Tomo: {doc.fileName}
             {version !== undefined ? ` (v${version})` : ''}
-            {dirty ? ' •' : ''}
+            {dirty && (
+              <>
+                <span aria-hidden="true"> •</span>
+                <span className="visually-hidden"> (alterado)</span>
+              </>
+            )}
           </span>
         </div>
         <div className="actions">
@@ -224,6 +261,7 @@ export function App() {
       {reviewing && (
         <SaveDialog
           changes={changes}
+          issues={issues}
           busy={busy}
           inPlace={fileHandle !== null}
           onBackup={() => download(backupName(doc.fileName), doc.raw)}

@@ -3,8 +3,9 @@
  * que mantêm as invariantes do schema 15 (docs/SCHEMA_VERIFIED.md): playerCount ↔ playerInventories,
  * ids ↔ baterias, níveis dentro do máximo etc.
  */
-import { ITEM_CATALOG } from '../catalog/catalog';
+import { findItem, ITEM_CATALOG } from '../catalog/catalog';
 import { FIGURINE_MASK, FURNITURES, HERO_COUNT, KEY_DOORS, UPGRADE_KEYS, UPGRADES } from '../schema/enums';
+import { SKINS } from '../schema/skins';
 import type { InventoryState, SaveValues } from '../schema/types';
 
 type V = SaveValues;
@@ -14,6 +15,8 @@ const toBig = (n: bigint | number) => BigInt(n);
 const narrow = (b: bigint): bigint | number => (b <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(b) : b);
 
 export const MAX_INT32 = 2147483647;
+
+const isInt = (n: unknown): n is number => typeof n === 'number' && Number.isInteger(n);
 
 /* ───────── Sessão ───────── */
 
@@ -25,18 +28,25 @@ export const occupiedHeroes = (v: V): number[] =>
 export const inventoryIndexOf = (v: V, hero: number): number =>
   occupiedHeroes(v).filter((h) => h < hero).length;
 
+/** SteamID64 de conta individual: 17 dígitos na faixa pública da Steam (7656119796… a 7656120225…). */
+export const STEAM_ID_MIN = 76561197960265728n;
+export const STEAM_ID_MAX = 76561202255233023n;
 export const parseSteamId = (text: string): bigint | null => {
   const t = text.trim();
-  if (!/^\d{1,20}$/.test(t)) return null;
+  if (!/^\d{17}$/.test(t)) return null;
   const b = BigInt(t);
-  return b <= 0xffffffffffffffffn ? b : null;
+  return b >= STEAM_ID_MIN && b <= STEAM_ID_MAX ? b : null;
 };
 
 const emptyInventory = (): InventoryState => ({ itemStringIds: [], itemBatteryLevels: [] });
 
 /** Atribui (ou libera, com 0n) o dono de um herói, mantendo playerCount e playerInventories alinhados. */
 export function setOwner(d: V, hero: number, steamId: bigint): boolean {
-  if (hero < 0 || hero >= HERO_COUNT) return false;
+  if (!isInt(hero) || hero < 0 || hero >= HERO_COUNT) return false;
+  if (steamId < 0n || steamId > 0xffffffffffffffffn) return false;
+  // o mesmo jogador não pode ocupar dois heróis
+  if (steamId !== 0n && d.meta.characterOwners.some((o, h) => h !== hero && toBig(o) === steamId))
+    return false;
   const wasOccupied = isOccupied(d, hero);
   const willBe = steamId !== 0n;
   if (!willBe && wasOccupied && occupiedHeroes(d).length === 1) return false; // precisa de ao menos 1 jogador
@@ -53,6 +63,7 @@ export function setOwner(d: V, hero: number, steamId: bigint): boolean {
 }
 
 export function setClothColor(d: V, hero: number, color: number): void {
+  if (!isInt(hero) || hero < 0 || hero >= HERO_COUNT || !isInt(color) || color < 0 || color > 8) return;
   const entry = d.save.playerColors.find((c) => c.playerCharacter === hero);
   if (entry) entry._color = color;
   else d.save.playerColors.push({ playerCharacter: hero, _color: color });
@@ -76,16 +87,17 @@ export function getUpgradeLevel(v: V, hero: number, uid: number): number {
 export function setUpgradeLevel(d: V, hero: number, uid: number, level: number): void {
   const def = UPGRADES.find((u) => u.uid === uid);
   if (!def) throw new Error(`UID de upgrade desconhecido: ${uid}`);
+  if (!isInt(hero) || !Number.isFinite(level)) return;
   const lvl = Math.max(0, Math.min(def.maxLevel, Math.trunc(level)));
   const list = upgradeList(d, hero);
-  const i = list.findIndex((u) => u.x === uid);
-  if (lvl === 0) {
-    if (i >= 0) list.splice(i, 1);
-  } else if (i >= 0) {
-    (list[i] as { y: number }).y = lvl;
-  } else {
-    list.push({ x: uid, y: lvl });
+  // remove duplicatas pré-existentes do mesmo UID: sobra no máximo uma entrada
+  for (let i = list.length - 1; i >= 0; i--) {
+    if (list[i]?.x === uid && (lvl === 0 || list.findIndex((u) => u.x === uid) !== i)) list.splice(i, 1);
   }
+  const entry = list.find((u) => u.x === uid);
+  if (lvl === 0) return;
+  if (entry) (entry as { y: number }).y = lvl;
+  else list.push({ x: uid, y: lvl });
 }
 
 export const maximizeHero = (d: V, hero: number) => {
@@ -107,7 +119,7 @@ export const batteryOf = (alias: string) => ITEM_CATALOG.find((i) => i.alias ===
 
 export function addItem(d: V, t: ItemTarget, alias: string): boolean {
   const inv = inventoryOf(d, t);
-  if (!inv || alias === '') return false;
+  if (!inv || alias === '' || !findItem(alias)) return false;
   inv.itemStringIds.push(alias);
   inv.itemBatteryLevels.push(batteryOf(alias) ? 1 : -1);
   return true;
@@ -122,6 +134,7 @@ export function removeItem(d: V, t: ItemTarget, index: number): void {
 
 /** `level01` em 0..1 (a UI trabalha em porcentagem). Itens sem bateria mantêm -1. */
 export function setBattery(d: V, t: ItemTarget, index: number, level01: number): void {
+  if (!Number.isFinite(level01)) return;
   const inv = inventoryOf(d, t);
   const alias = inv?.itemStringIds[index];
   if (!inv || alias === undefined || !batteryOf(alias)) return;
@@ -153,14 +166,14 @@ export const unlockAllDoors = (d: V) => {
 };
 
 export const setSkin = (d: V, index: number) => {
-  d.save.gameRoomSkinIndex = index;
+  if (isInt(index) && index >= 0 && index < SKINS.length) d.save.gameRoomSkinIndex = index;
 };
 
 /* ───────── Coleção ───────── */
 
 export const hasFigurine = (v: V, bit: number) => ((v.collection.monsterFigurines >>> bit) & 1) === 1;
 export function setFigurine(d: V, bit: number, on: boolean): void {
-  if (bit < 0 || bit > 16) return;
+  if (!isInt(bit) || bit < 0 || bit > 16) return;
   const cur = d.collection.monsterFigurines >>> 0;
   d.collection.monsterFigurines = (on ? cur | (1 << bit) : cur & ~(1 << bit)) >>> 0;
 }
@@ -169,6 +182,7 @@ export const setAllFigurines = (d: V, on: boolean) => {
 };
 
 export function setBoardDifficulty(d: V, boardKey: string, difficulty: number): void {
+  if (!Number.isFinite(difficulty)) return;
   const list = d.collection.bestBoardDifficulties;
   const e = list.find((b) => b.boardKey === boardKey);
   const diff = Math.max(0, Math.min(4, Math.trunc(difficulty)));
@@ -177,6 +191,7 @@ export function setBoardDifficulty(d: V, boardKey: string, difficulty: number): 
 }
 
 export const setEndlessRank = (d: V, rank: number) => {
+  if (!Number.isFinite(rank)) return;
   d.collection.bestEndlessRank = Math.max(0, Math.min(MAX_INT32, Math.trunc(rank)));
 };
 
@@ -187,6 +202,7 @@ export const clearHouseRules = (d: V) => {
 /* ───────── Banco e presets ───────── */
 
 export const setBank = (d: V, n: number) => {
+  if (!Number.isFinite(n)) return;
   d.save.bank.currentTotalScore = Math.max(0, Math.min(MAX_INT32, Math.trunc(n)));
 };
 

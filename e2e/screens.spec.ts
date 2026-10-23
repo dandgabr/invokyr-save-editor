@@ -40,7 +40,7 @@ test('Status: maximizar herói preenche os níveis e aparece no diff', async ({ 
   await page.getByRole('button', { name: /Maximizar apenas Red/ }).click();
   await expect(page.getByText('Nível 8 de 8 (+160 PV)')).toBeVisible();
   await expect(page.getByText('Nível 7 de 7')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Habilitado & ativo' })).toBeVisible();
+  await expect(page.getByRole('switch', { name: /Salto arcano: habilitado/ })).toBeVisible();
   const dlg = await review(page);
   await expect(dlg).toContainText('save.upgrades.redUpgrades');
 });
@@ -51,13 +51,13 @@ test('Inventário: adiciona item pelo catálogo com bateria e ajusta a carga', a
   const dlg = page.getByRole('dialog');
   await expect(dlg).toContainText('Índice geral de relíquias');
   await dlg.getByLabel('Buscar relíquia').fill('lança');
-  await dlg.getByRole('button', { name: '+ Requisitar' }).first().click();
+  await dlg.getByRole('button', { name: /^Requisitar Lança-chamas \(g_fire\)/ }).click();
   await dlg.getByRole('button', { name: /Voltar ao inventário/ }).click();
   await expect(page.getByText('Lança-chamas').first()).toBeVisible();
-  const slider = page.getByRole('slider', { name: /Carga de/ });
+  const slider = page.getByRole('slider', { name: /Carga da bateria de Lança-chamas/ });
   await expect(slider).toHaveValue('100');
   await slider.fill('85');
-  await expect(page.getByText('Carga da bateria: 85%')).toBeVisible();
+  await expect(page.getByText('Carga da bateria de Lança-chamas: 85%')).toBeVisible();
 });
 
 test('Hub: skin, portas e mobílias', async ({ page }) => {
@@ -91,4 +91,67 @@ test('Presets: god mode gera alterações e o save revisado é gravado sem erros
     })(),
   ]);
   expect(download.suggestedFilename()).toBe('template.sav');
+});
+
+test('Presets: saldo inválido não vira 0 e valor acima do máximo é limitado', async ({ page }) => {
+  await page.getByRole('tab', { name: /Trainer Presets/ }).click();
+  const field = page.getByLabel('Saldo');
+  const before = await field.inputValue();
+  await field.fill('abc');
+  await field.blur();
+  await expect(page.getByRole('alert')).toContainText('apenas números');
+  await field.fill('99999999999');
+  await field.blur();
+  await expect(field).toHaveValue('2147483647');
+  expect(before).not.toBe('');
+});
+
+test('Catálogo: botões Requisitar têm nome único e Ctrl+Z não age por baixo do modal', async ({ page }) => {
+  await page.getByRole('tab', { name: /Inventários/ }).click();
+  await page.getByRole('button', { name: '+ Adicionar item' }).click();
+  const dlg = page.getByRole('dialog');
+  const names = await dlg
+    .getByRole('button', { name: /^Requisitar/ })
+    .evaluateAll((els) => els.map((e) => e.getAttribute('aria-label')));
+  expect(new Set(names).size).toBe(names.length);
+  await dlg.getByRole('button', { name: /^Requisitar Dado de Teletransporte \(dice_tp\)/ }).click();
+  await expect(page.getByRole('status')).toContainText('adicionado');
+  await page.keyboard.press('Control+z'); // com o modal aberto não desfaz
+  await dlg.getByRole('button', { name: /Voltar ao inventário/ }).click();
+  await expect(page.getByRole('button', { name: 'Desfazer' })).toBeEnabled();
+});
+
+test('Inventário: remover item devolve o foco e anuncia', async ({ page }) => {
+  await page.getByRole('tab', { name: /Inventários/ }).click();
+  await page
+    .getByRole('button', { name: /^Remover Dado de Teletransporte/ })
+    .first()
+    .click();
+  await expect(page.getByRole('status')).toContainText('removido');
+  await expect(page.getByRole('heading', { name: /Itens na pasta/ })).toBeFocused();
+});
+
+test('320px: nenhuma tela tem rolagem horizontal', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  for (const t of [/Sessão/, /Status/, /Inventários/, /Hub/, /Troféus/, /Trainer/]) {
+    await page.getByRole('tab', { name: t }).click();
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow, String(t)).toBeLessThanOrEqual(0);
+  }
+});
+
+test('Sessão: limpar o campo de um herói ocupado não o libera sem o botão', async ({ page }) => {
+  const red = page.getByRole('article', { name: 'Red' });
+  const field = red.getByRole('textbox');
+  await field.fill('');
+  await field.blur();
+  await expect(red.getByRole('alert')).toContainText('Liberar slot');
+  await expect(page.getByRole('heading', { name: /1 herói em campo/ })).toBeVisible();
+});
+
+test('Ctrl+S dentro de um campo abre a revisão de salvar', async ({ page }) => {
+  await page.getByRole('tab', { name: /Trainer Presets/ }).click();
+  await page.getByLabel('Saldo').focus();
+  await page.keyboard.press('Control+s');
+  await expect(page.getByRole('dialog')).toBeVisible();
 });
