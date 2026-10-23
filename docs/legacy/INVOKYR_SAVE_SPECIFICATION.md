@@ -1,3 +1,5 @@
+> **Documento herdado, NÃO VERIFICADO.** Foi corrigido pela análise do jogo em [`docs/SCHEMA_VERIFIED.md`](../SCHEMA_VERIFIED.md) (build 26154962). Em caso de divergência, vale o SCHEMA_VERIFIED.
+
 # Especificação Técnica de Engenharia Reversa: Arquitetura de Saves do Invokyr
 
 ## 1. Visão Geral do Sistema de Saves

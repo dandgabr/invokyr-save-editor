@@ -19,6 +19,7 @@ Em planejamento/bootstrap. O plano completo, com fases e decisões, está em [`d
 | Pasta | Conteúdo |
 | :-- | :-- |
 | `docs/PLAN.md` | Plano do projeto |
+| `docs/SCHEMA_VERIFIED.md`, `docs/schema.json` | Schema do save verificado contra o jogo (build 26154962) |
 | `docs/legacy/` | Spec e guias herdados (não verificados), com dados pessoais trocados por placeholders |
 | `docs/design/` | Design das 7 telas (`invokyr.pen`) e screenshots |
 | `reference/save_codec.py` | Codec Python de referência, usado como oráculo nos testes |

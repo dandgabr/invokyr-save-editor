@@ -1,0 +1,859 @@
+{
+ "build": {
+  "steam_buildid": "26154962",
+  "game": "Invokyr (AppID 3883570)",
+  "unity": "6000.3.14f1",
+  "il2cpp_metadata_version": 39,
+  "GameAssembly_sha256": "48dc0f4d3f3e15f58159274af9536bdc7fbf750dbf70553a342822e712f90a0b"
+ },
+ "serializer": {
+  "library": "GameDevWare.Serialization (MsgPack, reflexao por nome de campo) - NAO MessagePack-CSharp",
+  "status": "verificado-no-binario (tipos MsgPackReader/MsgPackWriter/ObjectSerializer presentes; nenhum tipo MessagePack-CSharp)"
+ },
+ "schema_version": {
+  "value": 15,
+  "status": "verificado-no-binario",
+  "evidence": "Save.TryCaptureSaveData @0x183074680: mov dword ptr [rbx+0x10], 0xf (SaveData.version)",
+  "guard": "nao encontrado em Save.Load/TryReadEntries/TryReadMetadata (sem cmp com 15); hipotese: o jogo nao recusa versoes diferentes"
+ },
+ "container": {
+  "zip_entries": [
+   "meta",
+   "save",
+   "collection"
+  ],
+  "status": "verificado-no-save-real (ZIP deflate, 3 entradas); nomes por literal ainda nao confirmados no binario"
+ },
+ "classes": {
+  "SaveMetadata": [
+   {
+    "field": "savedAtUtcTicks",
+    "csType": "long"
+   },
+   {
+    "field": "roundIndex",
+    "csType": "int"
+   },
+   {
+    "field": "endlessRank",
+    "csType": "int"
+   },
+   {
+    "field": "playTimeSeconds",
+    "csType": "int"
+   },
+   {
+    "field": "score",
+    "csType": "int"
+   },
+   {
+    "field": "playerCount",
+    "csType": "int"
+   },
+   {
+    "field": "characterOwners",
+    "csType": "ulong[]"
+   }
+  ],
+  "SaveData": [
+   {
+    "field": "version",
+    "csType": "int"
+   },
+   {
+    "field": "bank",
+    "csType": "_200_Dev.Utility.BankSaveState"
+   },
+   {
+    "field": "shop",
+    "csType": "_200_Dev.Utility.ShopSaveState"
+   },
+   {
+    "field": "upgrades",
+    "csType": "_200_Dev.Utility.UpgradesSaveState"
+   },
+   {
+    "field": "furnitures",
+    "csType": "_200_Dev.Utility.FurnituresSaveState"
+   },
+   {
+    "field": "playerInventories",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.PlayerInventorySaveState>"
+   },
+   {
+    "field": "playerColors",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.PlayerClothColorSaveState>"
+   },
+   {
+    "field": "gameRoomSkinIndex",
+    "csType": "int"
+   },
+   {
+    "field": "gameRoomTools",
+    "csType": "_200_Dev.Utility.PlayerInventorySaveState"
+   },
+   {
+    "field": "playTimeSeconds",
+    "csType": "float"
+   },
+   {
+    "field": "unlockedKeyDoors",
+    "csType": "System.Collections.Generic.List`1<KeyName>"
+   }
+  ],
+  "CollectionSaveData": [
+   {
+    "field": "bestEndlessRank",
+    "csType": "int"
+   },
+   {
+    "field": "monsterFigurines",
+    "csType": "uint"
+   },
+   {
+    "field": "completedBoardKeys",
+    "csType": "System.Collections.Generic.List`1<string>"
+   },
+   {
+    "field": "completedHouseRuleIds",
+    "csType": "System.Collections.Generic.List`1<string>"
+   },
+   {
+    "field": "bestBoardDifficulties",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.CollectionBoardBestDifficulty>"
+   }
+  ],
+  "BankSaveState": [
+   {
+    "field": "currentTotalScore",
+    "csType": "int"
+   }
+  ],
+  "ShopSaveState": [
+   {
+    "field": "visitCount",
+    "csType": "int"
+   },
+   {
+    "field": "completedBoardsAnchorIndexes",
+    "csType": "System.Collections.Generic.List`1<int>"
+   },
+   {
+    "field": "completedBoardsConfigurations",
+    "csType": "System.Collections.Generic.List`1<SerializedBoardConfiguration>"
+   },
+   {
+    "field": "boardOffersSeed",
+    "csType": "int"
+   },
+   {
+    "field": "boardOffersSolo",
+    "csType": "bool"
+   },
+   {
+    "field": "completedMonsterRounds",
+    "csType": "System.Collections.Generic.Dictionary`2<EBoardFeaturedMonster,int>"
+   },
+   {
+    "field": "shopItemsUIDs",
+    "csType": "System.Collections.Generic.List`1<int>"
+   },
+   {
+    "field": "shopItemInfos",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.EnvironmentElements.Shop.ShopItemInfo>"
+   }
+  ],
+  "UpgradesSaveState": [
+   {
+    "field": "redUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "specsUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "tankUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "ziggyUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "carlUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "bobbyUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "susanUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   },
+   {
+    "field": "lilyUpgrades",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.Utility.SerializedVector2Int>"
+   }
+  ],
+  "SerializedVector2Int": [
+   {
+    "field": "x",
+    "csType": "int"
+   },
+   {
+    "field": "y",
+    "csType": "int"
+   }
+  ],
+  "FurnituresSaveState": [
+   {
+    "field": "furnitures",
+    "csType": "System.Collections.Generic.List`1<_200_Dev.EnvironmentElements.Furnitures.EGameRoomFurniture>"
+   }
+  ],
+  "PlayerInventorySaveState": [
+   {
+    "field": "itemStringIds",
+    "csType": "System.Collections.Generic.List`1<string>"
+   },
+   {
+    "field": "itemBatteryLevels",
+    "csType": "System.Collections.Generic.List`1<float>"
+   }
+  ],
+  "PlayerClothColorSaveState": [
+   {
+    "field": "playerCharacter",
+    "csType": "EPlayerCharacter"
+   },
+   {
+    "field": "_color",
+    "csType": "ClothColor"
+   }
+  ],
+  "CollectionBoardBestDifficulty": [
+   {
+    "field": "boardKey",
+    "csType": "string"
+   },
+   {
+    "field": "difficulty",
+    "csType": "int"
+   }
+  ],
+  "SerializedBoardConfiguration": [
+   {
+    "field": "biome",
+    "csType": "BiomeChoice"
+   },
+   {
+    "field": "difficulty",
+    "csType": "EBoardDifficulty"
+   },
+   {
+    "field": "featuredMonster",
+    "csType": "EBoardFeaturedMonster"
+   }
+  ],
+  "ShopItemInfo": [
+   {
+    "field": "boughtCount",
+    "csType": "int"
+   }
+  ]
+ },
+ "observed_msgpack_types_in_real_save": {
+  "meta": {
+   "savedAtUtcTicks": "int64 (0xd3)",
+   "roundIndex": "fixint",
+   "endlessRank": "fixint",
+   "playTimeSeconds": "int16 (0xd1) -> C# int, NAO float",
+   "score": "int16 (0xd1)",
+   "playerCount": "fixint",
+   "characterOwners": "array[8] of fixint 0 | uint64 (0xcf)"
+  },
+  "save": {
+   "version": "fixint",
+   "bank.currentTotalScore": "int16 (0xd1)",
+   "shop.visitCount": "fixint",
+   "shop.completedBoardsAnchorIndexes": "array<fixint>",
+   "shop.completedBoardsConfigurations": "array<map{biome,difficulty,featuredMonster}> fixint",
+   "shop.boardOffersSeed": "int32 (0xd2)",
+   "shop.boardOffersSolo": "false (bool)",
+   "shop.completedMonsterRounds": "array<array[2] fixint> (NAO map, apesar de Dictionary<EBoardFeaturedMonster,int>)",
+   "shop.shopItemsUIDs": "array<int32 0xd2>",
+   "shop.shopItemInfos": "array<map{boughtCount fixint}>",
+   "upgrades.*Upgrades": "array (vazio no save real; elemento esperado map{x,y})",
+   "furnitures.furnitures": "array<fixint>",
+   "playerInventories[].itemStringIds": "array<str>",
+   "playerInventories[].itemBatteryLevels": "array<float32 0xca>",
+   "playerColors[]": "map{playerCharacter fixint|negfixint(-1), _color fixint}",
+   "gameRoomSkinIndex": "fixint",
+   "gameRoomTools": "map{itemStringIds,itemBatteryLevels(float32)}",
+   "playTimeSeconds": "float32",
+   "unlockedKeyDoors": "array<fixint>"
+  },
+  "collection": {
+   "bestEndlessRank": "fixint",
+   "monsterFigurines": "uint16 (0xcd) -> C# uint",
+   "completedBoardKeys": "array<str \"biome:monster\">",
+   "completedHouseRuleIds": "array vazio",
+   "bestBoardDifficulties": "array<map{boardKey str, difficulty fixint}>"
+  }
+ },
+ "enums": {
+  "EPlayerCharacter": {
+   "None": -1,
+   "Red": 0,
+   "Specs": 1,
+   "Tank": 2,
+   "Ziggy": 3,
+   "Carl": 4,
+   "Bobby": 5,
+   "Susan": 6,
+   "Lily": 7
+  },
+  "EGameRoomFurniture": {
+   "NONE": 0,
+   "RADIO": 1,
+   "WARDROBE": 2,
+   "MIRROR": 3,
+   "DISCO": 4,
+   "DOORBELL": 5,
+   "DICEBOX_FIREWORK": 6,
+   "DICEBOX_CUBE": 7,
+   "OLD_CLOCK": 8
+  },
+  "KeyName": {
+   "NONE": 0,
+   "Henry": 1,
+   "Corridor": 2
+  },
+  "ClothColor": {
+   "PURPLE": 0,
+   "DARKBLUE": 1,
+   "BLUE": 2,
+   "GREEN": 3,
+   "YELLOW": 4,
+   "RED": 5,
+   "PINK": 6,
+   "WHITE": 7,
+   "GOLD": 8
+  },
+  "EBoardFeaturedMonster": {
+   "None": 0,
+   "Hunter": 1,
+   "Horseman": 2,
+   "Croco": 3,
+   "Yeti": 4,
+   "Plant": 5,
+   "Ultimate": 6,
+   "Demo": 7,
+   "Weeping": 8,
+   "CursedPlayer": 9,
+   "Penguin": 10,
+   "Snowman": 11,
+   "MoneyGuy": 12,
+   "Alpinist": 13,
+   "TVGhost": 14,
+   "Pharaoh": 15,
+   "SandWorm": 16
+  },
+  "BiomeChoice": {
+   "Vanilla_UnToggle": 0,
+   "Frozen": 1,
+   "Jungle": 2,
+   "Desert": 3,
+   "Abyss": 4,
+   "Ash": 5,
+   "Endless": 6
+  },
+  "EBoardDifficulty": {
+   "Difficulty1": 1,
+   "Difficulty2": 2,
+   "Difficulty3": 3,
+   "Difficulty4": 4,
+   "Difficulty5": 5
+  },
+  "MonsterCollectionId": {
+   "Alpinist": 0,
+   "BeeSwarm": 1,
+   "Crocodile": 2,
+   "CursedPlayer": 3,
+   "DoorMonster": 4,
+   "Horseman": 5,
+   "Hunter": 6,
+   "Mimic": 7,
+   "MoneyGuy": 8,
+   "Penguin": 9,
+   "Pharaoh": 10,
+   "SandWorm": 11,
+   "Snowman": 12,
+   "Spider": 13,
+   "WeepingAngel": 14,
+   "Yeti": 15,
+   "TVGhost": 16
+  },
+  "EShopItemCategory": {
+   "NONE": 0,
+   "UPGRADE": 1,
+   "FURNITURE": 2,
+   "GADGET": 3,
+   "CONSUMABLE": 4
+  }
+ },
+ "upgrades": {
+  "element": "SerializedVector2Int{x=upgradeUID,y=level}",
+  "status": "verificado-no-binario (CharacterUpgradesManager.SrvApplySavedUpgradeList: x -> TryGetCharacterUpgradeByUID, y=min(y,MaxLevel))",
+  "catalog": [
+   {
+    "m_Name": "CharacterUpgrade_RunSpeed",
+    "_uid": 3,
+    "_alias": "up_speed",
+    "_speedBonuses": [
+     0.06499999761581421,
+     0.12999999523162842,
+     0.19499999284744263,
+     0.25999999046325684,
+     0.32499998807907104
+    ]
+   },
+   {
+    "m_Name": "CharacterUpgrade_MaxHealth",
+    "_uid": 1,
+    "_alias": "up_health",
+    "_healthBonuses": [
+     20,
+     40,
+     60,
+     80,
+     100,
+     120,
+     140,
+     160
+    ]
+   },
+   {
+    "m_Name": "CharacterUpgrade_InventorySlot",
+    "_uid": 6,
+    "_alias": "up_inventory",
+    "_maxBonusSlot": 2
+   },
+   {
+    "m_Name": "CharacterUpgrade_MaxStamina",
+    "_uid": 2,
+    "_alias": "up_stamina",
+    "_staminaBonuses": [
+     15.0,
+     30.0,
+     45.0,
+     60.0,
+     75.0,
+     90.0,
+     105.0
+    ]
+   },
+   {
+    "m_Name": "CharacterUpgrade_DoubleJump",
+    "_uid": 5,
+    "_alias": "up_doublejump"
+   }
+  ],
+  "maxLevel": {
+   "1 Health": 8,
+   "2 Stamina": 7,
+   "3 Speed": 5,
+   "5 DoubleJump": 1,
+   "6 InventorySlot(fannypack)": 2
+  },
+  "uid4": "nao encontrado no scan (pendente)"
+ },
+ "shop_items_found": [
+  {
+   "m_Name": "Data-ShopUpgradeItem_Health",
+   "_uid": 155320950,
+   "_alias": "up_health",
+   "_category": 1,
+   "_basePrice": 200,
+   "_minQuantity": 1
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_Radio",
+   "_uid": 920453269,
+   "_alias": "fur_radio",
+   "_category": 2,
+   "_basePrice": 500,
+   "_minQuantity": 0,
+   "_furniture": 1
+  },
+  {
+   "m_Name": "Data-ShopConsumableItem_MilkBottle",
+   "_uid": -1522034135,
+   "_alias": "c_milk",
+   "_category": 4,
+   "_basePrice": 100,
+   "_minQuantity": 2
+  },
+  {
+   "m_Name": "Data-ShopUpgradeItem_Stamina",
+   "_uid": 311584588,
+   "_alias": "up_stamina",
+   "_category": 1,
+   "_basePrice": 200,
+   "_minQuantity": 1
+  },
+  {
+   "m_Name": "Data-ShopUpgradeItem_Speed",
+   "_uid": -872071192,
+   "_alias": "up_speed",
+   "_category": 1,
+   "_basePrice": 200,
+   "_minQuantity": 1
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_HidingCloset",
+   "_uid": 1772907373,
+   "_alias": "fur_closet",
+   "_category": 2,
+   "_basePrice": 750,
+   "_minQuantity": 0,
+   "_furniture": 2
+  }
+ ],
+ "shop_items_status": "PARCIAL: scan de typetree nas bundles Addressables recuperou so 5 ShopItemData; faltam fannypack, mobilias restantes, gadgets, consumiveis",
+ "game_room_skins_found": [
+  {
+   "m_Name": "GameRoomSkin_Default",
+   "_uid": 739025691,
+   "_basePrice": 0,
+   "_includeInRandomSelection": 0
+  },
+  {
+   "m_Name": "GameRoomSkin_Blue",
+   "_uid": -1254331890,
+   "_basePrice": 200,
+   "_includeInRandomSelection": 1
+  },
+  {
+   "m_Name": "GameRoomSkin_Red",
+   "_uid": 937885033,
+   "_basePrice": 200,
+   "_includeInRandomSelection": 1
+  },
+  {
+   "m_Name": "GameRoomSkin_Vegetation",
+   "_uid": 1138503737,
+   "_basePrice": 200,
+   "_includeInRandomSelection": 1
+  },
+  {
+   "m_Name": "GameRoomSkin_Yellow_Stone",
+   "_uid": -1688765505,
+   "_basePrice": 200,
+   "_includeInRandomSelection": 1
+  },
+  {
+   "m_Name": "GameRoomSkin_White_Yellow",
+   "_uid": -157839821,
+   "_basePrice": 200,
+   "_includeInRandomSelection": 1
+  }
+ ],
+ "monster_figurines": {
+  "bit_k": "MonsterCollectionId == k",
+  "valid_mask": 131071,
+  "status": "verificado-no-binario (MonsterCollectionProgress.Unlock: and edx,0x1ffff; Record: cmp id,0x11; bts)"
+ },
+ "item_alias_catalog_candidates_from_addressables_catalog": [
+  "Data-Alpinist-Face_state",
+  "Data-Alpinist-Investigate_state",
+  "Data-Alpinist-Patrol_state",
+  "Data-Alpinist-Search_state",
+  "Data-Camera",
+  "Data-Compass",
+  "Data-Croco-Attack_state",
+  "Data-Croco-Face_state",
+  "Data-Croco-Patrol_state",
+  "Data-Croco-Pursuit_state",
+  "Data-Cursed-Face_state",
+  "Data-Cursed-Patrol_state",
+  "Data-Cursed-Pursuit_state",
+  "Data-Dice_1",
+  "Data-Dice_1_2",
+  "Data-Dice_1_2_3",
+  "Data-Dice_1_6",
+  "Data-Dice_1.Big",
+  "Data-Dice_1_Minus",
+  "Data-Dice_2",
+  "Data-Dice_2-4",
+  "Data-Dice_3",
+  "Data-Dice_3_4",
+  "Data-Dice_4",
+  "Data-Dice_4_5_6",
+  "Data-Dice_5",
+  "Data-Dice_5_6",
+  "Data-Dice_6",
+  "Data-Dice_99",
+  "Data-Dice_AntiGravGather",
+  "Data-Dice_AntiGravity",
+  "Data-Dice_AntigravityScanner",
+  "Data-Dice_Boom",
+  "Data-Dice_BoomCocoon",
+  "Data-Dice_Boom_Hard",
+  "Data-Dice_BoomHeal",
+  "Data-Dice_Chaos_1",
+  "Data-Dice_Chaos_2",
+  "Data-Dice_Cocoon",
+  "Data-Dice_CocoonFire",
+  "Data-Dice_Cocoon_Hard",
+  "Data-Dice_CubeChaos",
+  "Data-Dice_Fire",
+  "Data-Dice_Fire_Hard",
+  "Data-Dice_Fireworks",
+  "Data-Dice_Freeze",
+  "Data-Dice_Gather",
+  "Data-Dice_Hazard_1",
+  "Data-Dice_Hazard_1_6",
+  "Data-Dice_Heal",
+  "Data-Dice_Heal_1",
+  "Data-Dice_Heal_1_6",
+  "Data-Dice_Heal_Hard",
+  "Data-Dice_Light",
+  "Data-Dice_LightCursed",
+  "Data-Dice_LightCursedMax",
+  "Data-Dice_Lightning",
+  "Data-Dice_Lightning_Hard",
+  "Data-Dice_Pelote",
+  "Data-Dice_Push",
+  "Data-Dice_Revive",
+  "Data-Dice_Revive_Hard",
+  "Data-Dice_RezGather",
+  "Data-Dice_Scanner",
+  "Data-Dice_Smoke",
+  "Data-Dice_SpawnPlayCube",
+  "Data-Dice_TeleGather",
+  "Data-Dice_Teleport",
+  "Data-Dice_TeleRez",
+  "Data-DiceThrowerSettings",
+  "Data-DoorMonsterSmall-Attack_state",
+  "Data-FaceResult-AntiGravity",
+  "Data-FaceResult-CellEffect_Curse-1",
+  "Data-FaceResult-CellEffect_Curse-2",
+  "Data-FaceResult-CellEffect_Curse-3",
+  "Data-FaceResult-CellEffect_Curse-4",
+  "Data-FaceResult-CellEffect_Curse-5",
+  "Data-FaceResult-CellEffect_Curse-6",
+  "Data-FaceResult-CellEffect_Healing-1",
+  "Data-FaceResult-CellEffect_Healing-2",
+  "Data-FaceResult-CellEffect_Healing-3",
+  "Data-FaceResult-CellEffect_Healing-4",
+  "Data-FaceResult-CellEffect_Healing-5",
+  "Data-FaceResult-CellEffect_Healing-6",
+  "Data-FaceResult-Cocoon",
+  "Data-FaceResult-Explosion",
+  "Data-FaceResult-Fire",
+  "Data-FaceResult-Fireworks",
+  "Data-FaceResult-Freeze",
+  "Data-FaceResult-Gather",
+  "Data-FaceResult-GM_Cocoon",
+  "Data-FaceResult-GM_Fire",
+  "Data-FaceResult-GM_Fireworks",
+  "Data-FaceResult-Heal",
+  "Data-FaceResult-InvokeCursedPlayer_black",
+  "Data-FaceResult-InvokeMonster",
+  "Data-FaceResult-InvokeMonster_black",
+  "Data-FaceResult-Invoke_PlayCube",
+  "Data-FaceResult-Light",
+  "Data-FaceResult-Lightning",
+  "Data-FaceResult-NoFace",
+  "Data-FaceResult-Numbered-1",
+  "Data-FaceResult-Numbered-2",
+  "Data-FaceResult-Numbered-3",
+  "Data-FaceResult-Numbered-4",
+  "Data-FaceResult-Numbered-5",
+  "Data-FaceResult-Numbered-6",
+  "Data-FaceResult-Numbered-99",
+  "Data-FaceResult-Numbered-Minus1",
+  "Data-FaceResult-Pelote",
+  "Data-FaceResult-Poison",
+  "Data-FaceResult-Push",
+  "Data-FaceResult-Revive",
+  "Data-FaceResult-Revive_black",
+  "Data-FaceResult-Scanner",
+  "Data-FaceResult-Score-Large",
+  "Data-FaceResult-Score-Medium",
+  "Data-FaceResult-Score-Small",
+  "Data-FaceResult-SmokeScreen",
+  "Data-FaceResult-SteelJawTrap",
+  "Data-FaceResult-Teleport",
+  "Data-FaceResult-Teleport_black",
+  "Data-FlameThrower",
+  "Data-Furniture_HidingCloset",
+  "Data-Furniture_OldClockBroken",
+  "Data-Furniture_Radio",
+  "Data-GameMasterMask",
+  "Data-Guitar",
+  "Data-HearingSensor-Alpinist-AutoConfig",
+  "Data-HearingSensor-BeeSwarm-AutoConfig",
+  "Data-HearingSensor-Croco-AutoConfig",
+  "Data-HearingSensor-Horseman-AutoConfig",
+  "Data-HearingSensor-Hunter-AutoConfig",
+  "Data-HearingSensor-Hunter-Leave-AutoConfig",
+  "Data-HearingSensor-Penguin-AutoConfig",
+  "Data-HearingSensor-Pharaoh-AutoConfig",
+  "Data-HearingSensor-Yeti-AutoConfig",
+  "Data-Horseman-Investigate_state",
+  "Data-Horseman-Patrol_state",
+  "Data-Horseman-Pursuit_state",
+  "Data-Horseman-Search_state",
+  "Data-Hunter-Attack_state",
+  "Data-Hunter-Face_state",
+  "Data-HunterGun",
+  "Data-Hunter-Investigate_state",
+  "Data-Hunter-Patrol_state",
+  "Data-IceCube",
+  "Data-IceCube_Big",
+  "Data-Joker-Attack_state",
+  "Data-Lantern",
+  "Data-Megaphone",
+  "Data-MilkBottle",
+  "Data-Mimic-Hide_state",
+  "Data-Mimic-Investigate_state",
+  "Data-Mimic-Patrol_state",
+  "Data-Mimic-Pursuit_state",
+  "Data-Mimic-RunDetect_state",
+  "Data-Mimic-Searching_state",
+  "Data-MissingPiece",
+  "Data-MobRadar",
+  "Data-MoneyGuy-Patrol_state",
+  "Data-MoneyGuy-Pursuit_state",
+  "Data-Monster-Attack_state",
+  "Data-Monster-Patrol_state",
+  "Data-Monster-Sleep_state",
+  "Data-Parrot-Pursuit_state",
+  "Data-Parrot-Stalk_state",
+  "Data-Penguin-Patrol_state",
+  "Data-Pharaoh-Face_state",
+  "Data-Pharaoh-Investigate_state",
+  "Data-Pharaoh-Patrol_state",
+  "Data-Pharaoh-Pursuit_state",
+  "Data-Pharaoh-Search_state",
+  "Data-PlayCube",
+  "Data-PlayCube_Big",
+  "Data-Player-Cocooned_state",
+  "Data-Player-Crouch_state",
+  "Data-Player-Dead_state",
+  "Data-Player-Dying_state",
+  "Data-PlayerEntityAlteration_Darkness",
+  "Data-PlayerEntityAlteration_Linked",
+  "Data-PlayerEntityAlteration_Miniature",
+  "Data-PlayerEntityAlteration_NearDeath",
+  "Data-PlayerEntityAlteration_PhoenixDown",
+  "Data-PlayerEntityAlteration_Poisoned",
+  "Data-PlayerEntityAlteration_ReducedHeal",
+  "Data-PlayerEntityAlteration_SharedLife",
+  "Data-PlayerEntityAlteration_Vanishing",
+  "Data-Player-Frozen_state",
+  "Data-Player-JumpLand_state",
+  "Data-Player-JumpStart_state",
+  "Data-Player-KillCam_state",
+  "Data-Player-NoLocomotion_state",
+  "Data-Player-Normal_state",
+  "Data-Player-OtherEntityPOV_state",
+  "Data-Player-Respawn_state",
+  "Data-PlayerSkull",
+  "Data-Player-Stand_Idle_state",
+  "Data-Player-Stand_Run_state",
+  "Data-Player-Stand_Walk_state",
+  "Data-ScreamBox",
+  "Data-SenseModifier-LightSightSense",
+  "Data-SenseModifier-ShotgunSightSense",
+  "Data-SenseModifier-SightSense",
+  "Data-ShopConsumableItem_MilkBottle",
+  "Data-ShopFurnitureItem_HidingCloset",
+  "Data-ShopFurnitureItem_Radio",
+  "Data-ShopUpgradeItem_Health",
+  "Data-ShopUpgradeItem_Speed",
+  "Data-ShopUpgradeItem_Stamina",
+  "Data-Sight-Horseman-AutoConfig",
+  "Data-Sight-Mimic-AutoConfig",
+  "Data-Sight-MimicHide-AutoConfig",
+  "Data-Sight-MimicHide-AutoConfig-LongRange",
+  "Data-SightSensor-Alpinist-AutoConfig",
+  "Data-SightSensor-BeeSwarm-AutoConfig",
+  "Data-SightSensor-Croco-AutoConfig",
+  "Data-SightSensor-CursedPlayer-AutoConfig",
+  "Data-SightSensor-HeadLamp-AutoConfig",
+  "Data-SightSensor-MoneyGuy-AutoConfig",
+  "Data-SightSensor-MoneyGuy_PursuitNoIdol-AutoConfig",
+  "Data-SightSensor-Penguin-AutoConfig",
+  "Data-SightSensor-Pharaoh_Alert-AutoConfig",
+  "Data-SightSensor-Pharaoh_Base-AutoConfig",
+  "Data-SightSensor-Shotgun-Hunter-AutoConfig",
+  "Data-SightSensor-Snowman-AutoConfig",
+  "Data-SightSensor-WanderingDice-AutoConfig",
+  "Data-Sight-WeepingAngel-AutoConfig",
+  "Data-Sight-Yeti-AutoConfig",
+  "Data-Skin",
+  "Data-SkullKid-Pursuit_state",
+  "Data-SkullKid-Searching_state",
+  "Data-Snowman-Investigate_state",
+  "Data-Snowman-Patrol_state",
+  "Data-Snowman-Pursuit_state",
+  "Data-SteelJawTrap",
+  "Data-ToolEffect-Camera",
+  "Data-ToolEffect-DiceThrower",
+  "Data-ToolEffect-Flamethrower",
+  "Data-ToolEffect-Hallucination",
+  "Data-ToolEffect-Heavy",
+  "Data-ToolEffect-InvertedView",
+  "Data-ToolEffect-Lightning",
+  "Data-ToolEffect-Linked",
+  "Data-ToolEffect-Meduza",
+  "Data-ToolEffect-Miniature",
+  "Data-ToolEffect-Prankster",
+  "Data-ToolEffect-Puppet",
+  "Data-ToolEffect-ReverseInputs",
+  "Data-ToolEffect-Score",
+  "Data-ToolEffect-Slippery",
+  "Data-ToolEffect-Vanishing",
+  "Data-ToolEffect-WanderingDice",
+  "Data-Treasure-Blind",
+  "Data-Treasure-Camera",
+  "Data-Treasure-DiceThrower",
+  "Data-Treasure-Final",
+  "Data-Treasure-Flamethrower",
+  "Data-Treasure-Hallucination",
+  "Data-Treasure-Heavy",
+  "Data-Treasure-InvertedView",
+  "Data-Treasure-Lightning",
+  "Data-Treasure-Linked",
+  "Data-Treasure-Meduza",
+  "Data-Treasure-Miniature",
+  "Data-Treasure-Musical",
+  "Data-Treasure-Prankster",
+  "Data-Treasure-Puppet",
+  "Data-Treasure-ReverseInputs",
+  "Data-Treasure-Score",
+  "Data-Treasure-Slippery",
+  "Data-Treasure-Vanishing",
+  "Data-Treasure-WanderingDice",
+  "Data-TriviaDoorMonster-Attack_state",
+  "Data-TVGhost-Pursuit_state",
+  "Data-UpgradeHealth",
+  "Data-UpgradeSpeed",
+  "Data-UpgradeStamina",
+  "Data-WeepingAngel-Attack_state",
+  "Data-WeepingAngel-Guard_state",
+  "Data-WeepingAngel-Pursuit_state",
+  "Data-XRayGoggles",
+  "Data-Yeti-Attack_state",
+  "Data-Yeti-Face_state",
+  "Data-Yeti-Patrol_state",
+  "Data-Yeti-Pursuit_state",
+  "Data-Yeti-Rush_state",
+  "Data-Yeti-Search_state"
+ ]
+}
