@@ -1,0 +1,7 @@
+# Documentação em pt-BR com tabelas largas.
+[global]
+exclude = ["node_modules", "dist", "playwright-report", "test-results"]
+disable = [
+  "MD013", # sem limite de largura de linha
+  "MD033", # HTML inline (<details> etc.) é permitido
+]

@@ -1,7 +1,7 @@
 import { type KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { backupName, download, type OpenedFile, saveFile } from '../platform/files';
 import type { SaveValues } from '../schema/types';
-import { type Issue, validate } from '../schema/validate';
+import { checkVersion, type Issue, validate } from '../schema/validate';
 import { diffDocs } from '../state/document';
 import { useEditor } from '../state/store';
 import { useAnnounce } from './announce';
@@ -19,6 +19,7 @@ export function App() {
   const [tab, setTab] = useState(SCREENS[0]?.id ?? '');
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [reviewing, setReviewing] = useState(false);
   const [busy, setBusy] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -49,6 +50,10 @@ export function App() {
       setOpened(f);
       setError(null);
       setNotice(null);
+      // Versão de schema desconhecida: avisa ao abrir (não recusa; o jogo não parece recusar versões diferentes).
+      const issue = checkVersion(useEditor.getState().values as unknown as SaveValues);
+      setWarning(issue ? issue.message : null);
+      if (issue) say(issue.message);
     } catch (e) {
       setError(`Não foi possível abrir "${f.name}": ${(e as Error).message}`);
     }
@@ -149,6 +154,14 @@ export function App() {
         <div className="banner banner-error" role="alert">
           <span>{error}</span>
           <button type="button" onClick={() => setError(null)} aria-label="Fechar aviso">
+            ✕
+          </button>
+        </div>
+      )}
+      {warning && (
+        <div className="banner banner-warn">
+          <span>{warning}</span>
+          <button type="button" onClick={() => setWarning(null)} aria-label="Fechar aviso">
             ✕
           </button>
         </div>

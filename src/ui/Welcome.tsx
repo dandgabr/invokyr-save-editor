@@ -173,7 +173,11 @@ export function Welcome({ onOpen, onError }: Props) {
             O Steam Cloud pode sobrescrever o arquivo com a versão da nuvem. Desative a sincronização do jogo
             ou confira depois.
           </li>
-          <li>Um backup do arquivo original é feito a cada gravação.</li>
+          <li>
+            Ao gravar no próprio arquivo (Chrome ou Edge), um backup <code>.bak</code> é criado antes: ao lado
+            do save, se você abriu a pasta, ou baixado, se abriu só o arquivo. Nos outros navegadores, baixe o
+            backup do original na tela de salvar.
+          </li>
           <li>Projeto de fã, não afiliado à Ludogram. Use por sua conta e risco.</li>
         </ul>
       </section>

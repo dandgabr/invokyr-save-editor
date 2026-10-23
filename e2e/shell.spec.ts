@@ -111,3 +111,21 @@ test('as fontes do design (Cinzel e Inter) carregam localmente', async ({ page }
   expect(loaded).toContain('Cinzel');
   expect(loaded).toContain('Inter Variable');
 });
+
+test('save com versão de schema desconhecida: avisa ao abrir, sem recusar', async ({ page }) => {
+  const { decode, encode } = await import('../src/codec/msgpack');
+  const { readContainer, writeContainer } = await import('../src/codec/zip');
+  const { readFileSync } = await import('node:fs');
+  const c = readContainer(new Uint8Array(readFileSync(fixture)));
+  const save = decode(c.streams.save);
+  (save.value as { version: number }).version = 16;
+  c.streams.save = encode(save.value, save.hints);
+  await page.goto('/');
+  await page.getByTestId('file-input').setInputFiles({
+    name: 'v16.sav',
+    mimeType: 'application/octet-stream',
+    buffer: Buffer.from(writeContainer(c)),
+  });
+  await expect(page.getByTestId('file-chip')).toContainText('v16');
+  await expect(page.locator('.banner-warn')).toContainText('Versão de save 16');
+});

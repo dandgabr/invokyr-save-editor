@@ -24,7 +24,10 @@ export const isOccupied = (v: V, hero: number) => toBig(v.meta.characterOwners[h
 export const occupiedHeroes = (v: V): number[] =>
   Array.from({ length: HERO_COUNT }, (_, h) => h).filter((h) => isOccupied(v, h));
 
-/** Índice de `playerInventories` do herói (ordem de herói entre os ocupados; hipótese verificada no save real). */
+/**
+ * Índice de `playerInventories` do herói: ordem de herói entre os ocupados. É uma **hipótese**: o save real só
+ * confirma a contagem (docs/SCHEMA_VERIFIED.md §8). Se estiver errada, o jogo liga o inventário ao herói errado.
+ */
 export const inventoryIndexOf = (v: V, hero: number): number =>
   occupiedHeroes(v).filter((h) => h < hero).length;
 

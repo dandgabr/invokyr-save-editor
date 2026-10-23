@@ -30,6 +30,7 @@ jobs:
       - run: npm audit --audit-level=low
       - run: npm ls --all > /dev/null # falha com peer dependency inválida
       - run: npm run lint
+      - run: npm run docs:lint
       - run: npm run typecheck
       - run: npm test
       - run: npm run build

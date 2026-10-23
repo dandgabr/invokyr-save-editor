@@ -7,7 +7,7 @@ body:
       value: >-
         Search existing issues first. **Do not attach your real `.sav` file or
         paste its contents**: it contains the Steam IDs of other players. Describe
-        the problem, or use a synthetic save (see `tests/fixtures/template.json`).
+        the problem, or use a synthetic save (`tests/fixtures/template.sav`, with its readable form `template.json`). Reports may be written in English or Portuguese.
         Remove credentials, tokens and personal data from any logs.
   - type: input
     id: summary
@@ -25,11 +25,11 @@ body:
       options:
         - Opening or saving a file
         - Save corrupted or rejected by the game
-        - Session & Heroes
+        - Session & Heroes (Sessão & Heróis)
         - Status & Upgrades
-        - Inventories & Items / item catalog
-        - Hub & Furniture
-        - Trophies & Collection
+        - Inventories & Items / item catalog (Inventários & Itens)
+        - Hub & Furniture (Hub & Mobílias)
+        - Trophies & Collection (Troféus & Coleção)
         - Trainer Presets
         - Undo / redo or change review
         - Accessibility or layout
@@ -65,7 +65,7 @@ body:
     id: environment
     attributes:
       label: Environment
-      description: Include the browser and version, operating system, how you opened the file (file picker, folder picker, drag and drop), whether Steam runs through Proton, and the Invokyr build (Steam build ID). Write "Not applicable" for details that do not apply.
-      placeholder: Browser / OS / how the file was opened / Invokyr build ID
+      description: Include the editor address and approximate date of use (or commit), the browser and version, operating system, how you opened the file (file picker, folder picker, drag and drop), whether Steam runs through Proton, and the Invokyr build (Steam build ID). Write "Not applicable" for details that do not apply.
+      placeholder: Editor URL and date / Browser / OS / how the file was opened / Invokyr build ID
     validations:
       required: true

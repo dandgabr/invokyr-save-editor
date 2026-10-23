@@ -1,6 +1,7 @@
 /**
  * Enums do jogo verificados no binário (build Steam 26154962). Fonte: docs/SCHEMA_VERIFIED.md §4.
- * `label` é o nome exibido na interface (pt-BR).
+ * `label` é o nome exibido na interface (pt-BR). Para monstros, usa o texto localizado do próprio jogo
+ * (termos `featured_monster_name`, docs/SCHEMA_ITEMS.md §2); `None`, `Demo` e `Mimic` não têm termo no jogo.
  */
 
 export interface EnumEntry {
@@ -86,19 +87,19 @@ export const BOARD_MONSTERS = make([
   [1, 'Hunter', 'Caçador'],
   [2, 'Horseman', 'Cavaleiro'],
   [3, 'Croco', 'Crocodilo'],
-  [4, 'Yeti', 'Yeti'],
+  [4, 'Yeti', 'Iéti'],
   [5, 'Plant', 'Planta'],
-  [6, 'Ultimate', 'Supremo'],
+  [6, 'Ultimate', 'Edição Definitiva'],
   [7, 'Demo', 'Demo'],
-  [8, 'Weeping', 'Estátua chorona'],
-  [9, 'CursedPlayer', 'Jogador amaldiçoado'],
+  [8, 'Weeping', 'Manequim'],
+  [9, 'CursedPlayer', 'Pessoa Amaldiçoada'],
   [10, 'Penguin', 'Pinguim'],
-  [11, 'Snowman', 'Boneco de neve'],
-  [12, 'MoneyGuy', 'Banqueiro'],
+  [11, 'Snowman', 'Boneco de Neve'],
+  [12, 'MoneyGuy', 'Abonado'],
   [13, 'Alpinist', 'Alpinista'],
   [14, 'TVGhost', 'Fantasma da TV'],
   [15, 'Pharaoh', 'Faraó'],
-  [16, 'SandWorm', 'Verme da areia'],
+  [16, 'SandWorm', 'Minhoca'],
 ]);
 
 /** EBoardDifficulty: valores 0..4 (Difficulty1..5). */
@@ -113,21 +114,21 @@ export const DIFFICULTIES = make([
 /** MonsterCollectionId: o bit k de `collection.monsterFigurines` liga a figura k. 17 bits válidos. */
 export const FIGURINES = make([
   [0, 'Alpinist', 'Alpinista'],
-  [1, 'BeeSwarm', 'Enxame de abelhas'],
+  [1, 'BeeSwarm', 'Abelhas'],
   [2, 'Crocodile', 'Crocodilo'],
-  [3, 'CursedPlayer', 'Jogador amaldiçoado'],
-  [4, 'DoorMonster', 'Monstro da porta'],
+  [3, 'CursedPlayer', 'Pessoa Amaldiçoada'],
+  [4, 'DoorMonster', 'Monstro-porta'],
   [5, 'Horseman', 'Cavaleiro'],
   [6, 'Hunter', 'Caçador'],
   [7, 'Mimic', 'Mímico'],
-  [8, 'MoneyGuy', 'Banqueiro'],
+  [8, 'MoneyGuy', 'Abonado'],
   [9, 'Penguin', 'Pinguim'],
   [10, 'Pharaoh', 'Faraó'],
-  [11, 'SandWorm', 'Verme da areia'],
-  [12, 'Snowman', 'Boneco de neve'],
+  [11, 'SandWorm', 'Minhoca'],
+  [12, 'Snowman', 'Boneco de Neve'],
   [13, 'Spider', 'Aranha'],
-  [14, 'WeepingAngel', 'Anjo chorão'],
-  [15, 'Yeti', 'Yeti'],
+  [14, 'WeepingAngel', 'Manequim'],
+  [15, 'Yeti', 'Iéti'],
   [16, 'TVGhost', 'Fantasma da TV'],
 ]);
 export const FIGURINE_MASK = (1 << FIGURINES.length) - 1; // 0x1FFFF
