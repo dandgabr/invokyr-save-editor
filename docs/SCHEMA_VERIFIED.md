@@ -105,6 +105,8 @@ Consolidado, depois de [`SCHEMA_ITEMS.md`](SCHEMA_ITEMS.md) §7:
 - Formato do id em `completedHouseRuleIds` e significado/faixa de `completedBoardsAnchorIndexes`.
 - Se `bestBoardDifficulties.difficulty` é o ordinal 0..4 do enum (o save real tem 1 e 3).
 - Ordem de `playerInventories` em relação à ordem dos heróis (o editor assume a ordem do herói entre os ocupados; o save real só confirma a contagem).
+- Estado funcional do Relógio Antigo: o save v15 mostra a mobília `OLD_CLOCK=8` e seu histórico de compra, mas não há campo explícito de ativo/quebrado. O metadata do jogo expõe `ConsumeLastChance`, `FixClock` e `RemoveClock`; a tentativa de analisar `ConsumeLastChance` no REA expirou durante a autoanálise do `GameAssembly.dll`, sem pseudocódigo. Sem análise focal ou saves comparáveis antes/depois do uso, o editor só pode indicar desbloqueio.
+- Limite de saldo do cofre: `currentTotalScore` é `int` assinado; 99.999 é um preset do editor e não foi comprovado como máximo do jogo. O editor restringe entradas a 0..2.147.483.647 para respeitar o tipo do save.
 - Se a mobília `DOORBELL` (5), que não tem item na loja (só 7 das 8 mobílias são vendidas), pode ser ativada pelo save sem efeito colateral: o editor permite ativá-la.
 - Upgrade `uid 4`: não existe em nenhum asset das bundles; não foi verificado em cenas fora delas.
 - Significado de `_minQuantity` e das categorias de `ShopItemData`; ícones dos itens; nomes de heróis e cores.

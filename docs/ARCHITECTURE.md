@@ -39,7 +39,7 @@ Editor web estático e 100% client-side de saves do Invokyr. Este documento desc
 - O estado é um documento imutável (Immer). Cada edição gera patches, que alimentam **desfazer/refazer**; edições contínuas da mesma chave (slider, ranque) dentro de 1 s viram um único passo.
 - O **diff** do salvamento compara os valores abertos com os atuais, folha a folha.
 - `markSaved` recebe o **snapshot que foi gravado** (valores e bytes). Assim, desfazer durante a gravação não marca o estado errado, e o backup do salvamento seguinte é o conteúdo realmente gravado.
-- As ações (`src/state/actions.ts`) recusam entrada inválida (NaN, fração, fora de faixa, SteamID fora da faixa pública da Steam ou duplicado, alias fora do catálogo) e mantêm as invariantes: `playerCount` ↔ `playerInventories`, `itemStringIds` ↔ `itemBatteryLevels`, níveis de upgrade dentro do máximo.
+- As ações (`src/state/actions.ts`) recusam entrada inválida (NaN, fração, fora de faixa, SteamID fora da faixa pública da Steam ou duplicado, item não oferecido pelo catálogo) e mantêm as invariantes: `playerCount` ↔ `playerInventories`, `itemStringIds` ↔ `itemBatteryLevels`, níveis de upgrade dentro do máximo. Itens novos respeitam 3 slots mais até 2 níveis da Pochete quando o vínculo com o herói é certo; em partidas com vários jogadores, sem vínculo comprovado, novas adições ficam limitadas a 3 e os itens existentes são preservados. A validação bloqueia capacidade excedida apenas quando a associação é certa ou o inventário excede o teto universal de 5.
 
 ## Arquivos e pasta padrão
 

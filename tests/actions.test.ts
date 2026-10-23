@@ -39,13 +39,13 @@ describe('sessão', () => {
   it('liberar remove o inventário do herói certo', () => {
     const two = edit((d) => {
       A.setOwner(d, 3, 76561198000000002n);
-      A.addItem(d, { kind: 'player', index: 1 }, 'ice');
+      A.addItem(d, { kind: 'player', index: 1 }, 'g_fire');
     });
     const v = produce(two, (d) => {
       A.setOwner(d, 0, 0n);
     });
     expect(v.meta.playerCount).toBe(1);
-    expect(v.save.playerInventories[0]?.itemStringIds).toEqual(['ice']); // sobrou o do herói 3
+    expect(v.save.playerInventories[0]?.itemStringIds).toEqual(['g_fire']); // sobrou o do herói 3
     clean(v);
   });
   it('não permite liberar o último jogador', () => {
@@ -93,8 +93,71 @@ describe('upgrades', () => {
 });
 
 describe('inventários', () => {
+  it('calcula 3 slots mais a Pochete para o único herói com vínculo comprovado', () => {
+    expect(A.inventoryCapacity(base, { kind: 'player', index: 0 })).toEqual({ limit: 3, certain: true });
+    const upgraded = edit((d) => {
+      A.setUpgradeLevel(d, 0, 6, 2);
+    });
+    expect(A.inventoryCapacity(upgraded, { kind: 'player', index: 0 })).toEqual({ limit: 5, certain: true });
+    expect(A.inventoryCapacity(upgraded, { kind: 'bench' })).toBeNull();
+  });
+  it('recusa o quarto item sem Pochete e permite exatamente os dois slots extras', () => {
+    const v = edit((d) => {
+      expect(A.addItem(d, { kind: 'player', index: 0 }, 'g_fire')).toBe(false);
+      expect(A.setUpgradeLevel(d, 0, 6, 1)).toBe(true);
+      expect(A.addItem(d, { kind: 'player', index: 0 }, 'g_fire')).toBe(true);
+      expect(A.addItem(d, { kind: 'player', index: 0 }, 'g_hgun')).toBe(false);
+      expect(A.setUpgradeLevel(d, 0, 6, 2)).toBe(true);
+      expect(A.addItem(d, { kind: 'player', index: 0 }, 'g_hgun')).toBe(true);
+      expect(A.addItem(d, { kind: 'player', index: 0 }, 'g_mask')).toBe(false);
+    });
+    expect(v.save.playerInventories[0]?.itemStringIds).toHaveLength(5);
+    clean(v);
+  });
+  it('recusa reduzir a Pochete quando os itens não caberiam e preserva tudo', () => {
+    const v = edit((d) => {
+      A.setUpgradeLevel(d, 0, 6, 2);
+      A.addItem(d, { kind: 'player', index: 0 }, 'g_fire');
+      A.addItem(d, { kind: 'player', index: 0 }, 'g_hgun');
+      expect(A.canSetUpgradeLevel(d, 0, 6, 1)).toBe(false);
+      expect(A.setUpgradeLevel(d, 0, 6, 1)).toBe(false);
+    });
+    expect(A.getUpgradeLevel(v, 0, 6)).toBe(2);
+    expect(v.save.playerInventories[0]?.itemStringIds).toHaveLength(5);
+  });
+  it('usa só 3 slots para novas adições quando há vários heróis sem vínculo confirmado', () => {
+    const v = edit((d) => {
+      A.setOwner(d, 3, 76561198000000002n);
+      A.setUpgradeLevel(d, 0, 6, 2);
+      expect(A.inventoryCapacity(d, { kind: 'player', index: 0 })).toEqual({ limit: 3, certain: false });
+      expect(A.addItem(d, { kind: 'player', index: 0 }, 'g_fire')).toBe(false);
+      expect(A.addItem(d, { kind: 'player', index: 1 }, 'g_fire')).toBe(true);
+    });
+    expect(v.save.playerInventories[0]?.itemStringIds).toHaveLength(3);
+    expect(v.save.playerInventories[1]?.itemStringIds).toHaveLength(1);
+  });
+  it('não permite acrescentar dados numéricos, Outros ou itens internos, mas mantém itens existentes', () => {
+    const v = edit((d) => {
+      for (const alias of ['dice1', 'ice', 'blursed24']) {
+        expect(A.addItem(d, { kind: 'bench' }, alias)).toBe(false);
+      }
+      expect(A.addItem(d, { kind: 'bench' }, 'dice_tp')).toBe(true);
+    });
+    expect(v.save.playerInventories[0]?.itemStringIds).toContain('ice');
+    expect(v.save.gameRoomTools.itemStringIds).toContain('dice_tp');
+  });
+  it('também recusa itens ocultos no inventário do personagem quando há espaço', () => {
+    const v = edit((d) => {
+      A.removeItem(d, { kind: 'player', index: 0 }, 0);
+      for (const alias of ['dice1', 'ice', 'blursed24']) {
+        expect(A.addItem(d, { kind: 'player', index: 0 }, alias)).toBe(false);
+      }
+    });
+    expect(v.save.playerInventories[0]?.itemStringIds).toHaveLength(2);
+  });
   it('adicionar item de bateria usa 1.0 e comum usa -1.0, mantendo o paralelismo', () => {
     const v = edit((d) => {
+      A.setUpgradeLevel(d, 0, 6, 2);
       A.addItem(d, { kind: 'player', index: 0 }, 'g_fire');
       A.addItem(d, { kind: 'player', index: 0 }, 'dice_tp');
     });
@@ -163,6 +226,21 @@ describe('hub e coleção', () => {
 });
 
 describe('presets', () => {
+  it('aceita saldo exatamente zero', () => {
+    const v = edit((d) => {
+      expect(A.setBank(d, 0)).toBe(true);
+    });
+    expect(v.save.bank.currentTotalScore).toBe(0);
+  });
+  it('recusa saldo negativo, fracionário e acima de int32 sem alterar o save', () => {
+    const v = edit((d) => {
+      for (const n of [-1, 0.5, A.MAX_INT32 + 1, Number.POSITIVE_INFINITY]) {
+        expect(A.setBank(d, n)).toBe(false);
+      }
+      expect(A.setBank(d, A.MAX_INT32)).toBe(true);
+    });
+    expect(v.save.bank.currentTotalScore).toBe(A.MAX_INT32);
+  });
   it('god mode gera um save válido e regravável', () => {
     const v = edit(A.godMode);
     expect(v.save.bank.currentTotalScore).toBe(99999);
@@ -184,9 +262,12 @@ describe('presets', () => {
     expect(A.getUpgradeLevel(v, 0, 1)).toBe(8);
     clean(v);
   });
-  it('banco é limitado a int32', () => {
-    expect(edit((d) => A.setBank(d, 1e12)).save.bank.currentTotalScore).toBe(2147483647);
-    expect(edit((d) => A.setBank(d, -5)).save.bank.currentTotalScore).toBe(0);
+  it('banco recusa valores fora de 0..int32 sem truncamento silencioso', () => {
+    const v = edit((d) => {
+      expect(A.setBank(d, 1e12)).toBe(false);
+      expect(A.setBank(d, -5)).toBe(false);
+    });
+    expect(v.save.bank.currentTotalScore).toBe(base.save.bank.currentTotalScore);
   });
 });
 

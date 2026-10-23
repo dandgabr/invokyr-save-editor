@@ -27,7 +27,7 @@ No Chrome e no Edge o app grava no próprio arquivo. Abrindo pelo botão **Abrir
 | :-- | :-- |
 | Sessão & Heróis | dono (SteamID64) de cada um dos 8 heróis, cor da roupa, número de jogadores (`playerCount`) e os inventários correspondentes |
 | Status & Upgrades | níveis de Saúde (8), Estamina (7), Agilidade (5), Pochete (2, espaço extra no inventário) e Pulo duplo, por herói |
-| Inventários & Itens | itens e carga da bateria por jogador e na bancada, com o catálogo de itens do jogo (135 itens: 133 oficiais, ou seja, os que o jogo sorteia, mais 2 internos ou de teste, ocultos por padrão) |
+| Inventários & Itens | itens e carga da bateria por personagem e na bancada; 64 dos 135 itens catalogados podem ser adicionados (dados especiais, gadgets, tesouros e chaves). Os 133 oficiais e 2 internos continuam reconhecidos para leitura; dados numéricos, outros itens e itens internos não são oferecidos para novas adições |
 | Hub & Mobílias | skin do salão (6), portas com chave (2) e as 8 mobílias |
 | Troféus & Coleção | as 17 figuras do bestiário, dificuldade dos tabuleiros concluídos, ranque Endless (`bestEndlessRank`) |
 | Trainer Presets | saldo do cofre, modo supremo, resetar run, abrir passagens |
@@ -47,6 +47,10 @@ Para restaurar: feche o jogo, renomeie (ou apague) o save editado, copie o backu
 O formato do save e os catálogos vêm da análise do jogo instalado (build Steam **26154962**), não de documentação de terceiros. Veja [`docs/SCHEMA_VERIFIED.md`](docs/SCHEMA_VERIFIED.md) e [`docs/SCHEMA_ITEMS.md`](docs/SCHEMA_ITEMS.md): as afirmações sobre o formato levam uma tag (verificado no binário, no save real ou hipótese) quando há incerteza. O que ainda é hipótese está listado ali, e o app valida invariantes antes de salvar. Se o jogo for atualizado, `npm run check:game` avisa e [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) descreve como reverificar.
 
 O codec grava cada número no mesmo formato binário em que o encontrou, e valores novos no formato do serializer do jogo (a biblioteca GameDevWare, com inteiros de largura fixa e `float32`), então o conteúdo que você não toca sai idêntico.
+
+Cada personagem tem 3 espaços para itens, mais até 2 adquiridos com a **Pochete**. O editor impede novas adições acima da capacidade. A associação entre heróis e inventários de partidas com vários jogadores ainda não foi comprovada no jogo; nesses saves, novas adições usam o limite conservador de 3, sem apagar nem bloquear os itens já existentes. As descrições dos itens vêm do jogo quando disponíveis; os demais textos são editoriais e identificados em [`docs/item-descriptions.json`](docs/item-descriptions.json).
+
+O botão **Definir 99.999** é um preset do cofre; não há prova de que 99.999 seja o máximo do jogo. A entrada aceita inteiros de 0 a 2.147.483.647, faixa do campo gravado no save. O Relógio Antigo pode ser desbloqueado no editor, mas o estado ativo/quebrado não é inferido enquanto o formato desse estado não for confirmado no jogo.
 
 ## Desenvolvimento
 
