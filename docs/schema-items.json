@@ -1,0 +1,6174 @@
+{
+ "meta": {
+  "gameBuild": "26154962",
+  "source": "UnityPy typetree of Addressables bundles + resources.assets I2Languages",
+  "languages": [
+   "English",
+   "French",
+   "Portuguese_brazil",
+   "Simplified_chinese",
+   "Spanish",
+   "Polish",
+   "Russian",
+   "Korean",
+   "German",
+   "Italian",
+   "Japanese",
+   "Ukrainian",
+   "Traditional_chinese"
+  ],
+  "languageCodes": [
+   "en",
+   "fr",
+   "pt-BR",
+   "zh-CN",
+   "es",
+   "pl",
+   "ru",
+   "ko",
+   "de",
+   "it",
+   "ja",
+   "uk",
+   "zh-TW"
+  ],
+  "note": "Todos os campos vêm de typetree UnityPy (bundles Addressables 26154962). Strings pt-BR/en vêm de I2Languages (resources.assets, PathID 1510), idiomas indices: 0 en, 2 pt-BR."
+ },
+ "items": [
+  {
+   "m_Name": "Data-Camera",
+   "itemAlias": "g_camera",
+   "id_u64": "11284228907755024315",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 0,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_camera",
+    "en": "Camera",
+    "pt-BR": "Câmera"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_camera_desc",
+    "en": "Take pictures of your favorite moments in the manor",
+    "pt-BR": "Tire fotos dos seus momentos favoritos na mansão."
+   },
+   "bundle": "3992d482eb828bde7ee4f559dbc734c0.bundle",
+   "pathId": "-6863871547647284934",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Compass",
+   "itemAlias": "g_compass",
+   "id_u64": "12600044100164732085",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 1,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_compass",
+    "en": "Compass",
+    "pt-BR": "Bússola",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_compass_desc",
+    "en": "Always points toward the Game Room. Getting lost is no excuse.",
+    "pt-BR": "Sempre aponta para o Salão de Jogos. Perder-se não é desculpa."
+   },
+   "bundle": "4bd5f268c52dc0b435a856f092cba553.bundle",
+   "pathId": "8768879383464713240",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-FlameThrower",
+   "itemAlias": "g_fire",
+   "id_u64": "17122385478510712466",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 2,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_flamethrower",
+    "en": "Flamethrower",
+    "pt-BR": "Lança-chamas"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_flamethrower_desc",
+    "en": "Set fire to anything standing in your way.\nLimited ammo. Fully reloaded between boards",
+    "pt-BR": "Incendeie tudo o que estiver no seu caminho.\nMunição limitada. Totalmente recarregada entre os tabuleiros"
+   },
+   "bundle": "347fa5313187c729ec6e585fe0869d2b.bundle",
+   "pathId": "1183776751479759221",
+   "battery": {
+    "capacity": 15.0,
+    "drainPerSecond": 1.0,
+    "startLevel01": 1.0
+   }
+  },
+  {
+   "m_Name": "Data-GameMasterMask",
+   "itemAlias": "g_mask",
+   "id_u64": "17828866295920844597",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 3,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_mask",
+    "en": "Game Master Mask",
+    "pt-BR": "Máscara da Mestra do Jogo",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_mask_desc",
+    "en": "Wear the Game Master’s face and slip past enemies unnoticed.\nLimited charge. Fully recharged between boards",
+    "pt-BR": "Use o rosto da Mestra do Jogo e passe despercebido pelos inimigos.\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+   },
+   "bundle": "24bff37694c38861dfa7a61666a5fe16.bundle",
+   "pathId": "-2093000054922168753",
+   "battery": {
+    "capacity": 30.0,
+    "drainPerSecond": 1.0,
+    "startLevel01": 1.0
+   }
+  },
+  {
+   "m_Name": "Data-Guitar",
+   "itemAlias": "g_guitar",
+   "id_u64": "7095328506313437358",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 4,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_guitar",
+    "en": "Guitar",
+    "pt-BR": "Violão",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_guitar_desc",
+    "en": "A plain old guitar which probably does not attract attention at all when played",
+    "pt-BR": "Um violão antigo que não deve chamar muita atenção ao ser tocado."
+   },
+   "bundle": "0780e56b75d8f6c892c7d3bb871ebcb7.bundle",
+   "pathId": "-4529329631334548294",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-HunterGun",
+   "itemAlias": "g_hgun",
+   "id_u64": "16946348928241245723",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 5,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 1,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_huntergun",
+    "en": "Hunter Gun",
+    "pt-BR": "Arma de Caça"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_huntergun_desc",
+    "en": "You're not the prey anymore...are you ?\nLimited ammo. Fully reloaded between boards",
+    "pt-BR": "Você não é mais a presa… é?\nMunição limitada. Totalmente recarregada entre os tabuleiros"
+   },
+   "bundle": "24b4d60239149795dd092000964c2441.bundle",
+   "pathId": "-2722445086213967820",
+   "battery": {
+    "capacity": 5.0,
+    "drainPerSecond": 1.0,
+    "startLevel01": 1.0
+   }
+  },
+  {
+   "m_Name": "Data-Megaphone",
+   "itemAlias": "g_megaphone",
+   "id_u64": "1514491109999010065",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 6,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_megaphone",
+    "en": "Megaphone",
+    "pt-BR": "Megafone",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_megaphone_desc",
+    "en": "Make sure everyone hears you when planning your next move in the manor",
+    "pt-BR": "Garante que todos ouçam o que você planeja para a próxima ação na mansão."
+   },
+   "bundle": "5e5e98850d8b75e18cd88bd78a17abeb.bundle",
+   "pathId": "-102439273528886203",
+   "battery": {
+    "capacity": 90.0,
+    "drainPerSecond": 1.0,
+    "startLevel01": 1.0
+   }
+  },
+  {
+   "m_Name": "Data-MobRadar",
+   "itemAlias": "g_mobradar",
+   "id_u64": "966407169190697303",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 7,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_mob_radar",
+    "en": "G.M.E. Meter",
+    "pt-BR": "Medidor de EMJ",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_mob_radar_desc",
+    "en": "GameMaster Energy Meter. If malfunctioning, you know who you gonna call ?\nLimited charge. Fully recharged between boards",
+    "pt-BR": "Medidor de Energia da Mestra do Jogo. Se estragar, você sabe quem chamar?\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+   },
+   "bundle": "73639a307b6dfbc67aa546a5c402abf6.bundle",
+   "pathId": "2369287516611600229",
+   "battery": {
+    "capacity": 120.0,
+    "drainPerSecond": 1.0,
+    "startLevel01": 1.0
+   }
+  },
+  {
+   "m_Name": "Data-PlayerSkull",
+   "itemAlias": "g_skull",
+   "id_u64": "12362200308073142928",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 8,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_playerskull",
+    "en": "Player Skull",
+    "pt-BR": "Crânio de Jogador"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_playerskull_desc",
+    "en": "Talk with your dead companions from anywhere. To be or not to be...",
+    "pt-BR": "Fale de qualquer lugar com os colegas que morreram. Ser ou não ser...?"
+   },
+   "bundle": "a76822ec6f96942ac678b2ea2d5c56e5.bundle",
+   "pathId": "-796503551714985190",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-ScreamBox",
+   "itemAlias": "g_screambox",
+   "id_u64": "4397137749860178770",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 9,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_monsterbox",
+    "en": "Monster Sound Box",
+    "pt-BR": "Caixa de Som Monstruosa",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_monsterbox_desc",
+    "en": "Plays the lovely sounds of your favorite monsters",
+    "pt-BR": "Toca os sons adoráveis dos seus monstros favoritos."
+   },
+   "bundle": "69479e0800364143d12c59e2cb8ce3a9.bundle",
+   "pathId": "3588249452797213075",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-XRayGoggles",
+   "itemAlias": "g_xray",
+   "id_u64": "6512895223918489535",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 10,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 3,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_xray",
+    "en": "X-Ray Goggles",
+    "pt-BR": "Óculos de Raios X",
+    "source": "shopItem"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_xray_desc",
+    "en": "See players and your surroundings through walls.\nLimited charge. Fully recharged between boards",
+    "pt-BR": "Veja as pessoas e os arredores através das paredes.\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+   },
+   "bundle": "c72a88506ade4f081b72fa571fbe3944.bundle",
+   "pathId": "5091509475908379414",
+   "battery": {
+    "capacity": 45.0,
+    "drainPerSecond": 1.0,
+    "startLevel01": 1.0
+   }
+  },
+  {
+   "m_Name": "BoardGameTool",
+   "itemAlias": "",
+   "id_u64": "15788856704257125096",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 12,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/open_board",
+    "en": "Start the game",
+    "pt-BR": "Começar o jogo"
+   },
+   "bundle": "94f5cbc56a29484fd8f1ff8350d2de5e.bundle",
+   "pathId": "7955863579749535008",
+   "battery": null
+  },
+  {
+   "m_Name": "BoardGameTool_MissingPiece",
+   "itemAlias": "",
+   "id_u64": "5527338553807542360",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 13,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "-",
+    "missing": true
+   },
+   "bundle": "09e5f0496cfeb16860890a30afc7eef1.bundle",
+   "pathId": "-596483700139642207",
+   "battery": null
+  },
+  {
+   "m_Name": "BoardNeutralShopTool",
+   "itemAlias": "",
+   "id_u64": "10098423752674303229",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 14,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "1c7b8626e8d17d83398687f2a475407e.bundle",
+   "pathId": "6713751556173549912",
+   "battery": null
+  },
+  {
+   "m_Name": "DeadPlayerTool",
+   "itemAlias": "",
+   "id_u64": "10657669040836912586",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 21,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/corpse",
+    "missing": true
+   },
+   "bundle": "61ce085cf0b7164876c88a637344c49c.bundle",
+   "pathId": "-8319205823037112732",
+   "battery": null
+  },
+  {
+   "m_Name": "FlashLight",
+   "itemAlias": "flashlight",
+   "id_u64": "2805770413698872753",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 23,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 2,
+   "useMode": 0,
+   "isTogglable": true,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/flashlight",
+    "missing": true
+   },
+   "bundle": "0f185cf4ece0d50283d8a00906f0cc9d.bundle",
+   "pathId": "166606400860100689",
+   "battery": null
+  },
+  {
+   "m_Name": "FlashLight.Logic",
+   "itemAlias": "flashlight_logic",
+   "id_u64": "3382407437455174957",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 24,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 2,
+   "useMode": 0,
+   "isTogglable": true,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/flashlight",
+    "missing": true
+   },
+   "bundle": "647107dcc566bdeb30025c1a1544037c.bundle",
+   "pathId": "-1494320636533543414",
+   "battery": null
+  },
+  {
+   "m_Name": "HauntedTv",
+   "itemAlias": "",
+   "id_u64": "18324068452923358124",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 25,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "-",
+    "missing": true
+   },
+   "bundle": "7d8a2db69fd17a5d10350ef0dd9861d9.bundle",
+   "pathId": "605827607992049536",
+   "battery": null
+  },
+  {
+   "m_Name": "HeadLamp",
+   "itemAlias": "",
+   "id_u64": "1246637756269878772",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 26,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": true,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/headlamp",
+    "missing": true
+   },
+   "bundle": "f8847cf0ea626bea0e9cf6a5c62c3f52.bundle",
+   "pathId": "-842105338126070942",
+   "battery": null
+  },
+  {
+   "m_Name": "HouseRuleTablet",
+   "itemAlias": "hrtablet",
+   "id_u64": "16687021526093220798",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 27,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "cb785bba7f4e616e2c012c2933c090b4.bundle",
+   "pathId": "8765768130274282642",
+   "battery": null
+  },
+  {
+   "m_Name": "LoreElement",
+   "itemAlias": "l_article",
+   "id_u64": "1054918182568686143",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 28,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/mechanical_clock",
+    "missing": true
+   },
+   "bundle": "663316c284c5a2cd19a7f94a98fde62c.bundle",
+   "pathId": "-4907086539270264134",
+   "battery": null
+  },
+  {
+   "m_Name": "PenguinTool",
+   "itemAlias": "",
+   "id_u64": "11831270612582103808",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 31,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/corpse",
+    "missing": true
+   },
+   "bundle": "2442f46395892b7e297a454bc88d2206.bundle",
+   "pathId": "4384391507486579630",
+   "battery": null
+  },
+  {
+   "m_Name": "RuleBook",
+   "itemAlias": "rulebook",
+   "id_u64": "9028367132095315219",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 33,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "UI/GameRoom/Rulebook",
+    "en": "1. ROLL THE DICE TO MOVE YOUR TOKEN\n2. BRING BACK THE GOLDEN IDOLS\n3. SAY MY NAME TO END THE GAME",
+    "pt-BR": "1. ROLE OS DADOS PARA MOVER SEU PEÃO\n2. RECUPERE OS ÍDOLOS DOURADOS\n3. DIGA MEU NOME PARA ENCERRAR O JOGO"
+   },
+   "bundle": "36508e0ce691d88ebdd2469756768328.bundle",
+   "pathId": "350426133182371073",
+   "battery": null
+  },
+  {
+   "m_Name": "RuleBook_Collection",
+   "itemAlias": "rulebook",
+   "id_u64": "7493990515150231670",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 34,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "UI/collection/collection_rulebook",
+    "en": "<size=52>WELCOME TO MY COLLECTION ROOM!</size>\n\n<size=30>Complete my boards, bring them back to this altar, and the Master Board will finally be yours to play.\n\nBut do try to stay alive. Die, and you’re out for good.\n\nUnless, of course, you planned ahead.\nThere’s an Old Clock waiting in my shop. It can turn back your final mistake… if you’re willing to pay a very painful price.\n\nLife isn’t cheap, you know.</size>",
+    "pt-BR": "ESTA É A MINHA SALA DE COLEÇÕES!\n\nConclua meus tabuleiros e coloque-os neste altar para poder finalmente jogar no Tabuleiro Mestre.\n\nMas tente sobreviver. Se você morrer, não tem volta.\n\nA não ser, é claro, que você tenha se planejado.\nHá um Relógio Antigo na minha loja que pode desfazer seu último erro… se quiser pagar um preço muito doloroso.\n\nA vida não é barata, sabia?"
+   },
+   "bundle": "1c8ab821461fe544128c3d6149af426c.bundle",
+   "pathId": "-2700983641088656565",
+   "battery": null
+  },
+  {
+   "m_Name": "RuleBook_InfiniteCollection",
+   "itemAlias": "rulebook",
+   "id_u64": "7453921769485531876",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 35,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "UI/collection/houserules_rulebook",
+    "en": "<size=52>MY HOUSE, MY RULES.</size>\n\n<size=30>You’ve beaten the Master Board.\n\nBut nobody stops after one good game, do they?\n\nYou play again.\nThen you start changing the rules, just to keep things interesting...\n\nSo, let's play one more game.\n\nAnd this time, we’ll use my rules.\n\nLet’s see how many you can survive.</size>\n",
+    "pt-BR": "<size=52>MINHA CASA, MINHAS REGRAS.</size>\n\n<size=30>Você venceu o Tabuleiro Mestre.\n\nMas ninguém para depois de uma boa partida, não é?\n\nVocê joga de novo.\nDepois, começa a mudar as regras, só para manter as coisas interessantes...\n\nEntão, vamos jogar mais uma partida.\n\nE desta vez, vamos seguir as minhas regras.\n\nVamos ver quantos tabuleiros você consegue concluir com vida.</size>"
+   },
+   "bundle": "34ef958bb7c467263e41c8a6fee81b29.bundle",
+   "pathId": "-956954616651892475",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_AntiGravity",
+   "itemAlias": "dice_antigravity",
+   "id_u64": "722829617586222472",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 37,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/antigravity",
+    "en": "Anti-Gravity Die",
+    "pt-BR": "Dado Antigravidade"
+   },
+   "desc": {
+    "term": "Item/desc/dice_antigravity",
+    "missing": true
+   },
+   "bundle": "50bce26e6a78845384acabdeecb48395.bundle",
+   "pathId": "4282946000022229472",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Boom",
+   "itemAlias": "dice_boom",
+   "id_u64": "17915858023455143062",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 38,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/boom",
+    "en": "Boom Die",
+    "pt-BR": "Dado Bomba"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "5256c6a0d9e3a8f34c4bbe9c95444a42.bundle",
+   "pathId": "584544353895432703",
+   "diceValueOverride": 70,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Boom_Hard",
+   "itemAlias": "dice_boom_hard",
+   "id_u64": "14639075964156561927",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 39,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/boom",
+    "en": "Boom Die",
+    "pt-BR": "Dado Bomba"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "7254af1ef9b1e95c28acde70933e8926.bundle",
+   "pathId": "649467295221301460",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_BoomCocoon",
+   "itemAlias": "dice_boomcocoon",
+   "id_u64": "5225848727062881325",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 40,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/boom_or_cocoon",
+    "en": "Boom or Cocoon Die",
+    "pt-BR": "Dado Bomba ou Teia"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "3ab7a8eaf9ded389103b71208998f0b2.bundle",
+   "pathId": "-7957515328467302301",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_BoomHeal",
+   "itemAlias": "dice_boomheal",
+   "id_u64": "6819582037903767206",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 41,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/boom_or_heal",
+    "en": "Boom or Heal Die",
+    "pt-BR": "Dado Bomba ou Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "d2481c478557c224fcc9b066edba5d0d.bundle",
+   "pathId": "-7508628834893507639",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Chaos_1",
+   "itemAlias": "dice_chaos",
+   "id_u64": "9718458899796387479",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 42,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/chaos_die",
+    "en": "Chaos Die",
+    "pt-BR": "Dado do Caos"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "4e288aa8ae1a4cbb3a3493e84dd14ead.bundle",
+   "pathId": "83854102155790021",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Chaos_2",
+   "itemAlias": "dice_chaos2",
+   "id_u64": "11781078333805946480",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 43,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/chaos_die",
+    "en": "Chaos Die",
+    "pt-BR": "Dado do Caos"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "c3e81ddad94f4462673e884703d9b553.bundle",
+   "pathId": "7969210385142377570",
+   "diceValueOverride": 100,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Cocoon",
+   "itemAlias": "dice_cocoon",
+   "id_u64": "7770937956365605783",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 44,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cocoon_die",
+    "en": "Cocoon Die",
+    "pt-BR": "Dado Teia"
+   },
+   "desc": {
+    "term": "Item/desc/dice_cocoon",
+    "missing": true
+   },
+   "bundle": "9c1a5b6a62d7a5faf671eba8dd94739a.bundle",
+   "pathId": "6473871397186056309",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Cocoon_Hard",
+   "itemAlias": "dice_cocoon_hard",
+   "id_u64": "5777609552702902253",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 45,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cocoon_die",
+    "en": "Cocoon Die",
+    "pt-BR": "Dado Teia"
+   },
+   "desc": {
+    "term": "Item/desc/dice_cocoon",
+    "missing": true
+   },
+   "bundle": "5edb47229d0a4c6cb1a6b54c75a41dd4.bundle",
+   "pathId": "5205303992181523853",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_CocoonFire",
+   "itemAlias": "dice_cocoonfire",
+   "id_u64": "5455032563696543221",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 46,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/fire_or_cocoon",
+    "en": "Fire or Cocoon Die",
+    "pt-BR": "Dado de Fogo ou Teia"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "647107dcc566bdeb30025c1a1544037c.bundle",
+   "pathId": "-2179617288305760334",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Fire",
+   "itemAlias": "dice_fire",
+   "id_u64": "5831980656201572488",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 47,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/fire_die",
+    "en": "Fire Die",
+    "pt-BR": "Dado de Fogo"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "3ed7cf4009439165a1d1404d02ff5860.bundle",
+   "pathId": "-8938464043182487117",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Fire_Hard",
+   "itemAlias": "dice_fire_hard",
+   "id_u64": "16213394351017978302",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 48,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/fire_die",
+    "en": "Fire Die",
+    "pt-BR": "Dado de Fogo"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "f5494e57da62c4b6a7b01bd9a6b75939.bundle",
+   "pathId": "-6531129782770458880",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Fireworks",
+   "itemAlias": "dice_fireworks",
+   "id_u64": "676141550055729431",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 49,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.10000000149011612,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/firework",
+    "en": "Firework Die",
+    "pt-BR": "Dado de Fogos de Artifício"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "18b6b8f6354a2580145bb1a010268938.bundle",
+   "pathId": "8083952065457869282",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Freeze",
+   "itemAlias": "dice_freeze",
+   "id_u64": "7083697207254741933",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 50,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/freeze",
+    "en": "Freeze Die",
+    "pt-BR": "Dado Congelante"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "1601a800a695a515c94c64da389b6531.bundle",
+   "pathId": "1496554523717381138",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Heal",
+   "itemAlias": "dice_heal",
+   "id_u64": "10078250632034383530",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 51,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/heal_die",
+    "en": "Heal Die",
+    "pt-BR": "Dado de Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice_heal",
+    "missing": true
+   },
+   "bundle": "54ffb5c2ffba193760dbb941a87e5bf2.bundle",
+   "pathId": "-7929489031082061042",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Heal_Hard",
+   "itemAlias": "dice_heal_hard",
+   "id_u64": "16444627755522356592",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 52,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/heal_die",
+    "en": "Heal Die",
+    "pt-BR": "Dado de Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice_heal",
+    "missing": true
+   },
+   "bundle": "1c7b8626e8d17d83398687f2a475407e.bundle",
+   "pathId": "-8228469186381832391",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Light",
+   "itemAlias": "dice_light",
+   "id_u64": "3215913703130088169",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 53,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.10000000149011612,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/flare",
+    "en": "Lantern Die",
+    "pt-BR": "Dado Lanterna"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "aaffc097116fd0e6815f49f26497cfb2.bundle",
+   "pathId": "2494486581317020453",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Lightning",
+   "itemAlias": "dice_lightning",
+   "id_u64": "1202542338878686894",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 54,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/lightning",
+    "en": "Lightning Die",
+    "pt-BR": "Dado Relâmpago"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "7b9b73f80ddfc451ef746532ab17b675.bundle",
+   "pathId": "8265787142420631652",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Lightning_Hard",
+   "itemAlias": "dice_lightning_hard",
+   "id_u64": "13950085937201232186",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 55,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/lightning",
+    "en": "Lightning Die",
+    "pt-BR": "Dado Relâmpago"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "2144358e43cde5bbf96d609200b23e65.bundle",
+   "pathId": "6999438699311841173",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Pelote",
+   "itemAlias": "dice_pelote",
+   "id_u64": "8507621278018719950",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 56,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.10000000149011612,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/pelote",
+    "en": "Thread Die",
+    "pt-BR": "Dado de Linha"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "9e2b924277f3cbdd1c9362d0bc8bd40d.bundle",
+   "pathId": "-1434640313191170723",
+   "diceValueOverride": 70,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Push",
+   "itemAlias": "dice_push",
+   "id_u64": "8558161648915997091",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 57,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/push",
+    "missing": true
+   },
+   "desc": {
+    "term": "Item/desc/dice_push",
+    "missing": true
+   },
+   "bundle": "4e767b8ca35d7f64562b85cf944a06c6.bundle",
+   "pathId": "7781603486197505107",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Revive",
+   "itemAlias": "dice_revive",
+   "id_u64": "12696634195496546494",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 58,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/resurrect_die",
+    "en": "Resurrect Die",
+    "pt-BR": "Dado de Ressurreição"
+   },
+   "desc": {
+    "term": "Item/desc/dice_resurrect",
+    "en": "Resurrect a random dead player",
+    "pt-BR": "Ressuscitar um jogador morto aleatório"
+   },
+   "bundle": "984e9c41d80e777a106f26c4f498a62f.bundle",
+   "pathId": "6416422252597093745",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Revive_Hard",
+   "itemAlias": "dice_revive_hard",
+   "id_u64": "3648520369384701078",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 59,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/resurrect_die",
+    "en": "Resurrect Die",
+    "pt-BR": "Dado de Ressurreição"
+   },
+   "desc": {
+    "term": "Item/desc/dice_resurrect",
+    "en": "Resurrect a random dead player",
+    "pt-BR": "Ressuscitar um jogador morto aleatório"
+   },
+   "bundle": "5e5e98850d8b75e18cd88bd78a17abeb.bundle",
+   "pathId": "8997481314378476340",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Scanner",
+   "itemAlias": "dice_scanner",
+   "id_u64": "6434275332115713353",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 60,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.10000000149011612,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/scanner",
+    "en": "Echo Die",
+    "pt-BR": "Dado de Eco"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "2c8de26e1811854e7e44c8b5654d0f92.bundle",
+   "pathId": "-1661721609099356949",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Smoke",
+   "itemAlias": "dice_smoke",
+   "id_u64": "8490751267444740423",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 61,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice_smoke",
+    "missing": true
+   },
+   "bundle": "fa12c7f7d7e428decb03e9028f3e41c4.bundle",
+   "pathId": "-7337938259239907273",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_SpawnPlayCube",
+   "itemAlias": "dice_playcube",
+   "id_u64": "16777025373621267026",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 62,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cube",
+    "en": "Cube Die",
+    "pt-BR": "Dado de Cubo"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "cab062e3ca7e630dd102f75abc596ac6.bundle",
+   "pathId": "-7115680894968649737",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Gather",
+   "itemAlias": "dice_gather",
+   "id_u64": "14369524039773222922",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 63,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/summon",
+    "en": "Rally Die",
+    "pt-BR": "Dado de Reagrupamento"
+   },
+   "desc": {
+    "term": "Item/desc/dice_gather",
+    "missing": true
+   },
+   "bundle": "63d1141c9c6a0024fc5349a2faf064de.bundle",
+   "pathId": "-8103912643190302919",
+   "diceValueOverride": 100,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Teleport",
+   "itemAlias": "dice_tp",
+   "id_u64": "12388745898736220076",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 64,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/teleport_die",
+    "en": "Teleport Die",
+    "pt-BR": "Dado de Teletransporte"
+   },
+   "desc": {
+    "term": "Item/desc/dice_heal",
+    "missing": true
+   },
+   "bundle": "9c23e4056f026faf86d0d5760eae83e8.bundle",
+   "pathId": "-6781521134567363610",
+   "diceValueOverride": 100,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_TeleRez",
+   "itemAlias": "dice_revivetp",
+   "id_u64": "9573084003477405303",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 65,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/tele_or_rez",
+    "en": "Tele or Rez Die",
+    "pt-BR": "Dado de Teletransporte ou Ressurreição"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "cbc2a00de2c1fc138c00ad124c6b9ce9.bundle",
+   "pathId": "2920769098612790931",
+   "diceValueOverride": 70,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_1",
+   "itemAlias": "dice1",
+   "id_u64": "13028833264268402261",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 66,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "45b5ca73e3ea89dfddd68b29cc7c46b4.bundle",
+   "pathId": "6803522614774158623",
+   "diceValueOverride": 30,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_1.Big",
+   "itemAlias": "dice1b",
+   "id_u64": "7993004192264288747",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 67,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 3,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "fadcdddaa99a90428313223dc3765d77.bundle",
+   "pathId": "-3760387730743213176",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_1_2",
+   "itemAlias": "dice12",
+   "id_u64": "4164020746710062423",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 68,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice12",
+    "missing": true
+   },
+   "bundle": "f92a6872dc56b2278fc8a9ce4201b2ec.bundle",
+   "pathId": "5924441459642002754",
+   "diceValueOverride": 30,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_1_2_3",
+   "itemAlias": "dice123",
+   "id_u64": "8706964555849336571",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 69,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice123",
+    "missing": true
+   },
+   "bundle": "56651dda4178bce471d735275a4fabff.bundle",
+   "pathId": "5275931702503869862",
+   "diceValueOverride": 30,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_1_6",
+   "itemAlias": "dice16",
+   "id_u64": "6437050482807366142",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 70,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dicestart",
+    "missing": true
+   },
+   "bundle": "884f50879c394b7559b4ca60dacf21c5.bundle",
+   "pathId": "-8281334994951634304",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_1_Minus",
+   "itemAlias": "dice-1",
+   "id_u64": "6935611130163314092",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 71,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "5d90da0ca37d71288444b52f57718086.bundle",
+   "pathId": "-786716186118177276",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_2-4",
+   "itemAlias": "dice24",
+   "id_u64": "2120054400902020856",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 72,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice12",
+    "missing": true
+   },
+   "bundle": "fa6f12b11f42ab363311ec477c005727.bundle",
+   "pathId": "-1175539638608631197",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_2",
+   "itemAlias": "dice2",
+   "id_u64": "11699884103996347426",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 73,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice2",
+    "missing": true
+   },
+   "bundle": "4420905ad742a6068a8bd8f02345868d.bundle",
+   "pathId": "-8021774699015385329",
+   "diceValueOverride": 30,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_3",
+   "itemAlias": "dice3",
+   "id_u64": "17514079047179647285",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 74,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice3",
+    "missing": true
+   },
+   "bundle": "647107dcc566bdeb30025c1a1544037c.bundle",
+   "pathId": "5774221782943631149",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_3_4",
+   "itemAlias": "dice34",
+   "id_u64": "7828199753782434403",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 75,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice34",
+    "missing": true
+   },
+   "bundle": "5cdbb340d6f762f2c18590ca33d32e45.bundle",
+   "pathId": "8959087140416589938",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_4",
+   "itemAlias": "dice4",
+   "id_u64": "14481615118169912898",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 76,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice4",
+    "missing": true
+   },
+   "bundle": "a44e74fc754428b48c7905c330899bc9.bundle",
+   "pathId": "5166264282972459948",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_4_5_6",
+   "itemAlias": "dice456",
+   "id_u64": "3054987428440034949",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 77,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice456",
+    "missing": true
+   },
+   "bundle": "869f95937f941759fed531faa6b61276.bundle",
+   "pathId": "-6542371296054074637",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_5",
+   "itemAlias": "dice5",
+   "id_u64": "5841186030656102311",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 78,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice5",
+    "missing": true
+   },
+   "bundle": "0746d9a6cb34c5452e3c926ae62f7ca8.bundle",
+   "pathId": "7950136462990353342",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_5_6",
+   "itemAlias": "dice56",
+   "id_u64": "10815770517158096047",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 79,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice56",
+    "missing": true
+   },
+   "bundle": "e73664042c33d6550308f1e71255366f.bundle",
+   "pathId": "-7153024702375485506",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_6",
+   "itemAlias": "dice6",
+   "id_u64": "1036193167905821463",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 80,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice6",
+    "missing": true
+   },
+   "bundle": "488144d518500cda69cf0135b78fed58.bundle",
+   "pathId": "-206406106999368244",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_99",
+   "itemAlias": "dice99",
+   "id_u64": "5006311665704942997",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 81,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.800000011920929,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice8910",
+    "missing": true
+   },
+   "bundle": "aaffc097116fd0e6815f49f26497cfb2.bundle",
+   "pathId": "8233341064262965583",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Hazard_1",
+   "itemAlias": "haz1",
+   "id_u64": "9810654692337544406",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 82,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "2108811a91fd6137095d5547262c0432.bundle",
+   "pathId": "5250823823568531755",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Hazard_1_6",
+   "itemAlias": "haz16",
+   "id_u64": "15020981058399500303",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 83,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "5cdbb340d6f762f2c18590ca33d32e45.bundle",
+   "pathId": "-4131527576054811599",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Heal_1",
+   "itemAlias": "heal1",
+   "id_u64": "15035483822400838964",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 84,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/heal_die",
+    "en": "Heal Die",
+    "pt-BR": "Dado de Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "aaffc097116fd0e6815f49f26497cfb2.bundle",
+   "pathId": "-6480126774827072564",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_Heal_1_6",
+   "itemAlias": "heal16",
+   "id_u64": "1392515338343900355",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 85,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/heal_die",
+    "en": "Heal Die",
+    "pt-BR": "Dado de Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "8491346ded090287a98349ec3a050900.bundle",
+   "pathId": "-7744865662771185164",
+   "diceValueOverride": 100,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_LightCursed",
+   "itemAlias": "lightcursed",
+   "id_u64": "16472878556667331800",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 86,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/heal_die",
+    "en": "Heal Die",
+    "pt-BR": "Dado de Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "dd60b3295118d788b1ba335b002f054b.bundle",
+   "pathId": "-4231402606514461577",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_LightCursedMax",
+   "itemAlias": "lightcursedbomb",
+   "id_u64": "6604298970971481907",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 87,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/heal_die",
+    "en": "Heal Die",
+    "pt-BR": "Dado de Cura"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "77b5b58ebb747222a943135d9a176d84.bundle",
+   "pathId": "-6444379653294824842",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-IceCube",
+   "itemAlias": "ice",
+   "id_u64": "15423619519501489380",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 88,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "4a75838f6fcc5f0d8bc3f2818bf3257d.bundle",
+   "pathId": "-2803500869869584026",
+   "diceValueOverride": 0,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-IceCube_Big",
+   "itemAlias": "iceb",
+   "id_u64": "9157693203143303763",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 89,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "d306044347039e1794d291d3c2add31f.bundle",
+   "pathId": "1721370255597192006",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-PlayCube",
+   "itemAlias": "playcube",
+   "id_u64": "1918991647454033175",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 90,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "379262fd6f45ef862f685dce293c183d.bundle",
+   "pathId": "4377045394813165411",
+   "diceValueOverride": 0,
+   "useCustomScore": true,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-PlayCube_Big",
+   "itemAlias": "playcubeb",
+   "id_u64": "13033016302158477731",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 91,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "03dfa2d30d008fe06ddc671454f6af94.bundle",
+   "pathId": "-3111382085851607930",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "BlessedDice_16",
+   "itemAlias": "blesseddice16",
+   "id_u64": "7508726917405370009",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 92,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-3532297295227651625",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "BlessedDice_46",
+   "itemAlias": "blesseddice46",
+   "id_u64": "12043574199498791891",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 93,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "213829220934369001",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "CursedDice_13",
+   "itemAlias": "curseddice13",
+   "id_u64": "2962421710323640845",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 94,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-6340324352271527411",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "CursedDice_16",
+   "itemAlias": "curseddice16",
+   "id_u64": "5595527245008069542",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 95,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-7633120622717993888",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "CursedDice_46",
+   "itemAlias": "curseddice46",
+   "id_u64": "10293151971815471282",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 96,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2806438630000378320",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_6",
+   "itemAlias": "blessed6",
+   "id_u64": "10224728952986741974",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 97,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2475561017261799228",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_12",
+   "itemAlias": "blessed12",
+   "id_u64": "5014496846679301231",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 98,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-5416073170192620352",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_13",
+   "itemAlias": "blessed13",
+   "id_u64": "10536192774214319386",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 99,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5094149513171163930",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_16",
+   "itemAlias": "blessed16",
+   "id_u64": "2218398795956115711",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 100,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-4087467098809810520",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_34",
+   "itemAlias": "blessed34",
+   "id_u64": "12400645171774252536",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 101,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-8644828575399679212",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_46",
+   "itemAlias": "blessed46",
+   "id_u64": "17832612628954986553",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 102,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "8285780973684069134",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blessed_Test_Only",
+   "itemAlias": "blessedtestonly",
+   "id_u64": "7107500702012245343",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 103,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2607051502742978550",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_12",
+   "itemAlias": "blursed12",
+   "id_u64": "2055798482601618263",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 104,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "3369267749150807610",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_13",
+   "itemAlias": "blursed13",
+   "id_u64": "4879428438174506512",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 105,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-3741032507225029572",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_16",
+   "itemAlias": "blursed16",
+   "id_u64": "18345493874482265624",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 106,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-6951718717714192398",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_34",
+   "itemAlias": "blursed34",
+   "id_u64": "10242951583864941798",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 107,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "8363e1dc3559e978c93436c5322cbd44.bundle",
+   "pathId": "5738989533626850500",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_36",
+   "itemAlias": "blursed35",
+   "id_u64": "14994738714904283745",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 108,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "7205479088068470087",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_46",
+   "itemAlias": "blursed46",
+   "id_u64": "12178608329593349208",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 109,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5359101066411341724",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Cursed_1",
+   "itemAlias": "cursed1",
+   "id_u64": "7155774560025841243",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 110,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "8752736485890302983",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Cursed_13",
+   "itemAlias": "cursed13",
+   "id_u64": "2462386154247587308",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 111,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "7130369999549376901",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Cursed_16",
+   "itemAlias": "cursed16",
+   "id_u64": "1972590856637602775",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 112,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "2234969119745487802",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Cursed_24",
+   "itemAlias": "cursed24",
+   "id_u64": "7240110855730522317",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 113,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5891177017665526687",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Cursed_46",
+   "itemAlias": "cursed46",
+   "id_u64": "9332781958718541918",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 114,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "7896347549443282209",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Cursed_56",
+   "itemAlias": "cursed56",
+   "id_u64": "6330577005053957926",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 115,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-1751217369929490884",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Normal_12",
+   "itemAlias": "normal12",
+   "id_u64": "13562164585789599768",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 116,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "775238718209941855",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Normal_13",
+   "itemAlias": "normal13",
+   "id_u64": "4725801089196306339",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 117,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5310475757832127804",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Normal_16",
+   "itemAlias": "normal16",
+   "id_u64": "16725954817612911367",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 118,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-4710727325957761396",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Normal_34",
+   "itemAlias": "normal34",
+   "id_u64": "15076423008531347751",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 119,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2843242108266166621",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Normal_46",
+   "itemAlias": "normal46",
+   "id_u64": "8781872075971463535",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 120,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "230888087817817184",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Normal_56",
+   "itemAlias": "normal56",
+   "id_u64": "1746979813429653214",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 121,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5551611161554846152",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_SuperBlessed_16",
+   "itemAlias": "superblessed16",
+   "id_u64": "6002858967670389174",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 122,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blessed",
+    "en": "Blessed Die",
+    "pt-BR": "Dado Abençoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "1880048577992960913",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_SuperCursed_16",
+   "itemAlias": "supercursed16",
+   "id_u64": "16032299709820633478",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 123,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cursed",
+    "en": "Cursed Die",
+    "pt-BR": "Dado Amaldiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5570137566051590552",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "NormalDice_13 1",
+   "itemAlias": "normaldice13_1",
+   "id_u64": "15984737632728029075",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 124,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "8665184458648078815",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "NormalDice_13",
+   "itemAlias": "normaldice13",
+   "id_u64": "15576926202746651494",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 125,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-8210897708393488093",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "NormalDice_16",
+   "itemAlias": "normaldice16",
+   "id_u64": "14876608909329600797",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 126,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-4340085793124744458",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "NormalDice_46",
+   "itemAlias": "normaldice46",
+   "id_u64": "14630490859429003179",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 127,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/die",
+    "en": "Die",
+    "pt-BR": "Dado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2865655211475538379",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Lantern",
+   "itemAlias": "lantern",
+   "id_u64": "8034988242180086302",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 128,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "74207b34968631783a88c9daa5580331.bundle",
+   "pathId": "2328434224286699447",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-SteelJawTrap",
+   "itemAlias": "g_trap",
+   "id_u64": "11204728773771944037",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 129,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 1,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "7eb15dcc65be75f85aaced591e955fed.bundle",
+   "pathId": "-3387536176930196732",
+   "battery": null
+  },
+  {
+   "m_Name": "Lantern",
+   "itemAlias": "",
+   "id_u64": "17987690502063882105",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 130,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "33dfd07a6cd5e615fb167ee3d192c244.bundle",
+   "pathId": "4829480404034581417",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-MissingPiece",
+   "itemAlias": "mpiece",
+   "id_u64": "17513984537194232416",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 131,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "b4a4b2f8864120c609449cc0f9002826.bundle",
+   "pathId": "1088802756310096676",
+   "scoreBasePoint": 0,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Blind",
+   "itemAlias": "tr_blind",
+   "id_u64": "15659945856436154005",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 132,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "6ab546369ade73969e340188d732d43b.bundle",
+   "pathId": "-366008628441685764",
+   "scoreBasePoint": 7,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Camera",
+   "itemAlias": "tr_camera",
+   "id_u64": "16161024687220126744",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 133,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "e59e37f3bcf96acb8023978743ab81b1.bundle",
+   "pathId": "1552244991223734211",
+   "scoreBasePoint": 10,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-DiceThrower",
+   "itemAlias": "tr_dice_thrower",
+   "id_u64": "970001822794563052",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 134,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": {
+    "term": "-",
+    "missing": true
+   },
+   "desc": {
+    "term": "-",
+    "missing": true
+   },
+   "bundle": "e294285d99b646d1083df64c389d083c.bundle",
+   "pathId": "-3834612856884209878",
+   "scoreBasePoint": 7,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Final",
+   "itemAlias": "tr_final",
+   "id_u64": "887832889495486297",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 135,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "8e0fcd16f16fede3bce038da1411aba0.bundle",
+   "pathId": "-4159436695311386346",
+   "scoreBasePoint": 0,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Flamethrower",
+   "itemAlias": "tr_flame",
+   "id_u64": "5678489519887607110",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 136,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "88efdf8618bfbf7e2c0bdc410d87c886.bundle",
+   "pathId": "3499200604350302290",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Hallucination",
+   "itemAlias": "tr_hallucination",
+   "id_u64": "3611313213204598715",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 137,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "524874cf52bf7decdaeb0874d89fa3b2.bundle",
+   "pathId": "-6978289042629313565",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Heavy",
+   "itemAlias": "tr_heavy",
+   "id_u64": "13539466722732671913",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 138,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "918f0ef0c07d84a658e0d5952f184b95.bundle",
+   "pathId": "6347840449203618429",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-InvertedView",
+   "itemAlias": "tr_invertview",
+   "id_u64": "16910182908390641787",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 139,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "f8847cf0ea626bea0e9cf6a5c62c3f52.bundle",
+   "pathId": "3624842472582447920",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Lightning",
+   "itemAlias": "tr_lightning",
+   "id_u64": "6217483385191454636",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 140,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "749d360777295bf97f905cc54176501b.bundle",
+   "pathId": "1830416088614661585",
+   "scoreBasePoint": 7,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Linked",
+   "itemAlias": "tr_linked",
+   "id_u64": "10036870583278101750",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 141,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "4a00881d6be929d04ac267ab8b048b40.bundle",
+   "pathId": "-5596748574654502523",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Meduza",
+   "itemAlias": "tr_meduza",
+   "id_u64": "14189525892065481450",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 142,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "fbafcea865f50c6202fb4979297ee352.bundle",
+   "pathId": "-7989128543922014007",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Miniature",
+   "itemAlias": "tr_mini",
+   "id_u64": "8443964997203258129",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 143,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "bbf09b9e0ca0fb26b0f43bb9465b8cf9.bundle",
+   "pathId": "1182103750234951726",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Musical",
+   "itemAlias": "tr_musical",
+   "id_u64": "5804517731052606251",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 144,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "524874cf52bf7decdaeb0874d89fa3b2.bundle",
+   "pathId": "5871156571545159003",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Prankster",
+   "itemAlias": "tr_prankster",
+   "id_u64": "6096484020692488796",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 145,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "b4a4b2f8864120c609449cc0f9002826.bundle",
+   "pathId": "-4274497131621843442",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Puppet",
+   "itemAlias": "tr_puppet",
+   "id_u64": "12728186048785612789",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 146,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "a34f4746b76c3610d8f01423b44ce9df.bundle",
+   "pathId": "1401588744277150453",
+   "scoreBasePoint": 10,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-ReverseInputs",
+   "itemAlias": "tr_rvi",
+   "id_u64": "16473980543408359611",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 147,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "41eada8949fee53908ea0f575820b3f2.bundle",
+   "pathId": "808856697725819831",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Score",
+   "itemAlias": "tr_score",
+   "id_u64": "7331884207844971565",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 148,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "667fd6bc700c43541aa0bd4bcefdb727.bundle",
+   "pathId": "-5128730049093793455",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Slippery",
+   "itemAlias": "tr_slippery",
+   "id_u64": "13601636613369722279",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 149,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "f7b379076123e4f0f84dc741b042f51d.bundle",
+   "pathId": "-798141814305280488",
+   "scoreBasePoint": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-Vanishing",
+   "itemAlias": "tr_vanish",
+   "id_u64": "12142498195737046383",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 150,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "7eb15dcc65be75f85aaced591e955fed.bundle",
+   "pathId": "2887516301096318867",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Treasure-WanderingDice",
+   "itemAlias": "tr_wandering",
+   "id_u64": "14115087848621455930",
+   "soClass": "SOTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 151,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 1.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "eca68f7b9311820f45e55b2d0e6ed93f.bundle",
+   "pathId": "-5075709794486051226",
+   "scoreBasePoint": 4,
+   "battery": null
+  },
+  {
+   "m_Name": "SO-CorridorKey",
+   "itemAlias": "k_corridor",
+   "id_u64": "6169393931065853123",
+   "soClass": "SOKeyTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 152,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_key_corridor",
+    "en": "Corridor Key",
+    "pt-BR": "Chave do Corredor"
+   },
+   "desc": null,
+   "bundle": "f92a6872dc56b2278fc8a9ce4201b2ec.bundle",
+   "pathId": "-97800477392940291",
+   "keyName": 2,
+   "battery": null
+  },
+  {
+   "m_Name": "SO-HenryKey",
+   "itemAlias": "k_henry",
+   "id_u64": "16081877634970975050",
+   "soClass": "SOKeyTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 153,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": {
+    "term": "Item/shopitem/gadget_key_henry",
+    "en": "Henry's Bedroom Key",
+    "pt-BR": "Chave do Quarto do Henry"
+   },
+   "desc": null,
+   "bundle": "20628b663544b9a97b3bd66d87b981a1.bundle",
+   "pathId": "-5701900444814412599",
+   "keyName": 1,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_CubeChaos",
+   "itemAlias": "dice_cubedanger",
+   "id_u64": "13956388936472311048",
+   "soClass": "SODiceTool",
+   "inAvailableTools": true,
+   "availableToolsIndex": 154,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/cube",
+    "en": "Cube Die",
+    "pt-BR": "Dado de Cubo"
+   },
+   "desc": {
+    "term": "Item/desc/dice_explosion",
+    "missing": true
+   },
+   "bundle": "474705c9d4d706ffe1ccddb5e2810fad.bundle",
+   "pathId": "-558925654621766818",
+   "diceValueOverride": 0,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "AlarmClock",
+   "itemAlias": "",
+   "id_u64": "5563465641729196587",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/mechanical_clock",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "40",
+   "battery": null
+  },
+  {
+   "m_Name": "CheatCard_CreatureBanish",
+   "itemAlias": "",
+   "id_u64": "7405540795464526252",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/creaturebanish",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "5",
+   "battery": null
+  },
+  {
+   "m_Name": "CheatCard_CreatureFreeze",
+   "itemAlias": "",
+   "id_u64": "4468288368687846482",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/creaturefreeze",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "4",
+   "battery": null
+  },
+  {
+   "m_Name": "CheatCard_MBGreenLight",
+   "itemAlias": "",
+   "id_u64": "10440934656097875677",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/green_light",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "8",
+   "battery": null
+  },
+  {
+   "m_Name": "CheatCard_Uno4",
+   "itemAlias": "",
+   "id_u64": "17335782687706977835",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/4_uno",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "6",
+   "battery": null
+  },
+  {
+   "m_Name": "CheatObject",
+   "itemAlias": "",
+   "id_u64": "9171059982821697559",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "3",
+   "battery": null
+  },
+  {
+   "m_Name": "Club",
+   "itemAlias": "",
+   "id_u64": "16687335530642106930",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/club",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "35",
+   "battery": null
+  },
+  {
+   "m_Name": "CollectionFigurine",
+   "itemAlias": "collectionfigurine",
+   "id_u64": "1961019529742314611",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 3,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-4210834286886911373",
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_AntiGravGather",
+   "itemAlias": "dice_antigravity",
+   "id_u64": "18065293897696943723",
+   "soClass": "SODiceTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/antigravity",
+    "en": "Anti-Gravity Die",
+    "pt-BR": "Dado Antigravidade"
+   },
+   "desc": {
+    "term": "Item/desc/dice_antigravity",
+    "missing": true
+   },
+   "bundle": "82a91bf2fa5789af90d97531e000f6c4.bundle",
+   "pathId": "-869149701183646496",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_AntigravityScanner",
+   "itemAlias": "dice_scanner",
+   "id_u64": "867018356020626955",
+   "soClass": "SODiceTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.10000000149011612,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/scanner",
+    "en": "Echo Die",
+    "pt-BR": "Dado de Eco"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "3416587605371618523",
+   "diceValueOverride": 30,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_RezGather",
+   "itemAlias": "dice_gather",
+   "id_u64": "10109633326230351728",
+   "soClass": "SODiceTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/summon",
+    "en": "Rally Die",
+    "pt-BR": "Dado de Reagrupamento"
+   },
+   "desc": {
+    "term": "Item/desc/dice_gather",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2114413811454582686",
+   "diceValueOverride": 100,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Data-Dice_TeleGather",
+   "itemAlias": "dice_tp",
+   "id_u64": "12934932397390090827",
+   "soClass": "SODiceTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/teleport_die",
+    "en": "Teleport Die",
+    "pt-BR": "Dado de Teletransporte"
+   },
+   "desc": {
+    "term": "Item/desc/dice_heal",
+    "missing": true
+   },
+   "bundle": "d6858cdd93ce8a8c16beee7ce8169c84.bundle",
+   "pathId": "-2151501526701413748",
+   "diceValueOverride": 100,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "Dice_Blursed_24",
+   "itemAlias": "blursed24",
+   "id_u64": "10483493615551251866",
+   "soClass": "SODiceTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.25,
+   "holdSlot": 1,
+   "useMode": 2,
+   "isTogglable": false,
+   "name": {
+    "term": "UI/die/blursed",
+    "en": "Blursed Die",
+    "pt-BR": "Dado Abençodiçoado"
+   },
+   "desc": {
+    "term": "Item/desc/dice1",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-7404686313714574843",
+   "diceValueOverride": 50,
+   "useCustomScore": false,
+   "battery": null
+  },
+  {
+   "m_Name": "EMFReader",
+   "itemAlias": "",
+   "id_u64": "4204238268605819291",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/emf_reader",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "39",
+   "battery": null
+  },
+  {
+   "m_Name": "Nintendo-Switch",
+   "itemAlias": "",
+   "id_u64": "15008878522943328100",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/fps_detector",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "37",
+   "battery": null
+  },
+  {
+   "m_Name": "PadLock",
+   "itemAlias": "",
+   "id_u64": "5248321766599120235",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "Item/desc/padlock",
+    "missing": true
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "38",
+   "battery": null
+  },
+  {
+   "m_Name": "RubberDuck",
+   "itemAlias": "",
+   "id_u64": "10260616184637471424",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "41",
+   "battery": null
+  },
+  {
+   "m_Name": "RuleBook_CustomMode",
+   "itemAlias": "rulebook",
+   "id_u64": "9338779461951400351",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "UI/collection/custommode_rulebook",
+    "en": "YOUR BOARD, YOUR RULES!\n\n1. Pick a board and place it in the slot at the center of the table\n2. Add rules and monster figurines to the table\n3. Bring the custom board to the game room and play!\n\nAnd don't worry. Win or lose, you'll return to exactly where you were before playing.",
+    "pt-BR": "SEU TABULEIRO, SUAS REGRAS!\n\n1. Escolha um tabuleiro e coloque-o no espaço reservado no centro da mesa\n2. Coloque regras e miniaturas de monstros sobre a mesa\n3. Leve o tabuleiro personalizado até a sala de jogos e jogue!\n\nE não se preocupe. Vencendo ou perdendo, você voltará exatamente ao ponto em que estava antes de jogar."
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "7530709519441930660",
+   "battery": null
+  },
+  {
+   "m_Name": "RuleBook_SaveInfo",
+   "itemAlias": "rulebook",
+   "id_u64": "11980453038952100324",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": false,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": {
+    "term": "UI/gameroom/infobook",
+    "en": "The game automatically saves your progress after each completed board. You can quit at any time and resume your game from the last board you completed.\n\nIf a player encounters an issue and needs to rejoin, everyone can safely quit the game. The host can then load the existing save from the main menu and invite the other players back to continue playing together.",
+    "pt-BR": "O jogo salva seu progresso automaticamente após a conclusão de cada tabuleiro. Você pode sair do jogo a qualquer momento e retomar a partida a partir do último tabuleiro concluído.\n\nSe um jogador tiver algum problema e precisar entrar novamente, todos podem sair do jogo sem perder o progresso salvo. Depois, o anfitrião pode carregar o arquivo de salvamento existente pelo menu principal e convidar os outros jogadores novamente para continuarem jogando juntos."
+   },
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "7",
+   "battery": null
+  },
+  {
+   "m_Name": "Teddy",
+   "itemAlias": "",
+   "id_u64": "12942022930225994048",
+   "soClass": "SOTool",
+   "inAvailableTools": false,
+   "availableToolsIndex": null,
+   "canBeSpawnedByEvent": true,
+   "eventSpawnChance": 0.0,
+   "holdSlot": 1,
+   "useMode": 0,
+   "isTogglable": false,
+   "name": null,
+   "desc": null,
+   "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
+   "pathId": "36",
+   "battery": null
+  }
+ ],
+ "itemAliasDuplicates": {
+  "": [
+   "BoardGameTool",
+   "BoardGameTool_MissingPiece",
+   "BoardNeutralShopTool",
+   "DeadPlayerTool",
+   "HauntedTv",
+   "HeadLamp",
+   "PenguinTool",
+   "Lantern",
+   "AlarmClock",
+   "CheatCard_CreatureBanish",
+   "CheatCard_CreatureFreeze",
+   "CheatCard_MBGreenLight",
+   "CheatCard_Uno4",
+   "CheatObject",
+   "Club",
+   "EMFReader",
+   "Nintendo-Switch",
+   "PadLock",
+   "RubberDuck",
+   "Teddy"
+  ],
+  "rulebook": [
+   "RuleBook",
+   "RuleBook_Collection",
+   "RuleBook_InfiniteCollection",
+   "RuleBook_CustomMode",
+   "RuleBook_SaveInfo"
+  ],
+  "dice_antigravity": [
+   "Data-Dice_AntiGravity",
+   "Data-Dice_AntiGravGather"
+  ],
+  "dice_scanner": [
+   "Data-Dice_Scanner",
+   "Data-Dice_AntigravityScanner"
+  ],
+  "dice_gather": [
+   "Data-Dice_Gather",
+   "Data-Dice_RezGather"
+  ],
+  "dice_tp": [
+   "Data-Dice_Teleport",
+   "Data-Dice_TeleGather"
+  ]
+ },
+ "availableToolsCount": 155,
+ "shopItems": [
+  {
+   "m_Name": "Data-ShopFurnitureItem_HidingCloset",
+   "uid": 1772907373,
+   "alias": "fur_closet",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 0,
+   "basePrice": 750,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "20628b663544b9a97b3bd66d87b981a1.bundle",
+   "pathId": "6605150131120343226",
+   "furniture": 2,
+   "furnitureName": "WARDROBE",
+   "name": {
+    "term": "Item/shopitem/furniture_hcloset",
+    "en": "Hiding Closet",
+    "pt-BR": "Armário Esconderijo"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_hcloset_desc",
+    "en": "Unlocks the hiding closet in the Game Room",
+    "pt-BR": "Desbloqueia o armário esconderijo no Salão de Jogos."
+   }
+  },
+  {
+   "m_Name": "Data-ShopUpgradeItem_Speed",
+   "uid": -872071192,
+   "alias": "up_speed",
+   "category": 1,
+   "categoryName": "Upgrade",
+   "minQuantity": 1,
+   "basePrice": 200,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "2442f46395892b7e297a454bc88d2206.bundle",
+   "pathId": "7160567902003396562",
+   "upgradePathId": "316593029477531000",
+   "upgradeAsset": "CharacterUpgrade_RunSpeed",
+   "name": {
+    "term": "Item/shopitem/upgrade_speed",
+    "en": "Speed Upgrade",
+    "pt-BR": "Melhoria de Velocidade"
+   },
+   "desc": {
+    "term": "Item/shopitem/upgrade_speed_desc",
+    "en": "Gives a definitive sprint speed bonus.\nStackable {0} times.",
+    "pt-BR": "Concede um bônus permanente de velocidade máxima.\nPode acumular {0} vezes."
+   }
+  },
+  {
+   "m_Name": "Data-ShopUpgradeItem_Stamina",
+   "uid": 311584588,
+   "alias": "up_stamina",
+   "category": 1,
+   "categoryName": "Upgrade",
+   "minQuantity": 1,
+   "basePrice": 200,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "51a7e4e7e088bbc190a2348056e2b9d8.bundle",
+   "pathId": "-2112255507411823790",
+   "upgradePathId": "-4127257368061843783",
+   "upgradeAsset": "CharacterUpgrade_MaxStamina",
+   "name": {
+    "term": "Item/shopitem/upgrade_stamina",
+    "en": "Stamina Upgrade",
+    "pt-BR": "Melhoria de Vigor"
+   },
+   "desc": {
+    "term": "Item/shopitem/upgrade_stamina_desc",
+    "en": "Gives a permanent maximum stamina bonus.\nStackable {0} times.",
+    "pt-BR": "Concede um bônus permanente de vigor máximo.\nPode acumular {0} vezes."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItem_MilkBottle",
+   "uid": -1522034135,
+   "alias": "c_milk",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 2,
+   "basePrice": 100,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "5ce80e2d3ab0843eb2e31d3ff9073bcc.bundle",
+   "pathId": "2002171185924780905",
+   "consumable": {
+    "m_Name": "CharacterConsumable_FullHeal",
+    "uid": 1,
+    "color": null
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_milk",
+    "en": "Milk Bottle",
+    "pt-BR": "Garrafa de Leite"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_milk_desc",
+    "en": "Fully heals a player when consumed.\nGreat source of vitamin D.",
+    "pt-BR": "Quando consumida, cura totalmente um jogador.\nÓtima fonte de vitamina D."
+   }
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_Radio",
+   "uid": 920453269,
+   "alias": "fur_radio",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 0,
+   "basePrice": 500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "69479e0800364143d12c59e2cb8ce3a9.bundle",
+   "pathId": "7793884609146471670",
+   "furniture": 1,
+   "furnitureName": "RADIO",
+   "name": {
+    "term": "Item/shopitem/furniture_radio",
+    "en": "Radio",
+    "pt-BR": "Rádio"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_radio_desc",
+    "en": "Unlocks the radio in the Game Room",
+    "pt-BR": "Desbloqueia o rádio no Salão de Jogos."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Red",
+   "uid": 1820564218,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-8406182174316564009",
+   "consumable": {
+    "m_Name": "Red_ChangeCloth_CharacterConsumable",
+    "uid": 7,
+    "color": 5
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Blue",
+   "uid": 1689476099,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-7604228322262399428",
+   "consumable": {
+    "m_Name": "Blue_ChangeCloth_CharacterConsumable",
+    "uid": 2,
+    "color": 2
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Gold",
+   "uid": -1709823149,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 1500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-7386013661027507678",
+   "consumable": {
+    "m_Name": "Gold_ChangeCloth_CharacterConsumable",
+    "uid": 11,
+    "color": 8
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_DiceBoxFirework",
+   "uid": -1462199363,
+   "alias": "fur_dicefirework",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 0,
+   "basePrice": 500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-6604189768910092996",
+   "furniture": 6,
+   "furnitureName": "DICEBOX_FIREWORK",
+   "name": {
+    "term": "Item/shopitem/furniture_dicebox_firework",
+    "en": "Firework dice dispenser",
+    "pt-BR": "Distribuidor de dados de fogos de artifício"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_dicebox_firework_desc",
+    "en": "Let the festivities begin",
+    "pt-BR": "Que comece a festa!"
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_Screambox",
+   "uid": 525100419,
+   "alias": "gad_monsterbox",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 250,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-5969589722583452133",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_monsterbox",
+    "en": "Monster Sound Box",
+    "pt-BR": "Caixa de Som Monstruosa"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_monsterbox_desc",
+    "en": "Plays the lovely sounds of your favorite monsters",
+    "pt-BR": "Toca os sons adoráveis dos seus monstros favoritos."
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_Guitar",
+   "uid": -211161419,
+   "alias": "gad_guitar",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 375,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-5116847174901950457",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_guitar",
+    "en": "Guitar",
+    "pt-BR": "Violão"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_guitar_desc",
+    "en": "A plain old guitar which probably does not attract attention at all when played",
+    "pt-BR": "Um violão antigo que não deve chamar muita atenção ao ser tocado."
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_HunterGun",
+   "uid": -286216635,
+   "alias": "gad_huntergun",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 2500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-4587015168341390443",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_huntergun",
+    "en": "Hunter Gun",
+    "pt-BR": "Arma de Caça"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_huntergun_desc",
+    "en": "You're not the prey anymore...are you ?\nLimited ammo. Fully reloaded between boards",
+    "pt-BR": "Você não é mais a presa… é?\nMunição limitada. Totalmente recarregada entre os tabuleiros"
+   }
+  },
+  {
+   "m_Name": "Data-ShopUpgradeItem_InventorySlot",
+   "uid": 1601800366,
+   "alias": "up_invslot",
+   "category": 1,
+   "categoryName": "Upgrade",
+   "minQuantity": 2,
+   "basePrice": 400,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-3891817773264687756",
+   "upgradePathId": "-6105921925042694071",
+   "upgradeAsset": "CharacterUpgrade_InventorySlot",
+   "name": {
+    "term": "Item/shopitem/consumable_fannypack",
+    "en": "Fanny Pack",
+    "pt-BR": "Pochete"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_fannypack_desc",
+    "en": "Gives its owner an additional inventory slot.\nHandy and stylish.",
+    "pt-BR": "Concede um espaço extra no inventário.\nÚtil e estilosa."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Yellow",
+   "uid": 758926474,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-3493138366880648396",
+   "consumable": {
+    "m_Name": "Yellow_ChangeCloth_CharacterConsumable",
+    "uid": 9,
+    "color": 4
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_GameMasterMask",
+   "uid": -2065581256,
+   "alias": "gad_mask",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 1750,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-520957008283852449",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_mask",
+    "en": "Game Master Mask",
+    "pt-BR": "Máscara da Mestra do Jogo"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_mask_desc",
+    "en": "Wear the Game Master’s face and slip past enemies unnoticed.\nLimited charge. Fully recharged between boards",
+    "pt-BR": "Use o rosto da Mestra do Jogo e passe despercebido pelos inimigos.\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_MobRadar",
+   "uid": -1705268261,
+   "alias": "gad_mobradar",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "-294928612925619788",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_mob_radar",
+    "en": "G.M.E. Meter",
+    "pt-BR": "Medidor de EMJ"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_mob_radar_desc",
+    "en": "GameMaster Energy Meter. If malfunctioning, you know who you gonna call ?\nLimited charge. Fully recharged between boards",
+    "pt-BR": "Medidor de Energia da Mestra do Jogo. Se estragar, você sabe quem chamar?\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_XRayGoggles",
+   "uid": 1010844332,
+   "alias": "gad_xray",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 1250,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "156775892671363979",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_xray",
+    "en": "X-Ray Goggles",
+    "pt-BR": "Óculos de Raios X"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_xray_desc",
+    "en": "See players and your surroundings through walls.\nLimited charge. Fully recharged between boards",
+    "pt-BR": "Veja as pessoas e os arredores através das paredes.\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+   }
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_OldClock",
+   "uid": -937123244,
+   "alias": "fur_clock",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 1,
+   "basePrice": 1000,
+   "inflation": {
+    "boughtCountInflationOverride": 1,
+    "roundInflation": 1,
+    "growth": 125.0,
+    "curve": 1.0,
+    "maxInflationRound": 9
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "619364329214128875",
+   "furniture": 8,
+   "furnitureName": "OLD_CLOCK",
+   "name": {
+    "term": "Item/shopitem/furniture_oldclock",
+    "en": "Old Clock (Checkpoint)",
+    "pt-BR": "Relógio Antigo (Ponto de Controle)"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_oldclock_desc",
+    "en": "Brings you back to the shop if you fail a board.",
+    "pt-BR": "Se você não conseguir completar um tabuleiro, o relógio leva você de volta à loja"
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_Compass",
+   "uid": -1994114511,
+   "alias": "gad_compass",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 1250,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "2674595260379590258",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_compass",
+    "en": "Compass",
+    "pt-BR": "Bússola"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_compass_desc",
+    "en": "Always points toward the Game Room. Getting lost is no excuse.",
+    "pt-BR": "Sempre aponta para o Salão de Jogos. Perder-se não é desculpa."
+   }
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_Disco",
+   "uid": 1600172649,
+   "alias": "fur_disco",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 0,
+   "basePrice": 1500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "2911571241187771636",
+   "furniture": 4,
+   "furnitureName": "DISCO",
+   "name": {
+    "term": "Item/shopitem/furniture_disco",
+    "en": "Disco ball",
+    "pt-BR": "Globo de Discoteca"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_disco_desc",
+    "en": "A disco ball to brighten up the Game Room. Stylish, shiny, and perfect for setting the mood.",
+    "pt-BR": "Um globo de discoteca para iluminar o Salão de Jogos. Elegante, brilhante e perfeito para criar o clima."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_DarkBlue",
+   "uid": -31383584,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "2983196109977483173",
+   "consumable": {
+    "m_Name": "DarkBlue_ChangeCloth_CharacterConsumable",
+    "uid": 3,
+    "color": 1
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Purple",
+   "uid": 1819000175,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "3450985422520617041",
+   "consumable": {
+    "m_Name": "Purple_ChangeCloth_CharacterConsumable",
+    "uid": 6,
+    "color": 0
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_PlayerSkull",
+   "uid": -1254192619,
+   "alias": "gad_playerskull",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "3756233598135462131",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_playerskull",
+    "en": "Player Skull",
+    "pt-BR": "Crânio de Jogador"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_playerskull_desc",
+    "en": "Talk with your dead companions from anywhere. To be or not to be...",
+    "pt-BR": "Fale de qualquer lugar com os colegas que morreram. Ser ou não ser...?"
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_Megaphone",
+   "uid": 2086200294,
+   "alias": "gad_megaphone",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 250,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "5345825965608580664",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_megaphone",
+    "en": "Megaphone",
+    "pt-BR": "Megafone"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_megaphone_desc",
+    "en": "Make sure everyone hears you when planning your next move in the manor",
+    "pt-BR": "Garante que todos ouçam o que você planeja para a próxima ação na mansão."
+   }
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_DiceBoxCube",
+   "uid": 2045476943,
+   "alias": "fur_dicecube",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 0,
+   "basePrice": 500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "5833881558040843256",
+   "furniture": 7,
+   "furnitureName": "DICEBOX_CUBE",
+   "name": {
+    "term": "Item/shopitem/furniture_dicebox_cube",
+    "en": "Cube dice dispenser",
+    "pt-BR": "Distribuidor de dados de cubo"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_dicebox_cube_desc",
+    "en": "Get all the cubes you always dreamed of",
+    "pt-BR": "Tenha todos os cubos que sempre desejou."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Pink",
+   "uid": 242359013,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "5931438634611980521",
+   "consumable": {
+    "m_Name": "Pink_ChangeCloth_CharacterConsumable",
+    "uid": 5,
+    "color": 6
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_White",
+   "uid": 673790302,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "5955536441585574679",
+   "consumable": {
+    "m_Name": "White_ChangeCloth_CharacterConsumable",
+    "uid": 8,
+    "color": 7
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_Flamethrower",
+   "uid": 873883547,
+   "alias": "gad_flamethrower",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 2500,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "5995429169438671477",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_flamethrower",
+    "en": "Flamethrower",
+    "pt-BR": "Lança-chamas"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_flamethrower_desc",
+    "en": "Set fire to anything standing in your way.\nLimited ammo. Fully reloaded between boards",
+    "pt-BR": "Incendeie tudo o que estiver no seu caminho.\nMunição limitada. Totalmente recarregada entre os tabuleiros"
+   }
+  },
+  {
+   "m_Name": "Data-ShopConsumableItemData_Cloth_Green",
+   "uid": 893901473,
+   "alias": "",
+   "category": 4,
+   "categoryName": "Consumable",
+   "minQuantity": 0,
+   "basePrice": 25,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "7173842944448846845",
+   "consumable": {
+    "m_Name": "Green_ChangeCloth_CharacterConsumable",
+    "uid": 4,
+    "color": 3
+   },
+   "name": {
+    "term": "Item/shopitem/consumable_cloth",
+    "en": "Cloth",
+    "pt-BR": "Roupa"
+   },
+   "desc": {
+    "term": "Item/shopitem/consumable_cloth_desc",
+    "en": "Change your outfit",
+    "pt-BR": "Muda o seu visual."
+   }
+  },
+  {
+   "m_Name": "Data-ShopGadgetItem_Camera",
+   "uid": 1982768718,
+   "alias": "gad_camera",
+   "category": 3,
+   "categoryName": "Gadget",
+   "minQuantity": 0,
+   "basePrice": 375,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "7520947068955373742",
+   "toolToSpawn": null,
+   "name": {
+    "term": "Item/shopitem/gadget_camera",
+    "en": "Camera",
+    "pt-BR": "Câmera"
+   },
+   "desc": {
+    "term": "Item/shopitem/gadget_camera_desc",
+    "en": "Take pictures of your favorite moments in the manor",
+    "pt-BR": "Tire fotos dos seus momentos favoritos na mansão."
+   }
+  },
+  {
+   "m_Name": "Data-ShopFurnitureItem_Mirror",
+   "uid": -380059950,
+   "alias": "fur_mirror",
+   "category": 2,
+   "categoryName": "Furniture",
+   "minQuantity": 0,
+   "basePrice": 750,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "pathId": "8566627525349017152",
+   "furniture": 3,
+   "furnitureName": "MIRROR",
+   "name": {
+    "term": "Item/shopitem/furniture_mirror",
+    "en": "Mirror",
+    "pt-BR": "Espelho"
+   },
+   "desc": {
+    "term": "Item/shopitem/furniture_mirror_desc",
+    "en": "Unlocks the mirror in the Game Room",
+    "pt-BR": "Desbloqueia o espelho no Salão de Jogos."
+   }
+  },
+  {
+   "m_Name": "Data-ShopUpgradeItem_Health",
+   "uid": 155320950,
+   "alias": "up_health",
+   "category": 1,
+   "categoryName": "Upgrade",
+   "minQuantity": 1,
+   "basePrice": 200,
+   "inflation": {
+    "boughtCountInflationOverride": 0,
+    "roundInflation": 0,
+    "growth": 0.0,
+    "curve": 1.0,
+    "maxInflationRound": 0
+   },
+   "bundle": "82a91bf2fa5789af90d97531e000f6c4.bundle",
+   "pathId": "-2260406829653036193",
+   "upgradePathId": "733256933367933113",
+   "upgradeAsset": "CharacterUpgrade_MaxHealth",
+   "name": {
+    "term": "Item/shopitem/upgrade_health",
+    "en": "Health Upgrade",
+    "pt-BR": "Melhoria de Vida"
+   },
+   "desc": {
+    "term": "Item/shopitem/upgrade_health_desc",
+    "en": "Gives a permanent maximum HP bonus.\nStackable {0} times.",
+    "pt-BR": "Concede um bônus permanente de PV máximo.\nPode acumular {0} vezes."
+   }
+  }
+ ],
+ "shopManagerLists": {
+  "_upgradeItemsData": [
+   "Data-ShopUpgradeItem_Health",
+   "Data-ShopUpgradeItem_Speed",
+   "Data-ShopUpgradeItem_Stamina",
+   "Data-ShopUpgradeItem_InventorySlot"
+  ],
+  "_furnitureItemsData": [
+   "Data-ShopFurnitureItem_Radio",
+   "Data-ShopFurnitureItem_HidingCloset",
+   "Data-ShopFurnitureItem_Mirror",
+   "Data-ShopFurnitureItem_Disco",
+   "Data-ShopFurnitureItem_DiceBoxCube",
+   "Data-ShopFurnitureItem_DiceBoxFirework",
+   "Data-ShopFurnitureItem_OldClock"
+  ],
+  "_gadgetItemsData": [
+   "Data-ShopGadgetItem_Megaphone",
+   "Data-ShopGadgetItem_Guitar",
+   "Data-ShopGadgetItem_HunterGun",
+   "Data-ShopGadgetItem_MobRadar",
+   "Data-ShopGadgetItem_Screambox",
+   "Data-ShopGadgetItem_Flamethrower",
+   "Data-ShopGadgetItem_Compass",
+   "Data-ShopGadgetItem_PlayerSkull",
+   "Data-ShopGadgetItem_Camera",
+   "Data-ShopGadgetItem_XRayGoggles",
+   "Data-ShopGadgetItem_GameMasterMask"
+  ],
+  "_consumableItemsData": [
+   "Data-ShopConsumableItem_MilkBottle",
+   "Data-ShopConsumableItemData_Cloth_Blue",
+   "Data-ShopConsumableItemData_Cloth_DarkBlue",
+   "Data-ShopConsumableItemData_Cloth_Green",
+   "Data-ShopConsumableItemData_Cloth_Pink",
+   "Data-ShopConsumableItemData_Cloth_Purple",
+   "Data-ShopConsumableItemData_Cloth_Red",
+   "Data-ShopConsumableItemData_Cloth_White",
+   "Data-ShopConsumableItemData_Cloth_Yellow",
+   "Data-ShopConsumableItemData_Cloth_Gold"
+  ]
+ },
+ "gameRoomSkins": [
+  {
+   "index": 0,
+   "m_Name": "GameRoomSkin_Default",
+   "uid": 739025691,
+   "basePrice": 0,
+   "includeInRandomSelection": false,
+   "bundle": "fa3ac8e2e2e392905a354c0d7f75526e.bundle",
+   "pathId": "7934205767370016635"
+  },
+  {
+   "index": 1,
+   "m_Name": "GameRoomSkin_Blue",
+   "uid": -1254331890,
+   "basePrice": 200,
+   "includeInRandomSelection": true,
+   "bundle": "efc236f86c5b65a8b8684b0834cde212.bundle",
+   "pathId": "5657947877898884020"
+  },
+  {
+   "index": 2,
+   "m_Name": "GameRoomSkin_Red",
+   "uid": 937885033,
+   "basePrice": 200,
+   "includeInRandomSelection": true,
+   "bundle": "b243743bdbbbc74eb8ce5ab4c490e171.bundle",
+   "pathId": "1032295994512205808"
+  },
+  {
+   "index": 3,
+   "m_Name": "GameRoomSkin_Vegetation",
+   "uid": 1138503737,
+   "basePrice": 200,
+   "includeInRandomSelection": true,
+   "bundle": "4823a92347eb1238e2544d1eab86ba97.bundle",
+   "pathId": "6351720935392381151"
+  },
+  {
+   "index": 4,
+   "m_Name": "GameRoomSkin_White_Yellow",
+   "uid": -157839821,
+   "basePrice": 200,
+   "includeInRandomSelection": true,
+   "bundle": "2190a02112661cb960dc914dc0efc34a.bundle",
+   "pathId": "-6475585573255401031"
+  },
+  {
+   "index": 5,
+   "m_Name": "GameRoomSkin_Yellow_Stone",
+   "uid": -1688765505,
+   "basePrice": 200,
+   "includeInRandomSelection": true,
+   "bundle": "3f9b19190f0e3ff307eb9214a3be7465.bundle",
+   "pathId": "7094009233062004836"
+  }
+ ],
+ "characterUpgrades": [
+  {
+   "m_Name": "CharacterUpgrade_MaxHealth",
+   "uid": 1,
+   "alias": "up_health",
+   "bundle": "5ce80e2d3ab0843eb2e31d3ff9073bcc.bundle",
+   "pathId": "733256933367933113",
+   "_healthBonuses": [
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160
+   ]
+  },
+  {
+   "m_Name": "CharacterUpgrade_MaxStamina",
+   "uid": 2,
+   "alias": "up_stamina",
+   "bundle": "246b39c5c8bac7c3e5d0e5b2676da054.bundle",
+   "pathId": "-4127257368061843783",
+   "_staminaBonuses": [
+    15.0,
+    30.0,
+    45.0,
+    60.0,
+    75.0,
+    90.0,
+    105.0
+   ]
+  },
+  {
+   "m_Name": "CharacterUpgrade_RunSpeed",
+   "uid": 3,
+   "alias": "up_speed",
+   "bundle": "e30faa699b4a7aa2f3a47d7d3654a1d0.bundle",
+   "pathId": "316593029477531000",
+   "_speedBonuses": [
+    0.06499999761581421,
+    0.12999999523162842,
+    0.19499999284744263,
+    0.25999999046325684,
+    0.32499998807907104
+   ]
+  },
+  {
+   "m_Name": "CharacterUpgrade_DoubleJump",
+   "uid": 5,
+   "alias": "up_doublejump",
+   "bundle": "09e5f0496cfeb16860890a30afc7eef1.bundle",
+   "pathId": "3063415114938581681"
+  },
+  {
+   "m_Name": "CharacterUpgrade_InventorySlot",
+   "uid": 6,
+   "alias": "up_inventory",
+   "bundle": "2e6ee50abbd3a8a1764babaa519aa753.bundle",
+   "pathId": "-6105921925042694071",
+   "_maxBonusSlot": 2
+  }
+ ],
+ "characterConsumables": [
+  {
+   "m_Name": "Green_ChangeCloth_CharacterConsumable",
+   "uid": 4,
+   "alias": "",
+   "color": 3
+  },
+  {
+   "m_Name": "Blue_ChangeCloth_CharacterConsumable",
+   "uid": 2,
+   "alias": "",
+   "color": 2
+  },
+  {
+   "m_Name": "CharacterConsumable_FullHeal",
+   "uid": 1,
+   "alias": "c_fullheal",
+   "color": null
+  },
+  {
+   "m_Name": "Yellow_ChangeCloth_CharacterConsumable",
+   "uid": 9,
+   "alias": "",
+   "color": 4
+  },
+  {
+   "m_Name": "Red_ChangeCloth_CharacterConsumable",
+   "uid": 7,
+   "alias": "",
+   "color": 5
+  },
+  {
+   "m_Name": "Pink_ChangeCloth_CharacterConsumable",
+   "uid": 5,
+   "alias": "",
+   "color": 6
+  },
+  {
+   "m_Name": "Gold_ChangeCloth_CharacterConsumable",
+   "uid": 11,
+   "alias": "",
+   "color": 8
+  },
+  {
+   "m_Name": "White_ChangeCloth_CharacterConsumable",
+   "uid": 8,
+   "alias": "",
+   "color": 7
+  },
+  {
+   "m_Name": "DarkBlue_ChangeCloth_CharacterConsumable",
+   "uid": 3,
+   "alias": "",
+   "color": 1
+  },
+  {
+   "m_Name": "Purple_ChangeCloth_CharacterConsumable",
+   "uid": 6,
+   "alias": "",
+   "color": 0
+  }
+ ],
+ "houseRules": [
+  {
+   "m_Name": "HR_AshesToAshes",
+   "debugName": "ashes",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 3,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/ashes_to_ashes",
+    "en": "Ashes to Ashes",
+    "pt-BR": "Das Cinzas ao Pó"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/ashes_to_ashes",
+    "en": "Play in the Ash Biome",
+    "pt-BR": "Transforma todos os biomas no bioma de cinzas."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-4061922264940254017"
+  },
+  {
+   "m_Name": "HR_BlizzardResume",
+   "debugName": "blizzard",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/resume_blizzard",
+    "en": "Volatile Blizzard",
+    "pt-BR": "Nevasca Volátil"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/resume_blizzard",
+    "en": "A blizzard can appear at any moment",
+    "pt-BR": "Uma nevasca pode surgir a qualquer momento."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5353772593386189447"
+  },
+  {
+   "m_Name": "HR_BrokenMirrors",
+   "debugName": "brokenmirror",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/broken_mirror",
+    "en": "Broken Mirror",
+    "pt-BR": "Espelho Quebrado"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/broken_mirror",
+    "en": "All mirrors are broken",
+    "pt-BR": "Todos os espelhos se quebram."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5859516216786262074"
+  },
+  {
+   "m_Name": "HR_CrossoverResume",
+   "debugName": "cross",
+   "ruleDifficulty": 5,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/crossover_resume",
+    "en": "Stubborn Monsters",
+    "pt-BR": "Monstros Obstinados"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/crossover_resume",
+    "en": "A monster from another board can invite itself any moment",
+    "pt-BR": "Um monstro de outro tabuleiro pode se convidar a qualquer momento."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "2095680304699988625"
+  },
+  {
+   "m_Name": "HR_Curse_Alt_LightsOut",
+   "debugName": "ralt_dk",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/alteration_darkness",
+    "en": "Darkness",
+    "pt-BR": "Escuridão"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/alteration_darkness",
+    "en": "Players cannot use their flashlight.",
+    "pt-BR": "Os jogadores não podem usar a lanterna."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-3992514505035589417"
+  },
+  {
+   "m_Name": "HR_Curse_Alt_NearDeath",
+   "debugName": "ralt_nd",
+   "ruleDifficulty": 3,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/alteration_neardeath",
+    "en": "Near Death",
+    "pt-BR": "Morte Iminente"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/alteration_neardeath",
+    "en": "Max HP is set to 20",
+    "pt-BR": "O PV máximo é 20."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "6485504011321744002"
+  },
+  {
+   "m_Name": "HR_Curse_Alt_ReducedHealing",
+   "debugName": "ralt_rh",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/alteration_reduced_heal",
+    "en": "Reduced Healing",
+    "pt-BR": "Cura Reduzida"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/alteration_reduced_heal",
+    "en": "Healing on living players is reduced by {i}%",
+    "pt-BR": "A cura recebida por jogadores vivos é reduzida em {i}%"
+   },
+   "bundle": "86558b2206b67771b85a61a0bdeb6d16.bundle",
+   "pathId": "-7258033791836990504"
+  },
+  {
+   "m_Name": "HR_Curse_Alt_SharedLife",
+   "debugName": "ralt_sh",
+   "ruleDifficulty": 4,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/alteration_sharedlife",
+    "en": "Shared Life",
+    "pt-BR": "Vida Compartilhada"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/alteration_sharedlife",
+    "en": "Damage and healing received by one player are also split among the other alive players.",
+    "pt-BR": "A cura e o dano recebido por alguém são divididos entre as outras pessoas vivas."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "1994657656783086495"
+  },
+  {
+   "m_Name": "HR_Curse_Alt_VanishingMonsters",
+   "debugName": "vanish",
+   "ruleDifficulty": 4,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/alteration_vanishing",
+    "en": "Invisible Monsters",
+    "pt-BR": "Monstros Invisíveis"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/alteration_vanishing",
+    "en": "Monsters won't be visible before it's too late",
+    "pt-BR": "Os monstros não ficarão visíveis até ser tarde demais."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-6688944323316192776"
+  },
+  {
+   "m_Name": "HR_Curse_LinkedDestinies",
+   "debugName": "linked",
+   "ruleDifficulty": 3,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/linked_destinies",
+    "en": "Linked Destinies",
+    "pt-BR": "Destinos Conectados"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/linked_destinies",
+    "en": "Players are linked by a rope as pairs",
+    "pt-BR": "Uma corda une as pessoas em pares."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-6797026954924098725"
+  },
+  {
+   "m_Name": "HR_Kidnapping",
+   "debugName": "kidnapping",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/kidnapping",
+    "en": "Kidnapping",
+    "pt-BR": "Sequestro"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/kidnapping",
+    "en": "The last player to roll may be teleported randomly.",
+    "pt-BR": "O último jogador que rolar o dado pode ser teleportado aleatoriamente."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "5447316903628462402"
+  },
+  {
+   "m_Name": "HR_MonsterDamage",
+   "debugName": "mdmg",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_damage",
+    "missing": true
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_damage",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "8093461138186641149"
+  },
+  {
+   "m_Name": "HR_MonsterHealth",
+   "debugName": "mhp",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_health",
+    "missing": true
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_health",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-5934188562455162140"
+  },
+  {
+   "m_Name": "HR_MonsterSpeed",
+   "debugName": "mspeed",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_speed",
+    "missing": true
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_speed",
+    "missing": true
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-7366365625393448030"
+  },
+  {
+   "m_Name": "HR_MysteryBoard",
+   "debugName": "mystery",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/mystery_board",
+    "en": "Mystery Board",
+    "pt-BR": "Tabuleiro Misterioso"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/mystery_board",
+    "en": "Board theme is mysterious",
+    "pt-BR": "O tema do tabuleiro é um mistério."
+   },
+   "bundle": "9a4815cec8067e9ae48ab15cdf5d4be9.bundle",
+   "pathId": "-8134183048027037468"
+  },
+  {
+   "m_Name": "HR_NoBlessing",
+   "debugName": "noblessing",
+   "ruleDifficulty": 4,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/no_blessing",
+    "en": "No Blessing",
+    "pt-BR": "Sem Bênçãos"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/no_blessing",
+    "en": "Blessed faces are removed",
+    "pt-BR": "As faces abençoadas são removidas."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-2660635420153654459"
+  },
+  {
+   "m_Name": "HR_PoisonResume",
+   "debugName": "poison",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/resume_poison",
+    "en": "Volatile Poison",
+    "pt-BR": "Veneno Volátil"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/resume_poison",
+    "en": "A poison fog can appear at any moment",
+    "pt-BR": "Uma neblina venenosa pode surgir a qualquer momento."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "6764839283422265460"
+  },
+  {
+   "m_Name": "HR_Possession",
+   "debugName": "curseddeath",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/cursed_death",
+    "en": "Cursed Death",
+    "pt-BR": "Morte Amaldiçoada"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/cursed_death",
+    "en": "A cursed player appears where a player dies",
+    "pt-BR": "Uma pessoa amaldiçoada aparece onde um jogador morreu."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "8529830541623746926"
+  },
+  {
+   "m_Name": "HR_SecretEvents",
+   "debugName": "rsecret",
+   "ruleDifficulty": 2,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/secret_events",
+    "en": "Secret dangers",
+    "pt-BR": "Perigos secretos"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/secret_events",
+    "en": "The letters in board riddles are scrambled.",
+    "pt-BR": "As letras das charadas do tabuleiro ficam embaralhadas."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "-988244669754490117"
+  },
+  {
+   "m_Name": "HR_Statue_Alpinist",
+   "debugName": "statue_alpinist",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 0,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "06baa178a2d32d6efe78807f47a2988d.bundle",
+   "pathId": "-8069316928443190327"
+  },
+  {
+   "m_Name": "HR_Statue_BeeSwarm",
+   "debugName": "statue_beeswarm",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 1,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "f5494e57da62c4b6a7b01bd9a6b75939.bundle",
+   "pathId": "7041851692039421007"
+  },
+  {
+   "m_Name": "HR_Statue_Crocodile",
+   "debugName": "statue_crocodile",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 2,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "277638cda31469b5e310e85d6d7fa8bc.bundle",
+   "pathId": "-3642963852064794165"
+  },
+  {
+   "m_Name": "HR_Statue_CursedPlayer",
+   "debugName": "statue_cursedplayer",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 3,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "fbd856b63f4ee8ef9c958a317e9e7a6c.bundle",
+   "pathId": "4573811093775608244"
+  },
+  {
+   "m_Name": "HR_Statue_DoorMonster",
+   "debugName": "statue_doormonster",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 4,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "167c1bb88189158c6dd2fbf4fc2dc0c0.bundle",
+   "pathId": "5544126602279637434"
+  },
+  {
+   "m_Name": "HR_Statue_Horseman",
+   "debugName": "statue_horseman",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 5,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "3ad6cf2de1f161935ac60f367b55cf4e.bundle",
+   "pathId": "8323223240105913734"
+  },
+  {
+   "m_Name": "HR_Statue_Hunter",
+   "debugName": "statue_hunter",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 6,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "e705a7d457d034cc6e7a95618ca089e9.bundle",
+   "pathId": "2175291130650126429"
+  },
+  {
+   "m_Name": "HR_Statue_Mimic",
+   "debugName": "statue_mimic",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 7,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "5140778192d3b1eca11737901668d2c1.bundle",
+   "pathId": "-681149296214667834"
+  },
+  {
+   "m_Name": "HR_Statue_MoneyGuy",
+   "debugName": "statue_moneyguy",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 8,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "9d105271ff5ba0003120e732da66bae1.bundle",
+   "pathId": "-2381791607790452065"
+  },
+  {
+   "m_Name": "HR_Statue_Penguin",
+   "debugName": "statue_penguin",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 9,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "ee654089be2087da51344534324a702a.bundle",
+   "pathId": "3239678496059320245"
+  },
+  {
+   "m_Name": "HR_Statue_Pharaoh",
+   "debugName": "statue_pharaoh",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 10,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "ad8b4286dff6e03b0cc1501efcaa179a.bundle",
+   "pathId": "6058920262527291987"
+  },
+  {
+   "m_Name": "HR_Statue_SandWorm",
+   "debugName": "statue_sandworm",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 11,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "4420905ad742a6068a8bd8f02345868d.bundle",
+   "pathId": "6844463075245616997"
+  },
+  {
+   "m_Name": "HR_Statue_Snowman",
+   "debugName": "statue_snowman",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 12,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "a6372b8b10058aff2fb34d20492cc302.bundle",
+   "pathId": "6519495784952518207"
+  },
+  {
+   "m_Name": "HR_Statue_Spider",
+   "debugName": "statue_spider",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 13,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "3fedc122dfff002f0a2cfe4217d497c9.bundle",
+   "pathId": "1625215459881068752"
+  },
+  {
+   "m_Name": "HR_Statue_TVGhost",
+   "debugName": "statue_tvghost",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 16,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "24b4d60239149795dd092000964c2441.bundle",
+   "pathId": "-8527666673651870743"
+  },
+  {
+   "m_Name": "HR_Statue_WeepingAngel",
+   "debugName": "statue_weepingangel",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 14,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "e294285d99b646d1083df64c389d083c.bundle",
+   "pathId": "-5812346671988133361"
+  },
+  {
+   "m_Name": "HR_Statue_Yeti",
+   "debugName": "statue_yeti",
+   "ruleDifficulty": 1,
+   "minEndlessRank": 0,
+   "monster": 15,
+   "name": {
+    "term": "HouseRules/houserules/name/monster_statue",
+    "en": "{[MONSTER]} might appear",
+    "pt-BR": "{[MONSTER]} pode aparecer"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/monster_statue",
+    "en": "{[MONSTER]} can invite itself any moment",
+    "pt-BR": "{[MONSTER]} pode se convidar a qualquer momento"
+   },
+   "bundle": "b90c3bc34fe858c73b6ea64ca7032c42.bundle",
+   "pathId": "-7095082912818289634"
+  },
+  {
+   "m_Name": "HR_TwinMonsters",
+   "debugName": "twinmobs",
+   "ruleDifficulty": 5,
+   "minEndlessRank": 0,
+   "monster": null,
+   "name": {
+    "term": "HouseRules/houserules/name/twin_monsters",
+    "en": "Twin Monsters",
+    "pt-BR": "Monstros Gêmeos"
+   },
+   "desc": {
+    "term": "HouseRules/houserules/desc/twin_monsters",
+    "en": "The first danger spawns twice as many monsters.",
+    "pt-BR": "No primeiro perigo, aparece o dobro de monstros."
+   },
+   "bundle": "c57d07b7131b31359a78a7f9503aecad.bundle",
+   "pathId": "1040684081866861088"
+  }
+ ],
+ "monsterNames": {
+  "plant": {
+   "en": "Plant",
+   "pt-BR": "Planta"
+  },
+  "horsemen": {
+   "en": "Horseman",
+   "pt-BR": "Cavaleiro"
+  },
+  "yeti": {
+   "en": "Yeti",
+   "pt-BR": "Iéti"
+  },
+  "croco": {
+   "en": "Crocodile",
+   "pt-BR": "Crocodilo"
+  },
+  "hunter": {
+   "en": "Hunter",
+   "pt-BR": "Caçador"
+  },
+  "ultimate": {
+   "en": "Ultimate",
+   "pt-BR": "Edição Definitiva"
+  },
+  "all": {
+   "en": "All",
+   "pt-BR": "Tudo"
+  },
+  "weeping": {
+   "en": "Mannequin",
+   "pt-BR": "Manequim"
+  },
+  "cursedplayer": {
+   "en": "Cursed Player",
+   "pt-BR": "Pessoa Amaldiçoada"
+  },
+  "penguin": {
+   "en": "Penguin",
+   "pt-BR": "Pinguim"
+  },
+  "moneyguy": {
+   "en": "Money Man",
+   "pt-BR": "Abonado"
+  },
+  "snowman": {
+   "en": "Snowman",
+   "pt-BR": "Boneco de Neve"
+  },
+  "alpinist": {
+   "en": "Climber",
+   "pt-BR": "Alpinista"
+  },
+  "pharaoh": {
+   "en": "Pharaoh",
+   "pt-BR": "Faraó"
+  },
+  "sandworm": {
+   "en": "Sand Worm",
+   "pt-BR": "Minhoca"
+  },
+  "tvghost": {
+   "en": "TV Ghost",
+   "pt-BR": "Fantasma da TV"
+  },
+  "doormonster": {
+   "en": "Door Monster",
+   "pt-BR": "Monstro-porta"
+  },
+  "spider": {
+   "en": "Spider",
+   "pt-BR": "Aranha"
+  },
+  "Bees": {
+   "en": "Bees",
+   "pt-BR": "Abelhas"
+  }
+ },
+ "biomeTerms": {},
+ "keyDoors": [
+  {
+   "keyName": 1,
+   "enum": "Henry",
+   "prefab": "PF_SimpleDoor_Vanilla_Green",
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "itemAlias": "k_henry",
+   "itemAsset": "SO-HenryKey"
+  },
+  {
+   "keyName": 2,
+   "enum": "Corridor",
+   "prefab": "Pf_ArcDoor_Vanilla_Green",
+   "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
+   "itemAlias": "k_corridor",
+   "itemAsset": "SO-CorridorKey"
+  }
+ ]
+}

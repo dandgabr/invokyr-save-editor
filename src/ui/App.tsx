@@ -195,7 +195,6 @@ export function App() {
       </header>
       {banner}
       <div className="tabs">
-        {/* biome-ignore lint/a11y/useSemanticElements: padrão APG de abas (tablist com roving tabindex) */}
         <div role="tablist" aria-label="Seções do save" onKeyDown={onTabKey}>
           {SCREENS.map((s) => (
             <button
