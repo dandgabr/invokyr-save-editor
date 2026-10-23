@@ -1,0 +1,71 @@
+name: Bug report
+description: Report reproducible behavior that appears to be incorrect.
+title: "[Unexpected behavior]: "
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Search existing issues first. **Do not attach your real `.sav` file or
+        paste its contents**: it contains the Steam IDs of other players. Describe
+        the problem, or use a synthetic save (see `tests/fixtures/template.json`).
+        Remove credentials, tokens and personal data from any logs.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the behavior that appears to be incorrect.
+      placeholder: A concise description of the bug
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where does the problem happen?
+      options:
+        - Opening or saving a file
+        - Save corrupted or rejected by the game
+        - Session & Heroes
+        - Status & Upgrades
+        - Inventories & Items / item catalog
+        - Hub & Furniture
+        - Trophies & Collection
+        - Trainer Presets
+        - Undo / redo or change review
+        - Accessibility or layout
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide the smallest sequence that reproduces the behavior.
+      placeholder: |-
+        1. Open a save.
+        2. Edit a field.
+        3. Check the result.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead? If the game rejected or misread the save, say what you saw in game. Include redacted error text when useful.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include the browser and version, operating system, how you opened the file (file picker, folder picker, drag and drop), whether Steam runs through Proton, and the Invokyr build (Steam build ID). Write "Not applicable" for details that do not apply.
+      placeholder: Browser / OS / how the file was opened / Invokyr build ID
+    validations:
+      required: true
