@@ -4,6 +4,16 @@
   "version": "0.1.0",
   "type": "module",
   "description": "Editor web (100% client-side) de saves do Invokyr. Não afiliado à Ludogram.",
+  "license": "MIT",
+  "author": "Daniel Gonçalves Araujo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dandgabr/invokyr-save-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dandgabr/invokyr-save-editor/issues"
+  },
+  "homepage": "https://dan.seg.br/invokyr-save-editor/",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

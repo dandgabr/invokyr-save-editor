@@ -43,6 +43,14 @@ node scripts/gen-catalog.mjs   # regera o catálogo de itens a partir de docs/sc
 
 Estrutura: `src/codec` (MessagePack e ZIP sem perdas), `src/schema` (enums, tipos e validação), `src/state` (documento, ações, undo/redo), `src/catalog`, `src/platform` (SO e arquivos), `src/ui`. O plano e as decisões estão em [`docs/PLAN.md`](docs/PLAN.md); o design das telas em [`docs/design/`](docs/design/). `docs/legacy/` guarda a documentação herdada, não verificada.
 
+## Licença e créditos
+
+Código sob a [licença MIT](LICENSE). **Invokyr** e os nomes, textos e itens do jogo pertencem à Ludogram; este projeto de fã não é afiliado nem endossado por ela e não distribui arquivos do jogo. Os dados do catálogo são fatos extraídos do jogo instalado para permitir a edição do save.
+
+## Contribuindo e relatando problemas
+
+Use os formulários de [bug](https://github.com/dandgabr/invokyr-save-editor/issues/new?template=bug_report.yml) e de [funcionalidade](https://github.com/dandgabr/invokyr-save-editor/issues/new?template=feature_request.yml). **Não anexe o seu `.sav` real** (contém SteamIDs de outros jogadores). Vulnerabilidades: veja [`SECURITY.md`](SECURITY.md).
+
 ## Dependências e segurança
 
 Sempre a versão mais recente de cada dependência e **zero vulnerabilidades conhecidas** (`npm audit` no CI; sem regras de ignore no Dependabot). Ações do GitHub fixadas por SHA. Relato de vulnerabilidades: veja [`SECURITY.md`](SECURITY.md). Os `.sav` estão no `.gitignore`, pois contêm SteamID64 de outros jogadores.
