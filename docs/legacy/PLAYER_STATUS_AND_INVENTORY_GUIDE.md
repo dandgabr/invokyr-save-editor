@@ -1,3 +1,5 @@
+> **Documento herdado, NÃO VERIFICADO.** Foi corrigido pela análise do jogo em [`docs/SCHEMA_VERIFIED.md`](../SCHEMA_VERIFIED.md) (build 26154962). Em caso de divergência, vale o SCHEMA_VERIFIED.
+
 # Guia de Mecânicas de Status, Sessão Multi-Jogador, Itens e Tabuleiros (Invokyr)
 
 ## 1. Arquitetura de Status do Jogador

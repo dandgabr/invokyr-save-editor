@@ -1,3 +1,5 @@
+> **Documento herdado, NÃO VERIFICADO.** Foi corrigido pela análise do jogo em [`docs/SCHEMA_VERIFIED.md`](../SCHEMA_VERIFIED.md) (build 26154962). Em caso de divergência, vale o SCHEMA_VERIFIED.
+
 # Guia de Segredos do Lobby, Destrancamento de Portas, Mobílias e Troféus (Invokyr)
 
 ## 1. Portas Trancadas do Lobby e Sistema de Chaves
