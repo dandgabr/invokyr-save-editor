@@ -13,7 +13,12 @@
   --btn-wax-bg: #2b1212;
   --btn-wax-border: #7a1e1e;
   --btn-wax-text: #f87171;
-  --font-heading: 'Cinzel', 'Georgia', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: "Cinzel", "Georgia", serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
-body { margin: 0; background: var(--bg-canvas); color: var(--text-parchment); font-family: var(--font-body); }
+body {
+  margin: 0;
+  background: var(--bg-canvas);
+  color: var(--text-parchment);
+  font-family: var(--font-body);
+}

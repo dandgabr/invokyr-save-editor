@@ -9,13 +9,19 @@ describe('detectOs', () => {
     expect(detectOs({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' })).toBe('windows');
   });
   it('reconhece Linux', () => {
-    expect(detectOs({ userAgent: 'Mozilla/5.0 (X11; Linux x86_64)', platform: 'Linux x86_64' })).toBe('linux');
+    expect(detectOs({ userAgent: 'Mozilla/5.0 (X11; Linux x86_64)', platform: 'Linux x86_64' })).toBe(
+      'linux',
+    );
   });
   it('reconhece Steam Deck antes de Linux', () => {
-    expect(detectOs({ userAgent: 'Mozilla/5.0 (X11; Linux x86_64; SteamOS) Chrome', platform: 'Linux x86_64' })).toBe('steamdeck');
+    expect(
+      detectOs({ userAgent: 'Mozilla/5.0 (X11; Linux x86_64; SteamOS) Chrome', platform: 'Linux x86_64' }),
+    ).toBe('steamdeck');
   });
   it('reconhece macOS', () => {
-    expect(detectOs({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', platform: 'MacIntel' })).toBe('macos');
+    expect(
+      detectOs({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', platform: 'MacIntel' }),
+    ).toBe('macos');
   });
   it('cai em unknown', () => {
     expect(detectOs({})).toBe('unknown');
