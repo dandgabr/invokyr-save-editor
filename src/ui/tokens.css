@@ -14,7 +14,7 @@
   --btn-wax-border: #7a1e1e;
   --btn-wax-text: #f87171;
   --font-heading: "Cinzel", "Georgia", serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
 }
 body {
   margin: 0;
