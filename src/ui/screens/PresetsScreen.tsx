@@ -1,35 +1,39 @@
 import { useState } from 'react';
+import { useLocale, useText } from '../../i18n';
 import type { SaveValues } from '../../schema/types';
 import * as A from '../../state/actions';
 import { useAnnounce } from '../announce';
 import { useEdit, useValues } from '../hooks';
 
-const fmt = (n: number) => n.toLocaleString('pt-BR');
-
 export function PresetsScreen() {
+  const t = useText();
+  const { locale } = useLocale();
+  const fmt = (n: number) => n.toLocaleString(locale);
   const v = useValues();
   const edit = useEdit();
   const bank = v.save.bank.currentTotalScore;
   const say = useAnnounce((x) => x.say);
   const [text, setText] = useState(String(bank));
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<'negative' | 'integer' | 'max' | null>(null);
   const [synced, setSynced] = useState(bank);
   if (bank !== synced) {
     setSynced(bank);
     setText(String(bank));
   }
   const commit = () => {
-    const raw = text.replace(/[.\s]/g, '');
-    if (raw.startsWith('-')) {
-      setError('O saldo não pode ser menor que zero.');
+    const input = text.trim();
+    if (input.startsWith('-')) {
+      setError('negative');
       return;
     }
+    const validGrouping = /^\d{1,3}(?:[.,\s]\d{3})+$/.test(input);
+    const raw = validGrouping ? input.replace(/[.,\s]/g, '') : input;
     if (!/^\d+$/.test(raw)) {
-      setError('Informe apenas números inteiros, sem sinal.');
+      setError('integer');
       return;
     }
     if (BigInt(raw) > BigInt(A.MAX_BANK)) {
-      setError(`O saldo máximo permitido é ${A.MAX_BANK}.`);
+      setError('max');
       return;
     }
     const n = Number(raw);
@@ -41,19 +45,31 @@ export function PresetsScreen() {
   };
   /** Executa um preset e anuncia o resultado. */
   const run = (name: string, fn: (d: SaveValues) => void) =>
-    say(edit(fn) ? `${name}: alterações aplicadas.` : `${name}: nada a alterar.`);
+    say(
+      edit(fn)
+        ? `${name}: ${t('changes applied.', 'alterações aplicadas.', 'cambios aplicados.')}`
+        : `${name}: ${t('nothing to change.', 'nada a alterar.', 'nada que cambiar.')}`,
+    );
 
   return (
     <>
       <section className="panel">
         <header className="panel-head">
-          <h2>Cofre da biblioteca & fundo de pesquisa</h2>
-          <strong className="gold">{fmt(bank)} moedas</strong>
+          <h2>
+            {t(
+              'Library vault & research fund',
+              'Cofre da biblioteca & fundo de pesquisa',
+              'Bóveda de la biblioteca y fondo de investigación',
+            )}
+          </h2>
+          <strong className="gold">
+            {fmt(bank)} {t('coins', 'moedas', 'monedas')}
+          </strong>
         </header>
         <div className="actions">
           <div className="field">
             <label>
-              <span className="field-label">Saldo</span>
+              <span className="field-label">{t('Balance', 'Saldo', 'Saldo')}</span>
               <input
                 className="input"
                 inputMode="numeric"
@@ -70,7 +86,19 @@ export function PresetsScreen() {
             </label>
             {error && (
               <span id="bank-error" className="field-error" role="alert">
-                {error}
+                {error === 'negative'
+                  ? t(
+                      'The balance cannot be below zero.',
+                      'O saldo não pode ser menor que zero.',
+                      'El saldo no puede ser menor que cero.',
+                    )
+                  : error === 'integer'
+                    ? t(
+                        'Enter whole numbers only, without a sign.',
+                        'Informe apenas números inteiros, sem sinal.',
+                        'Ingresa solo números enteros, sin signo.',
+                      )
+                    : `${t('The maximum allowed balance is', 'O saldo máximo permitido é', 'El saldo máximo permitido es')} ${fmt(A.MAX_BANK)}.`}
               </span>
             )}
           </div>
@@ -79,86 +107,140 @@ export function PresetsScreen() {
             className="btn btn-brass"
             disabled={bank + 10000 > A.MAX_BANK}
             onClick={() =>
-              run('Saldo', (d) => {
+              run(t('Balance', 'Saldo', 'Saldo'), (d) => {
                 A.setBank(d, bank + 10000);
               })
             }
           >
-            +10.000
+            +{fmt(10000)}
           </button>
           <button
             type="button"
             className="btn btn-brass"
             disabled={bank + 50000 > A.MAX_BANK}
             onClick={() =>
-              run('Saldo', (d) => {
+              run(t('Balance', 'Saldo', 'Saldo'), (d) => {
                 A.setBank(d, bank + 50000);
               })
             }
           >
-            +50.000
+            +{fmt(50000)}
           </button>
           <button
             type="button"
             className="btn btn-green"
             onClick={() =>
-              run('Saldo', (d) => {
+              run(t('Balance', 'Saldo', 'Saldo'), (d) => {
                 A.setBank(d, 99999);
               })
             }
           >
-            Definir 99.999
+            {t('Set 99,999', 'Definir 99.999', 'Fijar 99.999')}
           </button>
         </div>
       </section>
 
       <section className="panel">
-        <h2>Tomos & decretos (ações instantâneas)</h2>
+        <h2>{t('Instant actions', 'Tomos & decretos', 'Acciones instantáneas')}</h2>
         <p className="muted">
-          As ações podem ser desfeitas (Ctrl+Z) e as mudanças aparecem na revisão antes de salvar.
+          {t(
+            'Actions can be undone (Ctrl+Z), and changes appear in the review before saving.',
+            'As ações podem ser desfeitas (Ctrl+Z) e as mudanças aparecem na revisão antes de salvar.',
+            'Las acciones se pueden deshacer (Ctrl+Z) y los cambios aparecen en la revisión antes de guardar.',
+          )}
         </p>
         <div className="grid grid-3">
           <article className="card card-gold">
-            <h3>Modo supremo (god mode)</h3>
+            <h3>{t('Ultimate mode', 'Modo supremo', 'Modo supremo')}</h3>
             <ul>
-              <li>99.999 moedas</li>
-              <li>Portas com chave destrancadas</li>
-              <li>8 mobílias desbloqueadas</li>
-              <li>Upgrades maximizados nos 8 heróis</li>
-              <li>17 figuras na sala de troféus</li>
-              <li>Lança-chamas e Arma de Caça na bancada</li>
+              <li>{t('99,999 coins', '99.999 moedas', '99.999 monedas')}</li>
+              <li>
+                {t('Key doors unlocked', 'Portas com chave destrancadas', 'Puertas con llave desbloqueadas')}
+              </li>
+              <li>
+                {t('8 furniture pieces unlocked', '8 mobílias desbloqueadas', '8 muebles desbloqueados')}
+              </li>
+              <li>
+                {t(
+                  'Upgrades maximized for 8 heroes',
+                  'Upgrades maximizados nos 8 heróis',
+                  'Mejoras maximizadas para los 8 héroes',
+                )}
+              </li>
+              <li>
+                {t(
+                  '17 figurines in the trophy room',
+                  '17 figuras na sala de troféus',
+                  '17 figuras en la sala de trofeos',
+                )}
+              </li>
+              <li>
+                {t(
+                  'Flamethrower and Hunter Gun on the bench',
+                  'Lança-chamas e Arma de Caça na bancada',
+                  'Lanzallamas y rifle de cazador en la mesa',
+                )}
+              </li>
             </ul>
-            <button type="button" className="btn btn-gold" onClick={() => run('Modo supremo', A.godMode)}>
-              Decretar modo supremo
+            <button
+              type="button"
+              className="btn btn-gold"
+              onClick={() => run(t('Ultimate mode', 'Modo supremo', 'Modo supremo'), A.godMode)}
+            >
+              {t('Apply ultimate mode', 'Decretar modo supremo', 'Aplicar modo supremo')}
             </button>
           </article>
           <article className="card card-wax">
-            <h3>Purificar expedição (resetar run)</h3>
+            <h3>{t('Reset expedition', 'Purificar expedição', 'Reiniciar expedición')}</h3>
             <ul>
-              <li>Define a rodada = 0</li>
-              <li>Esvazia os inventários da run</li>
-              <li>Preserva upgrades e mobílias</li>
+              <li>{t('Sets round to 0', 'Define a rodada = 0', 'Establece la ronda en 0')}</li>
+              <li>
+                {t(
+                  'Empties run inventories',
+                  'Esvazia os inventários da run',
+                  'Vacía los inventarios de la partida',
+                )}
+              </li>
+              <li>
+                {t(
+                  'Keeps upgrades and furniture',
+                  'Preserva upgrades e mobílias',
+                  'Conserva mejoras y muebles',
+                )}
+              </li>
             </ul>
             <button
               type="button"
               className="btn btn-wax"
-              onClick={() => run('Reiniciar expedição', A.resetRun)}
+              onClick={() =>
+                run(t('Reset expedition', 'Reiniciar expedição', 'Reiniciar expedición'), A.resetRun)
+              }
             >
-              Reiniciar expedição
+              {t('Reset expedition', 'Reiniciar expedição', 'Reiniciar expedición')}
             </button>
           </article>
           <article className="card card-green">
-            <h3>Destrancar todas as câmaras</h3>
+            <h3>
+              {t('Unlock all passages', 'Destrancar todas as câmaras', 'Desbloquear todos los pasajes')}
+            </h3>
             <ul>
-              <li>Abre as 2 portas com chave</li>
-              <li>Ativa todas as mobílias do hub</li>
+              <li>
+                {t('Opens the 2 key doors', 'Abre as 2 portas com chave', 'Abre las 2 puertas con llave')}
+              </li>
+              <li>
+                {t(
+                  'Activates all furniture in the hub',
+                  'Ativa todas as mobílias do hub',
+                  'Activa todos los muebles de la sala',
+                )}
+              </li>
             </ul>
             <button
               type="button"
               className="btn btn-green"
-              onClick={() => run('Abrir passagens', A.openAllPassages)}
+              onClick={() => run(t('Open passages', 'Abrir passagens', 'Abrir pasajes'), A.openAllPassages)}
             >
-              Abrir todas as passagens
+              {t('Open all passages', 'Abrir todas as passagens', 'Abrir todos los pasajes')}
             </button>
           </article>
         </div>

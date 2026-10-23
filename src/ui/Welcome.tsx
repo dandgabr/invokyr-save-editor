@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
+import { LanguageSelect, useLocale, useText } from '../i18n';
 import {
   canPickDirectory,
   canUseFsAccess,
@@ -11,14 +12,16 @@ import {
   readHandle,
   UserCancelled,
 } from '../platform/files';
-import { detectOs, saveLocationFor } from '../platform/os';
+import { detectOs, locationAlternatives, locationLabel, locationNote, saveLocationFor } from '../platform/os';
 
 interface Props {
   onOpen: (f: OpenedFile) => void;
-  onError: (message: string) => void;
+  onError: (kind: 'copy' | 'file', detail?: string) => void;
 }
 
 export function Welcome({ onOpen, onError }: Props) {
+  const t = useText();
+  const { locale } = useLocale();
   const os = useMemo(() => detectOs(navigator as unknown as Parameters<typeof detectOs>[0]), []);
   const loc = useMemo(() => saveLocationFor(os), [os]);
   const [copied, setCopied] = useState(false);
@@ -30,7 +33,7 @@ export function Welcome({ onOpen, onError }: Props) {
     try {
       await fn();
     } catch (e) {
-      if (!(e instanceof UserCancelled)) onError((e as Error).message);
+      if (!(e instanceof UserCancelled)) onError('file', (e as Error).message);
     }
   };
 
@@ -41,20 +44,34 @@ export function Welcome({ onOpen, onError }: Props) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      onError('Não foi possível copiar. Selecione o caminho e copie manualmente.');
+      onError('copy');
     }
   };
 
   return (
     <main className="welcome">
       <h1>Invokyr Archive Studio</h1>
+      <LanguageSelect />
       <p className="lede">
-        Edite o seu save do Invokyr direto no navegador. O arquivo é lido e gravado localmente e nunca é
-        enviado a nenhum servidor.
+        {t(
+          'Edit your Invokyr save in your browser. The file is read and written locally and is never sent to a server.',
+          'Edite o seu save do Invokyr direto no navegador. O arquivo é lido e gravado localmente e nunca é enviado a nenhum servidor.',
+          'Edita tu partida de Invokyr en el navegador. El archivo se lee y guarda localmente y nunca se envía a un servidor.',
+        )}
+      </p>
+      <p className="muted" data-testid="game-build">
+        {t(
+          'Based on Invokyr Steam build 26154962 (save v15). Compatibility with other builds is unverified.',
+          'Baseado na build Steam 26154962 do Invokyr (save v15). A compatibilidade com outras builds não foi verificada.',
+          'Basado en la build de Steam 26154962 de Invokyr (partida v15). No se verificó la compatibilidad con otras builds.',
+        )}
       </p>
 
       <section className="panel" aria-labelledby="where">
-        <h2 id="where">Onde fica o seu save ({loc.label})</h2>
+        <h2 id="where">
+          {t('Where to find your save', 'Onde fica o seu save', 'Dónde está tu partida')} (
+          {locationLabel(os, locale)})
+        </h2>
         {loc.path ? (
           <>
             <div className="pathrow">
@@ -62,14 +79,18 @@ export function Welcome({ onOpen, onError }: Props) {
                 {loc.path}
               </code>
               <button type="button" className="btn btn-brass" onClick={copy}>
-                {copied ? 'Copiado ✓' : 'Copiar caminho'}
+                {copied
+                  ? t('Copied ✓', 'Copiado ✓', 'Copiado ✓')
+                  : t('Copy path', 'Copiar caminho', 'Copiar ruta')}
               </button>
             </div>
             {loc.alternatives.length > 0 && (
               <details>
-                <summary>Outros locais possíveis</summary>
+                <summary>
+                  {t('Other possible locations', 'Outros locais possíveis', 'Otras ubicaciones posibles')}
+                </summary>
                 <ul>
-                  {loc.alternatives.map((a) => (
+                  {locationAlternatives(os, locale).map((a) => (
                     <li key={a}>
                       <code>{a}</code>
                     </li>
@@ -79,11 +100,11 @@ export function Welcome({ onOpen, onError }: Props) {
             )}
           </>
         ) : null}
-        <p className="muted">{loc.note}</p>
+        <p className="muted">{locationNote(os, locale)}</p>
       </section>
 
       <section className="panel" aria-labelledby="open">
-        <h2 id="open">Abrir save</h2>
+        <h2 id="open">{t('Open save', 'Abrir save', 'Abrir partida')}</h2>
         <div className="actions">
           <button
             type="button"
@@ -92,7 +113,7 @@ export function Welcome({ onOpen, onError }: Props) {
               canUseFsAccess() ? guard(async () => onOpen(await pickSaveFile())) : inputRef.current?.click()
             }
           >
-            Abrir arquivo .sav
+            {t('Open .sav file', 'Abrir arquivo .sav', 'Abrir archivo .sav')}
           </button>
           {canPickDirectory() && (
             <button
@@ -105,16 +126,24 @@ export function Welcome({ onOpen, onError }: Props) {
                 })
               }
             >
-              Abrir pasta de saves
+              {t('Open saves folder', 'Abrir pasta de saves', 'Abrir carpeta de partidas')}
             </button>
           )}
         </div>
 
         {dir && (
           <div className="savelist">
-            <h3>Saves em “{dir.handle.name}”</h3>
+            <h3>
+              {t('Saves in', 'Saves em', 'Partidas en')} “{dir.handle.name}”
+            </h3>
             {dir.files.length === 0 ? (
-              <p className="muted">Nenhum arquivo .sav nesta pasta.</p>
+              <p className="muted">
+                {t(
+                  'No .sav files in this folder.',
+                  'Nenhum arquivo .sav nesta pasta.',
+                  'No hay archivos .sav en esta carpeta.',
+                )}
+              </p>
             ) : (
               <ul>
                 {dir.files.map((f) => (
@@ -148,7 +177,11 @@ export function Welcome({ onOpen, onError }: Props) {
             if (f) guard(async () => onOpen(await readFromInput(f)));
           }}
         >
-          …ou arraste o arquivo .sav para cá
+          {t(
+            '…or drag the .sav file here',
+            '…ou arraste o arquivo .sav para cá',
+            '…o arrastra el archivo .sav aquí',
+          )}
         </div>
         <input
           ref={inputRef}
@@ -166,19 +199,36 @@ export function Welcome({ onOpen, onError }: Props) {
       </section>
 
       <section className="panel warn" aria-labelledby="care">
-        <h2 id="care">Antes de editar</h2>
+        <h2 id="care">{t('Before editing', 'Antes de editar', 'Antes de editar')}</h2>
         <ul>
-          <li>Feche o jogo. Ele regrava o save ao sair e pode desfazer a sua edição.</li>
           <li>
-            O Steam Cloud pode sobrescrever o arquivo com a versão da nuvem. Desative a sincronização do jogo
-            ou confira depois.
+            {t(
+              'Close the game. It writes the save on exit and may undo your changes.',
+              'Feche o jogo. Ele regrava o save ao sair e pode desfazer a sua edição.',
+              'Cierra el juego. Al salir vuelve a guardar la partida y puede deshacer tus cambios.',
+            )}
           </li>
           <li>
-            Ao gravar no próprio arquivo (Chrome ou Edge), um backup <code>.bak</code> é criado antes: ao lado
-            do save, se você abriu a pasta, ou baixado, se abriu só o arquivo. Nos outros navegadores, baixe o
-            backup do original na tela de salvar.
+            {t(
+              'Steam Cloud may overwrite the file with its cloud version. Disable syncing for the game or check afterward.',
+              'O Steam Cloud pode sobrescrever o arquivo com a versão da nuvem. Desative a sincronização do jogo ou confira depois.',
+              'Steam Cloud puede sobrescribir el archivo con la versión de la nube. Desactiva la sincronización del juego o revísalo después.',
+            )}
           </li>
-          <li>Projeto de fã, não afiliado à Ludogram. Use por sua conta e risco.</li>
+          <li>
+            {t(
+              'When saving in place (Chrome or Edge), a .bak backup is created first: beside the save if you opened its folder, or downloaded if you opened only the file. In other browsers, download the original backup in the save dialog.',
+              'Ao gravar no próprio arquivo (Chrome ou Edge), um backup .bak é criado antes: ao lado do save, se você abriu a pasta, ou baixado, se abriu só o arquivo. Nos outros navegadores, baixe o backup do original na tela de salvar.',
+              'Al guardar en el mismo archivo (Chrome o Edge), primero se crea una copia .bak: junto a la partida si abriste la carpeta, o descargada si abriste solo el archivo. En otros navegadores, descarga la copia original en el diálogo de guardado.',
+            )}
+          </li>
+          <li>
+            {t(
+              'Fan project, not affiliated with Ludogram. Use at your own risk.',
+              'Projeto de fã, não afiliado à Ludogram. Use por sua conta e risco.',
+              'Proyecto de fans no afiliado con Ludogram. Úsalo bajo tu responsabilidad.',
+            )}
+          </li>
         </ul>
       </section>
     </main>

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useLocale, useText } from '../../i18n';
+import { localizedName } from '../../i18n-labels';
 import { HERO_COUNT, HEROES, UPGRADES } from '../../schema/enums';
 import * as A from '../../state/actions';
 import { useEdit, useValues } from '../hooks';
@@ -31,6 +33,8 @@ const INFO: Record<number, { title: string; desc: string; tone: string }> = {
 };
 
 export function StatusScreen() {
+  const t = useText();
+  const { locale } = useLocale();
   const v = useValues();
   const edit = useEdit();
   const [hero, setHero] = useState(0);
@@ -40,8 +44,14 @@ export function StatusScreen() {
   return (
     <>
       <section className="panel">
-        <h2>Árvore de upgrades do herói: {heroDef?.label}</h2>
-        <div className="chips" role="group" aria-label="Escolha o herói">
+        <h2>
+          {t('Hero upgrades', 'Árvore de upgrades do herói', 'Mejoras del héroe')}: {heroDef?.label}
+        </h2>
+        <div
+          className="chips"
+          role="group"
+          aria-label={t('Choose a hero', 'Escolha o herói', 'Elige un héroe')}
+        >
           {HEROES.map((h) => (
             <button
               key={h.id}
@@ -54,7 +64,10 @@ export function StatusScreen() {
               {hasAny(h.id) && (
                 <>
                   <span aria-hidden="true"> ★</span>
-                  <span className="visually-hidden"> (com upgrades)</span>
+                  <span className="visually-hidden">
+                    {' '}
+                    ({t('with upgrades', 'com upgrades', 'con mejoras')})
+                  </span>
                 </>
               )}
             </button>
@@ -66,16 +79,17 @@ export function StatusScreen() {
             className="btn btn-green"
             onClick={() => edit((d) => A.maximizeHero(d, hero))}
           >
-            Maximizar apenas {heroDef?.label}
+            {t('Maximize only', 'Maximizar apenas', 'Maximizar solo a')} {heroDef?.label}
           </button>
           <button type="button" className="btn btn-brass" onClick={() => edit((d) => A.maximizeAllHeroes(d))}>
-            Maximizar upgrades dos {HERO_COUNT} heróis
+            {t('Maximize upgrades for all', 'Maximizar upgrades dos', 'Maximizar mejoras de los')}{' '}
+            {HERO_COUNT} {t('heroes', 'heróis', 'héroes')}
           </button>
         </div>
       </section>
 
       <section className="panel">
-        <h2>Atributos de meta-progressão (níveis comprados)</h2>
+        <h2>{t('Purchased hero upgrades', 'Atributos de meta-progressão', 'Mejoras compradas del héroe')}</h2>
         {UPGRADES.filter((u) => u.key !== 'DoubleJump').map((u) => {
           const info = INFO[u.uid];
           const level = A.getUpgradeLevel(v, hero, u.uid);
@@ -85,19 +99,20 @@ export function StatusScreen() {
             <div key={u.uid} className={`upgrade tone-${info?.tone ?? 'amber'}`}>
               <div className="upgrade-head">
                 <div>
-                  <h3>{info?.title ?? u.label}</h3>
-                  <p className="muted">{info?.desc}</p>
+                  <h3>{localizedName(info?.title ?? u.label, locale)}</h3>
+                  <p className="muted">{localizedName(info?.desc ?? '', locale)}</p>
                 </div>
                 <span className="badge">
-                  Nível {level} de {u.maxLevel}
-                  {u.uid === 1 && level > 0 ? ` (+${HEALTH_BONUS[level - 1]} PV)` : ''} | Máx: {u.maxLevel}x
+                  {t('Level', 'Nível', 'Nivel')} {level} {t('of', 'de', 'de')} {u.maxLevel}
+                  {u.uid === 1 && level > 0 ? ` (+${HEALTH_BONUS[level - 1]} ${t('HP', 'PV', 'PV')})` : ''} |{' '}
+                  {t('Max', 'Máx', 'Máx')}: {u.maxLevel}x
                 </span>
               </div>
               <div className="stepper">
                 <button
                   type="button"
                   className="btn btn-brass btn-icon"
-                  aria-label={`Diminuir ${u.label}`}
+                  aria-label={`${t('Decrease', 'Diminuir', 'Disminuir')} ${localizedName(u.label, locale)}`}
                   aria-describedby={decreaseBlocked ? 'pouch-reduction-note' : undefined}
                   disabled={level === 0 || decreaseBlocked}
                   onClick={() =>
@@ -116,7 +131,7 @@ export function StatusScreen() {
                 <button
                   type="button"
                   className="btn btn-brass btn-icon"
-                  aria-label={`Aumentar ${u.label}`}
+                  aria-label={`${t('Increase', 'Aumentar', 'Aumentar')} ${localizedName(u.label, locale)}`}
                   disabled={level === u.maxLevel}
                   onClick={() =>
                     edit((d) => {
@@ -130,8 +145,16 @@ export function StatusScreen() {
               {decreaseBlocked && (
                 <p id="pouch-reduction-note" className="muted">
                   {A.occupiedHeroes(v).length > 1
-                    ? 'A associação entre personagem e inventário não está confirmada neste save. A redução fica bloqueada enquanto algum inventário pode exceder o novo limite.'
-                    : 'Remova itens carregados antes de reduzir a Pochete.'}
+                    ? t(
+                        'The hero-to-inventory mapping is unverified in this save. Downgrading is blocked while an inventory may exceed the new limit.',
+                        'A associação entre personagem e inventário não está confirmada neste save. A redução fica bloqueada enquanto algum inventário pode exceder o novo limite.',
+                        'La relación entre héroe e inventario no está verificada en esta partida. No se puede reducir la mejora si algún inventario puede superar el nuevo límite.',
+                      )
+                    : t(
+                        'Remove carried items before reducing the fanny pack.',
+                        'Remova itens carregados antes de reduzir a Pochete.',
+                        'Quita objetos cargados antes de reducir la riñonera.',
+                      )}
                 </p>
               )}
             </div>
@@ -140,8 +163,8 @@ export function StatusScreen() {
         <div className="upgrade tone-green">
           <div className="upgrade-head">
             <div>
-              <h3>{INFO[5]?.title}</h3>
-              <p className="muted">{INFO[5]?.desc}</p>
+              <h3>{localizedName(INFO[5]?.title ?? '', locale)}</h3>
+              <p className="muted">{localizedName(INFO[5]?.desc ?? '', locale)}</p>
             </div>
             <button
               type="button"
@@ -154,7 +177,10 @@ export function StatusScreen() {
                 })
               }
             >
-              Salto arcano: {A.getUpgradeLevel(v, hero, 5) > 0 ? 'habilitado' : 'desabilitado'}
+              {t('Arcane jump', 'Salto arcano', 'Salto arcano')}:{' '}
+              {A.getUpgradeLevel(v, hero, 5) > 0
+                ? t('enabled', 'habilitado', 'activado')
+                : t('disabled', 'desabilitado', 'desactivado')}
             </button>
           </div>
         </div>

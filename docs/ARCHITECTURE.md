@@ -52,7 +52,7 @@ Arquivos acima de 128 MB são recusados antes de serem lidos.
 
 ## Nomes na interface
 
-A interface se chama **Invokyr Archive Studio** (o repositório é `invokyr-save-editor`); "Tomo" é o save aberto. Os nomes pt-BR de itens, upgrades, mobílias e monstros são os textos do próprio jogo sempre que existem; os de skins e os rótulos de `None`, `Demo` e `Mimic` são do editor.
+A interface se chama **Invokyr Archive Studio** (o repositório é `invokyr-save-editor`). Oferece `en-US`, `pt-BR` e `es-419`, com escolha persistida em `localStorage`, detecção do idioma do navegador e fallback `en-US`. A troca de idioma não altera o estado nem os bytes do save. `src/i18n.tsx` fornece o contexto e a seleção; `src/i18n-labels.ts` nomeia enums; `src/ui/diagnostics.ts` traduz avisos e oculta nomes internos de campos na revisão. O catálogo gerado mantém nomes e descrições por idioma. Textos oficiais em `en-US`/`pt-BR` vêm do jogo; o espanhol do jogo (`Spanish`) é apresentado como `es-419`. Rótulos de skins e textos sem localização no jogo são editoriais.
 
 ## Segurança e dependências
 

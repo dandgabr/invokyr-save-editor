@@ -1,25 +1,36 @@
 import { type KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { LanguageSelect, useLocale, useText } from '../i18n';
 import { backupName, download, type OpenedFile, saveFile } from '../platform/files';
 import type { SaveValues } from '../schema/types';
 import { checkVersion, type Issue, validate } from '../schema/validate';
 import { diffDocs } from '../state/document';
 import { useEditor } from '../state/store';
 import { useAnnounce } from './announce';
+import { diagnosticMessage, fileErrorMessage } from './diagnostics';
 import { SaveDialog } from './SaveDialog';
-import { SCREENS } from './screens/registry';
+import { SCREENS, screenLabel } from './screens/registry';
 import { Welcome } from './Welcome';
 
 const isEditable = (t: EventTarget | null) =>
   t instanceof HTMLElement && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName));
 
+type AppError =
+  | { kind: 'open'; name: string; detail: string }
+  | { kind: 'save'; detail: string }
+  | { kind: 'file'; detail: string }
+  | { kind: 'copy' };
+type SaveNotice = { mode: 'in-place' | 'download'; backup?: string; diskChanged?: boolean };
+
 export function App() {
+  const t = useText();
+  const { locale } = useLocale();
   const { doc, values, original, fileHandle, past, future, open, close, undo, redo, serialize, markSaved } =
     useEditor();
   const [opened, setOpened] = useState<OpenedFile | null>(null);
   const [tab, setTab] = useState(SCREENS[0]?.id ?? '');
-  const [error, setError] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
-  const [warning, setWarning] = useState<string | null>(null);
+  const [error, setError] = useState<AppError | null>(null);
+  const [notice, setNotice] = useState<SaveNotice | null>(null);
+  const [warning, setWarning] = useState<Issue | null>(null);
   const [reviewing, setReviewing] = useState(false);
   const [busy, setBusy] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -52,10 +63,10 @@ export function App() {
       setNotice(null);
       // Versão de schema desconhecida: avisa ao abrir (não recusa; o jogo não parece recusar versões diferentes).
       const issue = checkVersion(useEditor.getState().values as unknown as SaveValues);
-      setWarning(issue ? issue.message : null);
-      if (issue) say(issue.message);
+      setWarning(issue);
+      if (issue) say(diagnosticMessage(issue.message, locale));
     } catch (e) {
-      setError(`Não foi possível abrir "${f.name}": ${(e as Error).message}`);
+      setError({ kind: 'open', name: f.name, detail: (e as Error).message });
     }
   };
 
@@ -71,14 +82,18 @@ export function App() {
       markSaved(snapshot, bytes);
       if (out.meta) setOpened({ ...opened, ...out.meta });
       setReviewing(false);
-      say(out.mode === 'in-place' ? 'Save gravado com backup.' : 'Save editado baixado.');
-      setNotice(
+      say(
         out.mode === 'in-place'
-          ? `Salvo. Backup: ${out.backup}.${out.diskChanged ? ' Atenção: o arquivo no disco havia mudado desde a abertura (Steam Cloud ou o jogo); o backup guarda essa versão.' : ''}`
-          : 'Save editado baixado. Copie-o para a pasta de saves do jogo, substituindo o original.',
+          ? t(
+              'Save written with backup.',
+              'Save gravado com backup.',
+              'Partida guardada con copia de seguridad.',
+            )
+          : t('Edited save downloaded.', 'Save editado baixado.', 'Partida editada descargada.'),
       );
+      setNotice({ mode: out.mode, backup: out.backup ?? undefined, diskChanged: out.diskChanged });
     } catch (e) {
-      setError(`Falha ao salvar: ${(e as Error).message}`);
+      setError({ kind: 'save', detail: (e as Error).message });
     } finally {
       setBusy(false);
     }
@@ -147,29 +162,63 @@ export function App() {
       {announcement}
     </div>
   );
+  const errorText =
+    error?.kind === 'open'
+      ? `${t('Could not open', 'Não foi possível abrir', 'No se pudo abrir')} "${error.name}": ${fileErrorMessage(error.detail, locale)}`
+      : error?.kind === 'file'
+        ? fileErrorMessage(error.detail, locale)
+        : error?.kind === 'copy'
+          ? t(
+              'Could not copy. Select the path and copy it manually.',
+              'Não foi possível copiar. Selecione o caminho e copie manualmente.',
+              'No se pudo copiar. Selecciona la ruta y cópiala manualmente.',
+            )
+          : error?.kind === 'save'
+            ? `${t('Could not save', 'Falha ao salvar', 'No se pudo guardar')}: ${fileErrorMessage(error.detail, locale)}`
+            : '';
+  const noticeText =
+    notice?.mode === 'in-place'
+      ? `${t('Saved. Backup', 'Salvo. Backup', 'Guardado. Copia de seguridad')}: ${notice.backup}.${notice.diskChanged ? t(' Warning: the file on disk changed after opening (Steam Cloud or the game); the backup contains that version.', ' Atenção: o arquivo no disco havia mudado desde a abertura (Steam Cloud ou o jogo); o backup guarda essa versão.', ' Atención: el archivo en disco cambió después de abrirlo (Steam Cloud o el juego); la copia conserva esa versión.') : ''}`
+      : t(
+          'Edited save downloaded. Copy it to the game saves folder, replacing the original.',
+          'Save editado baixado. Copie-o para a pasta de saves do jogo, substituindo o original.',
+          'Se descargó la partida editada. Cópiala en la carpeta de partidas del juego y reemplaza la original.',
+        );
   const banner = (
     <>
       {statusRegion}
       {error && (
         <div className="banner banner-error" role="alert">
-          <span>{error}</span>
-          <button type="button" onClick={() => setError(null)} aria-label="Fechar aviso">
+          <span>{errorText}</span>
+          <button
+            type="button"
+            onClick={() => setError(null)}
+            aria-label={t('Dismiss message', 'Fechar aviso', 'Cerrar aviso')}
+          >
             ✕
           </button>
         </div>
       )}
       {warning && (
         <div className="banner banner-warn">
-          <span>{warning}</span>
-          <button type="button" onClick={() => setWarning(null)} aria-label="Fechar aviso">
+          <span>{diagnosticMessage(warning.message, locale)}</span>
+          <button
+            type="button"
+            onClick={() => setWarning(null)}
+            aria-label={t('Dismiss message', 'Fechar aviso', 'Cerrar aviso')}
+          >
             ✕
           </button>
         </div>
       )}
       {notice && (
         <div className="banner banner-ok">
-          <span>{notice}</span>
-          <button type="button" onClick={() => setNotice(null)} aria-label="Fechar aviso">
+          <span>{noticeText}</span>
+          <button
+            type="button"
+            onClick={() => setNotice(null)}
+            aria-label={t('Dismiss message', 'Fechar aviso', 'Cerrar aviso')}
+          >
             ✕
           </button>
         </div>
@@ -181,7 +230,12 @@ export function App() {
     return (
       <>
         {banner}
-        <Welcome onOpen={handleOpen} onError={setError} />
+        <Welcome
+          onOpen={handleOpen}
+          onError={(kind, detail) =>
+            setError(kind === 'copy' ? { kind: 'copy' } : { kind: 'file', detail: detail ?? '' })
+          }
+        />
       </>
     );
   }
@@ -195,57 +249,72 @@ export function App() {
         <div className="brand">
           <h1 className="brand-title">Invokyr Archive Studio</h1>
           <span className="chip" data-testid="file-chip">
-            Tomo: {doc.fileName}
+            {t('Save', 'Tomo', 'Partida')}: {doc.fileName}
             {version !== undefined ? ` (v${version})` : ''}
             {dirty && (
               <>
                 <span aria-hidden="true"> •</span>
-                <span className="visually-hidden"> (alterado)</span>
+                <span className="visually-hidden"> ({t('modified', 'alterado', 'modificado')})</span>
               </>
             )}
           </span>
         </div>
         <div className="actions">
+          <LanguageSelect />
           <button
             type="button"
             className="btn btn-brass"
             onClick={undo}
             disabled={past.length === 0}
-            title="Desfazer (Ctrl+Z)"
+            title={t('Undo (Ctrl+Z)', 'Desfazer (Ctrl+Z)', 'Deshacer (Ctrl+Z)')}
           >
-            Desfazer
+            {t('Undo', 'Desfazer', 'Deshacer')}
           </button>
           <button
             type="button"
             className="btn btn-brass"
             onClick={redo}
             disabled={future.length === 0}
-            title="Refazer (Ctrl+Y)"
+            title={t('Redo (Ctrl+Y)', 'Refazer (Ctrl+Y)', 'Rehacer (Ctrl+Y)')}
           >
-            Refazer
+            {t('Redo', 'Refazer', 'Rehacer')}
           </button>
           <button
             type="button"
             className="btn btn-brass"
             onClick={() => {
-              if (!dirty || window.confirm('Há alterações não salvas. Fechar mesmo assim?')) close();
+              if (
+                !dirty ||
+                window.confirm(
+                  t(
+                    'There are unsaved changes. Close anyway?',
+                    'Há alterações não salvas. Fechar mesmo assim?',
+                    'Hay cambios sin guardar. ¿Cerrar de todos modos?',
+                  ),
+                )
+              )
+                close();
             }}
           >
-            Abrir outro save
+            {t('Open another save', 'Abrir outro save', 'Abrir otra partida')}
           </button>
           <button
             type="button"
             className="btn btn-green"
             onClick={() => setReviewing(true)}
-            title="Salvar (Ctrl+S)"
+            title={t('Save (Ctrl+S)', 'Salvar (Ctrl+S)', 'Guardar (Ctrl+S)')}
           >
-            Salvar (.sav)
+            {t('Save (.sav)', 'Salvar (.sav)', 'Guardar (.sav)')}
           </button>
         </div>
       </header>
       {banner}
       <div className="tabs">
-        <div role="tablist" aria-label="Seções do save" onKeyDown={onTabKey}>
+        <div
+          role="tablist"
+          aria-label={t('Save sections', 'Seções do save', 'Secciones de la partida')}
+          onKeyDown={onTabKey}
+        >
           {SCREENS.map((s) => (
             <button
               key={s.id}
@@ -261,7 +330,7 @@ export function App() {
               className={`tab${s.id === tab ? ' active' : ''}`}
               onClick={() => setTab(s.id)}
             >
-              {s.label}
+              {screenLabel(s, locale)}
             </button>
           ))}
         </div>
@@ -275,6 +344,8 @@ export function App() {
         <SaveDialog
           changes={changes}
           issues={issues}
+          original={original as SaveValues}
+          values={values as SaveValues}
           busy={busy}
           inPlace={fileHandle !== null}
           onBackup={() => download(backupName(doc.fileName), doc.raw)}

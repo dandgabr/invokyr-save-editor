@@ -17,6 +17,46 @@ const pretty = (assetName) =>
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .trim();
 
+// Assets without I2 names: editorial labels, not claims about item effects.
+const editorialNames = {
+  dice_push: ['Push Die', 'Dado de Empuje'],
+  dice_smoke: ['Smoke Die', 'Dado de Humo'],
+  g_trap: ['Steel Jaw Trap', 'Trampa de Mandíbulas'],
+  tr_blind: ['Blindness Treasure', 'Tesoro de Ceguera'],
+  tr_camera: ['Camera Treasure', 'Tesoro de Cámara'],
+  tr_dice_thrower: ['Dice Thrower Treasure', 'Tesoro Lanzador de Dados'],
+  tr_final: ['Final Treasure', 'Tesoro Final'],
+  tr_flame: ['Flame Treasure', 'Tesoro de Llamas'],
+  tr_hallucination: ['Hallucination Treasure', 'Tesoro de Alucinación'],
+  tr_heavy: ['Heavy Treasure', 'Tesoro Pesado'],
+  tr_invertview: ['Inverted Vision Treasure', 'Tesoro de Visión Invertida'],
+  tr_lightning: ['Lightning Treasure', 'Tesoro de Relámpago'],
+  tr_linked: ['Linked Treasure', 'Tesoro Vinculado'],
+  tr_meduza: ['Medusa Treasure', 'Tesoro de Medusa'],
+  tr_mini: ['Miniature Treasure', 'Tesoro en Miniatura'],
+  tr_musical: ['Musical Treasure', 'Tesoro Musical'],
+  tr_prankster: ['Prankster Treasure', 'Tesoro del Bromista'],
+  tr_puppet: ['Puppet Treasure', 'Tesoro del Títere'],
+  tr_rvi: ['Reversed Controls Treasure', 'Tesoro de Controles Invertidos'],
+  tr_score: ['Score Treasure', 'Tesoro de Puntuación'],
+  tr_slippery: ['Slippery Treasure', 'Tesoro Resbaladizo'],
+  tr_vanish: ['Vanishing Treasure', 'Tesoro de Desaparición'],
+  tr_wandering: ['Wandering Die Treasure', 'Tesoro del Dado Errante'],
+};
+
+const neutralDescription = (category, name, locale) => {
+  if (locale === 'en-US') {
+    if (category === 'key') return `Key associated with ${name}.`;
+    if (category === 'dice') return `Special die associated with ${name}.`;
+    if (category === 'treasure') return `Treasure associated with ${name}.`;
+    return `Item associated with ${name}.`;
+  }
+  if (category === 'key') return `Llave relacionada con ${name}.`;
+  if (category === 'dice') return `Dado especial relacionado con ${name}.`;
+  if (category === 'treasure') return `Tesoro relacionado con ${name}.`;
+  return `Objeto relacionado con ${name}.`;
+};
+
 function categoryOf(alias) {
   if (alias.startsWith('k_')) return 'key';
   if (alias.startsWith('g_')) return 'gadget';
@@ -41,6 +81,10 @@ const rows = [...byAlias.values()]
     const selectable = Boolean(it.inAvailableTools) && selectableCategories.has(category);
     const curated = editorial.items[it.itemAlias];
     const officialDescription = it.desc?.['pt-BR'] || null;
+    const officialEnglish = it.desc?.en || null;
+    const officialSpanish = it.desc?.['es-419'] || null;
+    const enName = it.name?.en || editorialNames[it.itemAlias]?.[0] || pretty(it.m_Name);
+    const esName = it.name?.['es-419'] || editorialNames[it.itemAlias]?.[1] || enName;
     if (curated && (!curated.description?.trim() || !curated.evidence?.trim())) {
       throw new Error(`Descrição editorial incompleta para ${it.itemAlias}`);
     }
@@ -54,8 +98,18 @@ const rows = [...byAlias.values()]
       alias: it.itemAlias,
       asset: it.m_Name,
       label: it.name?.['pt-BR'] ?? curated?.label ?? pretty(it.m_Name),
+      labels: {
+        'en-US': enName,
+        'pt-BR': it.name?.['pt-BR'] ?? curated?.label ?? pretty(it.m_Name),
+        'es-419': esName,
+      },
       localized: Boolean(it.name?.['pt-BR']),
       desc: officialDescription ?? curated?.description ?? null,
+      descriptions: {
+        'en-US': officialEnglish ?? (curated ? neutralDescription(category, enName, 'en-US') : null),
+        'pt-BR': officialDescription ?? curated?.description ?? null,
+        'es-419': officialSpanish ?? (curated ? neutralDescription(category, esName, 'es-419') : null),
+      },
       descriptionSource: officialDescription ? 'game' : curated ? 'editorial' : 'unknown',
       category,
       available: Boolean(it.inAvailableTools),
@@ -81,9 +135,11 @@ export interface CatalogItem {
   asset: string;
   /** Nome em pt-BR (ou derivado do asset quando o jogo não tem nome localizado). */
   label: string;
+  labels: Record<'en-US' | 'pt-BR' | 'es-419', string>;
   localized: boolean;
   /** Descrição oficial quando disponível; nos demais casos, texto editorial identificado. */
   desc: string | null;
+  descriptions: Record<'en-US' | 'pt-BR' | 'es-419', string | null>;
   descriptionSource: 'game' | 'editorial' | 'unknown';
   category: ItemCategory;
   /** Presente em ItemManager.availableTools (item "oficial"). */
