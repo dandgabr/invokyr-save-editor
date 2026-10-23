@@ -1,5 +1,6 @@
 import { decode, encode, type Hints } from '../codec/msgpack';
 import { type Container, readContainer, STREAM_NAMES, type StreamName, writeContainer } from '../codec/zip';
+import { csTypeOf } from '../schema/cstypes';
 
 /** Documento aberto: os três streams decodificados + dicas de formato para regravar sem perdas. */
 export interface SaveDoc {
@@ -26,7 +27,8 @@ export function openSave(fileName: string, bytes: Uint8Array): SaveDoc {
 
 export function serializeSave(doc: SaveDoc, values: Record<StreamName, unknown> = doc.values): Uint8Array {
   const streams = {} as Container['streams'];
-  for (const name of STREAM_NAMES) streams[name] = encode(values[name], doc.hints[name]);
+  for (const name of STREAM_NAMES)
+    streams[name] = encode(values[name], doc.hints[name], { typeOf: csTypeOf(name) });
   return writeContainer({ ...doc.container, streams });
 }
 

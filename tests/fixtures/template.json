@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "savedAtUtcTicks": 639283059535910556,
+    "roundIndex": 0,
+    "endlessRank": 0,
+    "playTimeSeconds": 100,
+    "score": 50000,
+    "playerCount": 1,
+    "characterOwners": [76561198000000001, 0, 0, 0, 0, 0, 0, 0]
+  },
+  "save": {
+    "version": 15,
+    "bank": {
+      "currentTotalScore": 99999
+    },
+    "shop": {
+      "visitCount": 0,
+      "completedBoardsAnchorIndexes": [0, 1],
+      "completedBoardsConfigurations": [
+        {
+          "biome": 2,
+          "difficulty": 1,
+          "featuredMonster": 3
+        },
+        {
+          "biome": 1,
+          "difficulty": 3,
+          "featuredMonster": 13
+        }
+      ],
+      "boardOffersSeed": 1201912013,
+      "boardOffersSolo": false,
+      "completedMonsterRounds": [[3, 0], [13, 1]],
+      "shopItemsUIDs": [-937123244],
+      "shopItemInfos": [
+        {
+          "boughtCount": 1
+        }
+      ]
+    },
+    "upgrades": {
+      "redUpgrades": [
+        {
+          "x": 1,
+          "y": 3
+        },
+        {
+          "x": 2,
+          "y": 2
+        }
+      ],
+      "specsUpgrades": [],
+      "tankUpgrades": [],
+      "ziggyUpgrades": [],
+      "carlUpgrades": [],
+      "bobbyUpgrades": [],
+      "susanUpgrades": [],
+      "lilyUpgrades": []
+    },
+    "furnitures": {
+      "furnitures": [1, 2, 3, 4, 5, 6, 7, 8]
+    },
+    "playerInventories": [
+      {
+        "itemStringIds": ["dice_tp", "dice_gather", "ice"],
+        "itemBatteryLevels": [-1.0, -1.0, -1.0]
+      }
+    ],
+    "playerColors": [
+      {
+        "playerCharacter": 0,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 1,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 2,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 3,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 4,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 5,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 6,
+        "_color": 3
+      },
+      {
+        "playerCharacter": 7,
+        "_color": 3
+      },
+      {
+        "playerCharacter": -1,
+        "_color": 3
+      }
+    ],
+    "gameRoomSkinIndex": 0,
+    "gameRoomTools": {
+      "itemStringIds": ["dice_boomheal", "dice_cocoon", "dice_gather", "ice", "k_corridor"],
+      "itemBatteryLevels": [-1.0, -1.0, -1.0, -1.0, -1.0]
+    },
+    "playTimeSeconds": 100.0,
+    "unlockedKeyDoors": [2]
+  },
+  "collection": {
+    "bestEndlessRank": 10,
+    "monsterFigurines": 131071,
+    "completedBoardKeys": ["2:3", "1:13"],
+    "completedHouseRuleIds": [],
+    "bestBoardDifficulties": [
+      {
+        "boardKey": "2:3",
+        "difficulty": 4
+      },
+      {
+        "boardKey": "1:13",
+        "difficulty": 4
+      }
+    ]
+  },
+  "_comentario": "Fixture sintético (SteamIDs placeholder) conforme docs/SCHEMA_VERIFIED.md. Gerar o .sav: python3 -I reference/save_codec.py --import-json tests/fixtures/template.json tests/fixtures/template.sav"
+}

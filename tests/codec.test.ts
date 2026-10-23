@@ -116,11 +116,11 @@ describe('MessagePack sem perdas', () => {
     expect(owners[0]).toBe(76561198000000001n);
     expect(owners[1]).toBe(0);
     expect(hintFormat(hints, 'characterOwners[*]')).toBe('mixed'); // u64 + fixint no mesmo array
-    expect(hintFormat(hints, 'playTimeSeconds')).toBe('f32');
   });
 
   it('floats continuam float32 depois de editados', () => {
-    const { value, hints } = decode(readContainer(fixture()).streams.meta);
+    const { value, hints } = decode(readContainer(fixture()).streams.save);
+    expect(hintFormat(hints, 'playTimeSeconds')).toBe('f32');
     (value as { playTimeSeconds: number }).playTimeSeconds = 123.5;
     const again = decode(encode(value, hints));
     expect(hintFormat(again.hints, 'playTimeSeconds')).toBe('f32');

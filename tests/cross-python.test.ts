@@ -18,7 +18,7 @@ describe.skipIf(!hasPython)('teste cruzado TS → Python', () => {
     );
     const meta = decode(c.streams.meta);
     (meta.value as { score: number }).score = 777;
-    (meta.value as { playTimeSeconds: number }).playTimeSeconds = 12.5;
+    (meta.value as { playTimeSeconds: number }).playTimeSeconds = 125;
     c.streams.meta = encode(meta.value, meta.hints);
     const dir = mkdtempSync(join(tmpdir(), 'invokyr-'));
     const out = join(dir, 'x.sav');
@@ -31,6 +31,6 @@ print(json.dumps({"score": d["meta"]["score"], "t": d["meta"]["playTimeSeconds"]
 `;
     const r = py(['-c', script, ref, out]);
     expect(r.status, r.stderr).toBe(0);
-    expect(JSON.parse(r.stdout)).toEqual({ score: 777, t: 12.5, v: 15, owner: '76561198000000001' });
+    expect(JSON.parse(r.stdout)).toEqual({ score: 777, t: 125, v: 15, owner: '76561198000000001' });
   });
 });

@@ -354,12 +354,67 @@ class Writer {
   }
 }
 
+/** Ao editar, se o valor não cabe mais no formato original, tenta os mais largos da mesma família. */
+const WIDEN: Partial<Record<NumFormat, NumFormat[]>> = {
+  i8: ['i16', 'i32', 'i64'],
+  i16: ['i32', 'i64'],
+  i32: ['i64'],
+  u8: ['u16', 'u32', 'u64'],
+  u16: ['u32', 'u64'],
+  u32: ['u64'],
+};
+
+/** Formato que o serializer do jogo escreveria para um valor novo, dado o tipo C# (largura fixa acima do fixint). */
+export function formatForType(type: CsType, v: bigint): NumFormat | undefined {
+  if (type === 'float' || type === 'double') return undefined;
+  if (v >= 0n && v <= 0x7fn) return 'pfix';
+  if (v < 0n && v >= -32n) return 'nfix';
+  if (type === 'ulong') return 'u64';
+  if (type === 'long') return 'i64';
+  if (type === 'uint') return v <= 0xffffn ? 'u16' : v <= 0xffffffffn ? 'u32' : 'u64';
+  if (v >= -32768n && v <= 32767n) return 'i16';
+  if (v >= -(1n << 31n) && v < 1n << 31n) return 'i32';
+  return 'i64';
+}
+
 const I64_MIN = -(1n << 63n);
 const I64_MAX = (1n << 63n) - 1n;
 const U64_MAX = (1n << 64n) - 1n;
 
+function fits(big: bigint, fmt: NumFormat): boolean {
+  switch (fmt) {
+    case 'pfix':
+      return big >= 0n && big <= 0x7fn;
+    case 'nfix':
+      return big >= -32n && big <= -1n;
+    case 'u8':
+      return big >= 0n && big <= 0xffn;
+    case 'u16':
+      return big >= 0n && big <= 0xffffn;
+    case 'u32':
+      return big >= 0n && big <= 0xffffffffn;
+    case 'u64':
+      return big >= 0n && big <= U64_MAX;
+    case 'i8':
+      return big >= -128n && big <= 127n;
+    case 'i16':
+      return big >= -32768n && big <= 32767n;
+    case 'i32':
+      return big >= -(1n << 31n) && big < 1n << 31n;
+    case 'i64':
+      return big >= I64_MIN && big <= I64_MAX;
+    default:
+      return false;
+  }
+}
+
 /** Escreve o inteiro no formato pedido; se o valor não couber nele, cai no formato mínimo. */
-function writeInt(w: Writer, big: bigint, fmt: NumFormat | undefined, path: string) {
+function writeInt(w: Writer, big: bigint, fmt: NumFormat | undefined, path: string, type?: CsType) {
+  if (fmt && !fits(big, fmt)) {
+    fmt = WIDEN[fmt]?.find((f) => fits(big, f)) ?? (type ? formatForType(type, big) : undefined);
+  } else if (!fmt && type) {
+    fmt = formatForType(type, big);
+  }
   switch (fmt) {
     case 'pfix':
       if (big >= 0n && big <= 0x7fn) return w.u8(Number(big));
@@ -410,7 +465,12 @@ function writeInt(w: Writer, big: bigint, fmt: NumFormat | undefined, path: stri
   throw new MsgpackError(`Inteiro fora da faixa de 64 bits em ${path || '<raiz>'}`);
 }
 
+/** Tipo C# do campo, usado para escolher a largura de inteiros que o jogo (GameDevWare) escreveria. */
+export type CsType = 'int' | 'uint' | 'long' | 'ulong' | 'float' | 'double';
+
 export interface EncodeOptions {
+  /** Tipo C# por caminho com curingas; usado quando não há dica do arquivo original (campo novo/elemento novo). */
+  typeOf?: (path: string) => CsType | undefined;
   /** Formato assumido para números fracionários sem dica. O jogo usa `System.Single`. */
   defaultFloat?: 'f32' | 'f64';
   maxDepth?: number;
@@ -454,15 +514,18 @@ export function encode(value: unknown, hints: Hints, options: EncodeOptions = {}
     if (depth > maxDepth) throw new MsgpackError('Valor aninhado demais para serializar');
     if (v === null || v === undefined) return w.u8(0xc0);
     if (typeof v === 'boolean') return w.u8(v ? 0xc3 : 0xc2);
-    if (typeof v === 'bigint') return writeInt(w, v, hintFor(path), path);
+    if (typeof v === 'bigint') return writeInt(w, v, hintFor(path), path, options.typeOf?.(path));
     if (typeof v === 'number') {
       const hint = hintFor(path);
       if (hint === 'f32' || hint === 'f64') return w.float(hint, v); // inclui NaN/Inf/-0 já existentes
       if (!Number.isFinite(v)) throw new MsgpackError(`Número não finito em ${path || '<raiz>'}`);
+      const type = options.typeOf?.(path);
+      if (!hint && (type === 'float' || type === 'double'))
+        return w.float(type === 'float' ? 'f32' : 'f64', v);
       if (!Number.isInteger(v)) return w.float(defaultFloat, v);
       if (!Number.isSafeInteger(v))
         throw new MsgpackError(`Inteiro além de 2^53 deve ser bigint em ${path || '<raiz>'}`);
-      return writeInt(w, BigInt(v), hint, path);
+      return writeInt(w, BigInt(v), hint, path, type);
     }
     if (typeof v === 'string') {
       const b = te.encode(v);

@@ -74,12 +74,12 @@ describe('store do editor', () => {
   it('serializa a edição preservando bigint e float32', () => {
     useEditor.getState().edit((d) => {
       (d.meta as Meta).score = 4242;
-      (d.meta as unknown as { playTimeSeconds: number }).playTimeSeconds = 99.5;
+      (d.save as unknown as { playTimeSeconds: number }).playTimeSeconds = 99.5;
     });
-    const m = decode(readContainer(useEditor.getState().serialize()).streams.meta);
-    const v = m.value as Meta & { playTimeSeconds: number };
+    const out = readContainer(useEditor.getState().serialize());
+    const v = decode(out.streams.meta).value as Meta;
     expect(v.score).toBe(4242);
-    expect(v.playTimeSeconds).toBe(99.5);
+    expect((decode(out.streams.save).value as { playTimeSeconds: number }).playTimeSeconds).toBe(99.5);
     expect(v.characterOwners[0]).toBe(76561198000000001n);
   });
 
