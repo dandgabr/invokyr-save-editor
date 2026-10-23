@@ -2,7 +2,7 @@
 
 Editor web de saves do **Invokyr** (Ludogram, Steam AppID `3883570`). Na interface ele se chama **Invokyr Archive Studio**. Roda no navegador: o `.sav` é lido, editado e gravado localmente e **não é enviado a nenhum servidor** (a página é estática, e o build publicado tem uma política de segurança, o CSP, que bloqueia requisições de rede).
 
-**Use agora:** <https://dan.seg.br/invokyr-save-editor/>
+**Use agora:** <https://invokyr.dan.seg.br/>
 
 O editor oferece **English (US)**, **Português (Brasil)** e **Español (Latinoamérica)**. A escolha fica salva no navegador; sem preferência ou idioma correspondente, o padrão é **en-US**. A tela inicial informa que o editor foi baseado na build Steam **26154962** (save v15). Isso não garante compatibilidade com outras builds.
 
