@@ -26,7 +26,7 @@ test('todas as telas, o catálogo e o diálogo de salvar não têm violações W
     await audit(page, String(t));
   }
   await page.getByRole('tab', { name: /Inventários/ }).click();
-  await page.getByRole('button', { name: '+ Adicionar item' }).click();
+  await page.getByRole('button', { name: '+ Adicionar ferramenta' }).click();
   await audit(page, 'catálogo');
   await page.getByRole('button', { name: /Voltar ao inventário/ }).click();
   await page.getByRole('button', { name: 'Salvar (.sav)' }).click();

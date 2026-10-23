@@ -15,6 +15,10 @@ const toBig = (n: bigint | number) => BigInt(n);
 const narrow = (b: bigint): bigint | number => (b <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(b) : b);
 
 export const MAX_INT32 = 2147483647;
+/** `currentTotalScore` é um `int` assinado no save; 99.999 é só um preset. */
+export const MAX_BANK = MAX_INT32;
+export const BASE_INVENTORY_SLOTS = 3;
+export const MAX_BONUS_INVENTORY_SLOTS = 2;
 
 const isInt = (n: unknown): n is number => typeof n === 'number' && Number.isInteger(n);
 
@@ -87,10 +91,23 @@ export function getUpgradeLevel(v: V, hero: number, uid: number): number {
   return (key && v.save.upgrades[key]?.find((u) => u.x === uid)?.y) || 0;
 }
 
-export function setUpgradeLevel(d: V, hero: number, uid: number, level: number): void {
+/** Consulta pura para a UI: evita reduzir slots de um inventário possivelmente associado ao herói. */
+export function canSetUpgradeLevel(v: V, hero: number, uid: number, level: number): boolean {
+  const def = UPGRADES.find((u) => u.uid === uid);
+  if (!def || !isInt(hero) || hero < 0 || hero >= HERO_COUNT || !Number.isFinite(level)) return false;
+  const lvl = Math.max(0, Math.min(def.maxLevel, Math.trunc(level)));
+  if (uid !== 6 || lvl >= getUpgradeLevel(v, hero, uid) || !isOccupied(v, hero)) return true;
+  const safeLimit = BASE_INVENTORY_SLOTS + lvl;
+  const certain = certainHeroForInventory(v, 0);
+  // Com mais de um jogador, qualquer inventário pode pertencer ao herói que perderia o bônus.
+  const affected = certain === hero ? v.save.playerInventories.slice(0, 1) : v.save.playerInventories;
+  return !affected.some((inv) => (inv?.itemStringIds.length ?? 0) > safeLimit);
+}
+
+export function setUpgradeLevel(d: V, hero: number, uid: number, level: number): boolean {
   const def = UPGRADES.find((u) => u.uid === uid);
   if (!def) throw new Error(`UID de upgrade desconhecido: ${uid}`);
-  if (!isInt(hero) || !Number.isFinite(level)) return;
+  if (!canSetUpgradeLevel(d, hero, uid, level)) return false;
   const lvl = Math.max(0, Math.min(def.maxLevel, Math.trunc(level)));
   const list = upgradeList(d, hero);
   // remove duplicatas pré-existentes do mesmo UID: sobra no máximo uma entrada
@@ -98,9 +115,10 @@ export function setUpgradeLevel(d: V, hero: number, uid: number, level: number):
     if (list[i]?.x === uid && (lvl === 0 || list.findIndex((u) => u.x === uid) !== i)) list.splice(i, 1);
   }
   const entry = list.find((u) => u.x === uid);
-  if (lvl === 0) return;
+  if (lvl === 0) return true;
   if (entry) (entry as { y: number }).y = lvl;
   else list.push({ x: uid, y: lvl });
+  return true;
 }
 
 export const maximizeHero = (d: V, hero: number) => {
@@ -114,6 +132,32 @@ export const maximizeAllHeroes = (d: V) => {
 
 export type ItemTarget = { kind: 'player'; index: number } | { kind: 'bench' };
 
+/** Só um jogador ocupado + um inventário tem vínculo herói↔inventário inequívoco. */
+function certainHeroForInventory(v: V, index: number): number | null {
+  if (index !== 0 || v.meta.playerCount !== 1 || v.save.playerInventories.length !== 1) return null;
+  const owners = v.meta.characterOwners;
+  if (!Array.isArray(owners) || owners.length !== HERO_COUNT) return null;
+  let hero: number | null = null;
+  for (let i = 0; i < owners.length; i++) {
+    const owner = owners[i];
+    if (owner === 0 || owner === 0n) continue;
+    if (typeof owner !== 'bigint' && !(typeof owner === 'number' && Number.isSafeInteger(owner))) return null;
+    if (hero !== null) return null;
+    hero = i;
+  }
+  return hero;
+}
+
+/** `certain=false` limita só novas adições; saves existentes podem ter Pochete válida. */
+export function inventoryCapacity(v: V, t: ItemTarget): { limit: number; certain: boolean } | null {
+  if (t.kind === 'bench' || !isInt(t.index) || t.index < 0 || !v.save.playerInventories[t.index]) return null;
+  const hero = certainHeroForInventory(v, t.index);
+  if (hero === null) return { limit: BASE_INVENTORY_SLOTS, certain: false };
+  const level = getUpgradeLevel(v, hero, 6);
+  const bonus = isInt(level) && level >= 0 && level <= MAX_BONUS_INVENTORY_SLOTS ? level : 0;
+  return { limit: BASE_INVENTORY_SLOTS + bonus, certain: true };
+}
+
 export function inventoryOf(d: V, t: ItemTarget): InventoryState | undefined {
   return t.kind === 'bench' ? d.save.gameRoomTools : d.save.playerInventories[t.index];
 }
@@ -122,7 +166,10 @@ export const batteryOf = (alias: string) => ITEM_CATALOG.find((i) => i.alias ===
 
 export function addItem(d: V, t: ItemTarget, alias: string): boolean {
   const inv = inventoryOf(d, t);
-  if (!inv || alias === '' || !findItem(alias)) return false;
+  const item = findItem(alias);
+  if (!inv || !item?.selectable) return false;
+  const capacity = inventoryCapacity(d, t);
+  if (capacity && inv.itemStringIds.length >= capacity.limit) return false;
   inv.itemStringIds.push(alias);
   inv.itemBatteryLevels.push(batteryOf(alias) ? 1 : -1);
   return true;
@@ -204,9 +251,10 @@ export const clearHouseRules = (d: V) => {
 
 /* ───────── Banco e presets ───────── */
 
-export const setBank = (d: V, n: number) => {
-  if (!Number.isFinite(n)) return;
-  d.save.bank.currentTotalScore = Math.max(0, Math.min(MAX_INT32, Math.trunc(n)));
+export const setBank = (d: V, n: number): boolean => {
+  if (!isInt(n) || n < 0 || n > MAX_BANK) return false;
+  d.save.bank.currentTotalScore = n;
+  return true;
 };
 
 export function godMode(d: V): void {

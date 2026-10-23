@@ -19,6 +19,58 @@ describe('enums verificados', () => {
 });
 
 describe('validação de invariantes', () => {
+  it('bloqueia inventário único acima de 3 slots sem Pochete', () => {
+    const v = clone();
+    v.save.playerInventories[0]?.itemStringIds.push('g_fire');
+    v.save.playerInventories[0]?.itemBatteryLevels.push(1);
+    expect(validate(v).some((i) => i.severity === 'error' && i.path === 'save.playerInventories[0]')).toBe(
+      true,
+    );
+  });
+  it('aceita 5 itens com Pochete nível 2 e recusa o sexto', () => {
+    const v = clone();
+    (v.save.upgrades.redUpgrades ??= []).push({ x: 6, y: 2 });
+    v.save.playerInventories[0]?.itemStringIds.push('g_fire', 'g_hgun');
+    v.save.playerInventories[0]?.itemBatteryLevels.push(1, 1);
+    expect(hasErrors(validate(v))).toBe(false);
+    v.save.playerInventories[0]?.itemStringIds.push('g_mask');
+    v.save.playerInventories[0]?.itemBatteryLevels.push(1);
+    expect(validate(v).some((i) => i.severity === 'error' && i.path === 'save.playerInventories[0]')).toBe(
+      true,
+    );
+  });
+  it('preserva inventário existente com 4 itens quando o herói não pode ser identificado', () => {
+    const v = clone();
+    v.meta.characterOwners[3] = 76561198000000002n;
+    v.meta.playerCount = 2;
+    v.save.playerInventories.push({ itemStringIds: [], itemBatteryLevels: [] });
+    v.save.playerInventories[0]?.itemStringIds.push('g_fire');
+    v.save.playerInventories[0]?.itemBatteryLevels.push(1);
+    expect(hasErrors(validate(v))).toBe(false);
+  });
+  it('em partida ambígua preserva 5 itens, mas recusa o sexto', () => {
+    const v = clone();
+    v.meta.characterOwners[3] = 76561198000000002n;
+    v.meta.playerCount = 2;
+    v.save.playerInventories.push({ itemStringIds: [], itemBatteryLevels: [] });
+    v.save.playerInventories[0]?.itemStringIds.push('g_fire', 'g_hgun');
+    v.save.playerInventories[0]?.itemBatteryLevels.push(1, 1);
+    expect(hasErrors(validate(v))).toBe(false);
+    v.save.playerInventories[0]?.itemStringIds.push('g_mask');
+    v.save.playerInventories[0]?.itemBatteryLevels.push(1);
+    expect(validate(v).some((i) => i.severity === 'error' && i.path === 'save.playerInventories[0]')).toBe(
+      true,
+    );
+  });
+  it('recusa saldo não inteiro, não finito, negativo ou acima do int32', () => {
+    for (const value of [-1, 0.5, Number.NaN, Number.POSITIVE_INFINITY, 2 ** 31]) {
+      const v = clone();
+      v.save.bank.currentTotalScore = value;
+      expect(
+        validate(v).some((i) => i.severity === 'error' && i.path === 'save.bank.currentTotalScore'),
+      ).toBe(true);
+    }
+  });
   it('o fixture não tem erros', () => {
     expect(hasErrors(validate(clone()))).toBe(false);
   });

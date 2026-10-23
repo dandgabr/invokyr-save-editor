@@ -20,14 +20,24 @@ export function PresetsScreen() {
   }
   const commit = () => {
     const raw = text.replace(/[.\s]/g, '');
+    if (raw.startsWith('-')) {
+      setError('O saldo não pode ser menor que zero.');
+      return;
+    }
     if (!/^\d+$/.test(raw)) {
       setError('Informe apenas números inteiros, sem sinal.');
       return;
     }
+    if (BigInt(raw) > BigInt(A.MAX_BANK)) {
+      setError(`O saldo máximo permitido é ${A.MAX_BANK}.`);
+      return;
+    }
+    const n = Number(raw);
     setError(null);
-    const n = Math.min(Number(raw), A.MAX_INT32);
-    edit((d) => A.setBank(d, n), 'bank');
-    setText(String(n)); // mostra o valor realmente aplicado (limitado a int32)
+    edit((d) => {
+      A.setBank(d, n);
+    }, 'bank');
+    setText(String(n));
   };
   /** Executa um preset e anuncia o resultado. */
   const run = (name: string, fn: (d: SaveValues) => void) =>
@@ -37,7 +47,7 @@ export function PresetsScreen() {
     <>
       <section className="panel">
         <header className="panel-head">
-          <h2>Cofre da biblioteca & fundo de pesquisa (currentTotalScore)</h2>
+          <h2>Cofre da biblioteca & fundo de pesquisa</h2>
           <strong className="gold">{fmt(bank)} moedas</strong>
         </header>
         <div className="actions">
@@ -67,23 +77,37 @@ export function PresetsScreen() {
           <button
             type="button"
             className="btn btn-brass"
-            onClick={() => run('Saldo', (d) => A.setBank(d, bank + 10000))}
+            disabled={bank + 10000 > A.MAX_BANK}
+            onClick={() =>
+              run('Saldo', (d) => {
+                A.setBank(d, bank + 10000);
+              })
+            }
           >
             +10.000
           </button>
           <button
             type="button"
             className="btn btn-brass"
-            onClick={() => run('Saldo', (d) => A.setBank(d, bank + 50000))}
+            disabled={bank + 50000 > A.MAX_BANK}
+            onClick={() =>
+              run('Saldo', (d) => {
+                A.setBank(d, bank + 50000);
+              })
+            }
           >
             +50.000
           </button>
           <button
             type="button"
             className="btn btn-green"
-            onClick={() => run('Saldo', (d) => A.setBank(d, 99999))}
+            onClick={() =>
+              run('Saldo', (d) => {
+                A.setBank(d, 99999);
+              })
+            }
           >
-            Cofre cheio (99.999)
+            Definir 99.999
           </button>
         </div>
       </section>
@@ -99,7 +123,7 @@ export function PresetsScreen() {
             <ul>
               <li>99.999 moedas</li>
               <li>Portas com chave destrancadas</li>
-              <li>Todas as 8 mobílias ativas</li>
+              <li>8 mobílias desbloqueadas</li>
               <li>Upgrades maximizados nos 8 heróis</li>
               <li>17 figuras na sala de troféus</li>
               <li>Lança-chamas e Arma de Caça na bancada</li>

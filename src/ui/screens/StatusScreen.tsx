@@ -19,8 +19,8 @@ const INFO: Record<number, { title: string; desc: string; tone: string }> = {
     tone: 'teal',
   },
   6: {
-    title: 'Pasta de couro de campo',
-    desc: 'Concede espaço extra no inventário do herói.',
+    title: 'Pochete',
+    desc: 'Cada nível concede um espaço extra para itens carregados.',
     tone: 'violet',
   },
   5: {
@@ -79,6 +79,8 @@ export function StatusScreen() {
         {UPGRADES.filter((u) => u.key !== 'DoubleJump').map((u) => {
           const info = INFO[u.uid];
           const level = A.getUpgradeLevel(v, hero, u.uid);
+          const decreaseBlocked =
+            u.uid === 6 && level > 0 && !A.canSetUpgradeLevel(v, hero, u.uid, level - 1);
           return (
             <div key={u.uid} className={`upgrade tone-${info?.tone ?? 'amber'}`}>
               <div className="upgrade-head">
@@ -96,8 +98,13 @@ export function StatusScreen() {
                   type="button"
                   className="btn btn-brass btn-icon"
                   aria-label={`Diminuir ${u.label}`}
-                  disabled={level === 0}
-                  onClick={() => edit((d) => A.setUpgradeLevel(d, hero, u.uid, level - 1))}
+                  aria-describedby={decreaseBlocked ? 'pouch-reduction-note' : undefined}
+                  disabled={level === 0 || decreaseBlocked}
+                  onClick={() =>
+                    edit((d) => {
+                      A.setUpgradeLevel(d, hero, u.uid, level - 1);
+                    })
+                  }
                 >
                   −
                 </button>
@@ -111,11 +118,22 @@ export function StatusScreen() {
                   className="btn btn-brass btn-icon"
                   aria-label={`Aumentar ${u.label}`}
                   disabled={level === u.maxLevel}
-                  onClick={() => edit((d) => A.setUpgradeLevel(d, hero, u.uid, level + 1))}
+                  onClick={() =>
+                    edit((d) => {
+                      A.setUpgradeLevel(d, hero, u.uid, level + 1);
+                    })
+                  }
                 >
                   +
                 </button>
               </div>
+              {decreaseBlocked && (
+                <p id="pouch-reduction-note" className="muted">
+                  {A.occupiedHeroes(v).length > 1
+                    ? 'A associação entre personagem e inventário não está confirmada neste save. A redução fica bloqueada enquanto algum inventário pode exceder o novo limite.'
+                    : 'Remova itens carregados antes de reduzir a Pochete.'}
+                </p>
+              )}
             </div>
           );
         })}
@@ -131,7 +149,9 @@ export function StatusScreen() {
               role="switch"
               aria-checked={A.getUpgradeLevel(v, hero, 5) > 0}
               onClick={() =>
-                edit((d) => A.setUpgradeLevel(d, hero, 5, A.getUpgradeLevel(v, hero, 5) > 0 ? 0 : 1))
+                edit((d) => {
+                  A.setUpgradeLevel(d, hero, 5, A.getUpgradeLevel(v, hero, 5) > 0 ? 0 : 1);
+                })
               }
             >
               Salto arcano: {A.getUpgradeLevel(v, hero, 5) > 0 ? 'habilitado' : 'desabilitado'}

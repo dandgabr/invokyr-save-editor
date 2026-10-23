@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { findItem } from '../../catalog/catalog';
+import { CATEGORY_LABELS, findItem } from '../../catalog/catalog';
 import { HEROES } from '../../schema/enums';
 import * as A from '../../state/actions';
 import { useAnnounce } from '../announce';
@@ -21,7 +21,8 @@ function ItemRow({
 }) {
   const edit = useEdit();
   const item = findItem(alias);
-  const name = item?.label ?? alias;
+  const name = item?.label ?? 'Item não reconhecido';
+  const type = item ? CATEGORY_LABELS[item.category] : 'Tipo desconhecido';
   const battery = item?.battery ?? null;
   const pct = Math.round(Math.max(0, Math.min(1, level)) * 100);
   const where = target.kind === 'bench' ? 'bancada' : `jogador ${target.index + 1}`;
@@ -42,13 +43,13 @@ function ItemRow({
         </button>
       </header>
       <p className="tiny muted">
-        ID: <code>{alias}</code>
-        {item ? '' : ' (não consta no catálogo do jogo)'}
+        {type} • posição {index + 1}
       </p>
+      <p className="muted">{item?.desc ?? 'Descrição indisponível nos dados verificados do jogo.'}</p>
       {battery ? (
         <label className="battery">
           <span className="field-label">
-            Carga da bateria de {name}: {pct}%
+            Carga da bateria de {name}, {where}, posição {index + 1}: {pct}%
           </span>
           <input
             type="range"
@@ -66,7 +67,9 @@ function ItemRow({
           />
         </label>
       ) : (
-        <p className="muted">Sem bateria (carga {level === -1 ? 'passiva' : level})</p>
+        <p className="muted">
+          Carga: não se aplica{level === -1 ? '' : ' (estado incomum preservado no save)'}
+        </p>
       )}
     </article>
   );
@@ -88,13 +91,19 @@ export function InventoryScreen() {
   const occupied = A.occupiedHeroes(v);
   const idx = Math.min(player, Math.max(0, v.save.playerInventories.length - 1));
   const inv = v.save.playerInventories[idx];
+  const capacity = A.inventoryCapacity(v, { kind: 'player', index: idx });
+  const full = capacity !== null && (inv?.itemStringIds.length ?? 0) >= capacity.limit;
   const bench = v.save.gameRoomTools;
-  const heroOf = (i: number) => HEROES[occupied[i] as number]?.label ?? `Jogador ${i + 1}`;
+  const confirmedHero = (i: number) =>
+    A.inventoryCapacity(v, { kind: 'player', index: i })?.certain
+      ? (HEROES[occupied[i] as number]?.label ?? `Jogador ${i + 1}`)
+      : null;
+  const heroOf = (i: number) => confirmedHero(i) ?? `não confirmado (jogador ${i + 1})`;
 
   return (
     <>
       <section className="panel">
-        <h2>Pasta de couro: {heroOf(idx)}</h2>
+        <h2>Personagem: {heroOf(idx)}</h2>
         <div className="chips" role="group" aria-label="Inventário do jogador">
           {v.save.playerInventories.map((p, i) => (
             <button
@@ -104,7 +113,8 @@ export function InventoryScreen() {
               aria-pressed={i === idx}
               onClick={() => setPlayer(i)}
             >
-              Jogador {i + 1} ({heroOf(i)}) •{' '}
+              Jogador {i + 1}
+              {confirmedHero(i) ? ` (${confirmedHero(i)})` : ' — personagem não confirmado'} •{' '}
               {p.itemStringIds.length === 0 ? 'vazio' : `${p.itemStringIds.length} itens`}
             </button>
           ))}
@@ -114,17 +124,24 @@ export function InventoryScreen() {
       <section className="panel">
         <header className="panel-head">
           <h2 ref={itemsHeading} tabIndex={-1}>
-            Itens na pasta ({inv?.itemStringIds.length ?? 0})
+            Itens carregados ({inv?.itemStringIds.length ?? 0})
           </h2>
           <button
             type="button"
             className="btn btn-green"
             onClick={() => setCatalog({ kind: 'player', index: idx })}
-            disabled={!inv}
+            disabled={!inv || full}
           >
             + Adicionar item
           </button>
         </header>
+        {capacity && (
+          <p className="muted">
+            {capacity.certain
+              ? `${inv?.itemStringIds.length ?? 0} de ${capacity.limit} slots ocupados.`
+              : `${inv?.itemStringIds.length ?? 0} itens carregados. Novas adições ficam limitadas a 3 até confirmar a associação entre personagem e inventário; os itens existentes são preservados.`}
+          </p>
+        )}
         {inv && inv.itemStringIds.length > 0 ? (
           <div className="grid grid-3">
             {inv.itemStringIds.map((alias, i) => (
@@ -147,7 +164,7 @@ export function InventoryScreen() {
         <header className="panel-head">
           <div>
             <h2 ref={benchHeading} tabIndex={-1}>
-              Ferramentas na bancada do hub (gameRoomTools)
+              Ferramentas na bancada/prateleira
             </h2>
             <p className="muted">Itens disponíveis no lobby para qualquer herói equipar antes da partida.</p>
           </div>
@@ -155,24 +172,30 @@ export function InventoryScreen() {
             + Adicionar ferramenta
           </button>
         </header>
-        <ul className="pills">
-          {bench.itemStringIds.map((alias, i) => (
-            <li key={`${alias}-${i}`} className="pill">
-              <span>{findItem(alias)?.label ?? alias}</span>
-              <button
-                type="button"
-                className="pill-x"
-                aria-label={`Remover ${findItem(alias)?.label ?? alias} da bancada (posição ${i + 1})`}
-                onClick={() => edit((d) => A.removeItem(d, { kind: 'bench' }, i))}
-              >
-                ✕
-              </button>
-            </li>
-          ))}
-          {bench.itemStringIds.length === 0 && <li className="muted">Bancada vazia.</li>}
-        </ul>
+        {bench.itemStringIds.length > 0 ? (
+          <div className="grid grid-3">
+            {bench.itemStringIds.map((alias, i) => (
+              <ItemRow
+                key={`${alias}-${i}`}
+                alias={alias}
+                level={bench.itemBatteryLevels[i] ?? -1}
+                target={{ kind: 'bench' }}
+                index={i}
+                onRemoved={(n) => removed(n, benchHeading)}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="muted">Bancada vazia.</p>
+        )}
       </section>
-      {catalog && <CatalogDialog initialTarget={catalog} onClose={() => setCatalog(null)} />}
+      {catalog && (
+        <CatalogDialog
+          initialTarget={catalog}
+          onClose={() => setCatalog(null)}
+          fallbackFocus={itemsHeading}
+        />
+      )}
     </>
   );
 }

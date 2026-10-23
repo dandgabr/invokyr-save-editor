@@ -72,20 +72,24 @@ describe('entradas hostis nas ações', () => {
         { x: 1, y: 3 },
       ];
     });
-    const v = produce(dup, (d) => A.setUpgradeLevel(d, 0, 1, 0));
+    const v = produce(dup, (d) => {
+      A.setUpgradeLevel(d, 0, 1, 0);
+    });
     expect(v.save.upgrades.redUpgrades).toEqual([]);
-    const keep = produce(dup, (d) => A.setUpgradeLevel(d, 0, 1, 4));
+    const keep = produce(dup, (d) => {
+      A.setUpgradeLevel(d, 0, 1, 4);
+    });
     expect(keep.save.upgrades.redUpgrades).toEqual([{ x: 1, y: 4 }]);
   });
   it('sessão com heróis fora de ordem mantém inventários alinhados', () => {
     const v = edit((d) => {
       A.setOwner(d, 5, ID2);
-      A.addItem(d, { kind: 'player', index: 1 }, 'ice'); // herói 5 → índice 1
+      A.addItem(d, { kind: 'player', index: 1 }, 'dice_tp'); // herói 5 → índice 1
       A.setOwner(d, 2, ID3); // herói 2 entra antes do 5 → índice 1; o do 5 passa para 2
     });
     expect(v.meta.playerCount).toBe(3);
     expect(v.save.playerInventories).toHaveLength(3);
-    expect(v.save.playerInventories[2]?.itemStringIds).toEqual(['ice']);
+    expect(v.save.playerInventories[2]?.itemStringIds).toEqual(['dice_tp']);
     expect(v.save.playerInventories[1]?.itemStringIds).toEqual([]);
     expect(hasErrors(validate(v))).toBe(false);
   });
@@ -178,7 +182,7 @@ describe('round-trip com as larguras do jogo (GameDevWare)', () => {
   });
   it('inserir/remover no meio de um array misto não corrompe os formatos', () => {
     const v = edit((d) => {
-      A.addItem(d, { kind: 'bench' }, 'ice');
+      A.addItem(d, { kind: 'bench' }, 'dice_tp');
       A.removeItem(d, { kind: 'bench' }, 0);
     });
     const out = readContainer(serializeSave(doc, v as never));

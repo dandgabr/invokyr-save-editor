@@ -1,5 +1,11 @@
 import { findItem } from '../catalog/catalog';
 import {
+  BASE_INVENTORY_SLOTS,
+  inventoryCapacity,
+  MAX_BANK,
+  MAX_BONUS_INVENTORY_SLOTS,
+} from '../state/actions';
+import {
   CLOTH_COLORS,
   FIGURINE_MASK,
   FURNITURES,
@@ -44,7 +50,9 @@ function checkInventory(inv: InventoryState | undefined, path: string, out: Issu
   ids.forEach((id, i) => {
     const item = findItem(id);
     if (!item) {
-      out.push(warn(`${path}.itemStringIds[${i}]`, `Item "${id}" não consta no catálogo do jogo`));
+      out.push(
+        warn(`${path}.itemStringIds[${i}]`, 'Item não reconhecido pelo catálogo do jogo; valor preservado'),
+      );
       return;
     }
     const b = bat[i];
@@ -113,7 +121,17 @@ export function validate(v: SaveValues): Issue[] {
       ),
     );
   }
-  invs.forEach((inv, i) => checkInventory(inv, `save.playerInventories[${i}]`, out));
+  invs.forEach((inv, i) => {
+    const path = `save.playerInventories[${i}]`;
+    checkInventory(inv, path, out);
+    const count = inv?.itemStringIds?.length;
+    if (!Number.isInteger(count)) return;
+    const cap = inventoryCapacity(v, { kind: 'player', index: i });
+    const provenLimit = cap?.certain ? cap.limit : BASE_INVENTORY_SLOTS + MAX_BONUS_INVENTORY_SLOTS;
+    if ((count as number) > provenLimit) {
+      out.push(err(path, `${count} itens excedem a capacidade comprovada de ${provenLimit} slots`));
+    }
+  });
   checkInventory(save.gameRoomTools, 'save.gameRoomTools', out);
 
   const skin = save.gameRoomSkinIndex;
@@ -184,8 +202,9 @@ export function validate(v: SaveValues): Issue[] {
     if (!(b.difficulty >= 0 && b.difficulty <= 4))
       out.push(warn(`collection.bestBoardDifficulties[${i}]`, `Dificuldade ${b.difficulty} fora de 0..4`));
   });
-  if (!((save.bank?.currentTotalScore ?? 0) >= 0))
-    out.push(err('save.bank.currentTotalScore', 'Saldo inválido'));
+  const bank = save.bank?.currentTotalScore;
+  if (!Number.isInteger(bank) || bank < 0 || bank > MAX_BANK)
+    out.push(err('save.bank.currentTotalScore', `Saldo deve ser inteiro entre 0 e ${MAX_BANK}`));
   return out;
 }
 

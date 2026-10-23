@@ -51,6 +51,12 @@ Tabela resumida dos grupos (lista completa no JSON):
 - **Skins de sala: não existem nomes localizados** (`GameRoomSkin_*` não têm campo de termo; só aparece o termo genérico `Item/shopitem/gmskin/actif_skin`). O jogo só tem os nomes dos assets (Default, Blue, Red, Vegetation, White_Yellow, Yellow_Stone). Os rótulos pt-BR do editor (Clássico, Azul néon, Vermelho, Vegetação, Dourada, Pedra ocre) são do design do app, na mesma ordem, e não do jogo.
 - Cores de roupa (`ClothColor`) e heróis: não extraídos aqui.
 
+### Descrições apresentadas pelo editor
+
+O catálogo oferece **64 aliases** para novas adições: dados especiais, gadgets, tesouros e chaves presentes em `availableTools`. Treze têm descrição pt-BR no asset do jogo. Para os **51 restantes**, [`item-descriptions.json`](item-descriptions.json) registra um texto editorial e o tipo de evidência que o sustenta (`localized-name`, `asset-name` ou `keyName-and-door-asset`). Esses textos identificam o tema do item e deixam explícito quando o efeito exato não foi confirmado; **não são descrições oficiais**. O gerador rejeita qualquer item oferecido sem descrição e qualquer anotação editorial sem alias selecionável.
+
+Os aliases de dados numéricos e da categoria “Outros” continuam no catálogo para ler e preservar saves existentes, mas `selectable=false` impede novas adições pela interface. A propriedade `descriptionSource` do catálogo gerado distingue `game`, `editorial` e `unknown`.
+
 ## 3. Loja
 
 Classes `ShopItemData` (base: `_uid int`, `_alias`, `_category`, `_minQuantity`, `_basePrice`, `_boughtCountInflationOverride`, `_roundInflation`, `_growth`, `_curve`, `_maxInflationRound`, + prefab/`_gameplayElement`/evento FMOD). **Não existe campo de "quantidade máxima" nem "stack limit" em `ShopItemData`** [asset]; o limite de compra é o `MaxLevel` do upgrade ou o limite do inventário (textos `Item/shopitem/max_reached`, `inventory_full`). `_minQuantity` é a quantidade mínima em estoque/compra (leitura: 0 = sem mínimo, 1/2 = mínimo da categoria) [hip na semântica; valores [asset]]. Categoria: 1 Upgrade, 2 Furniture, 3 Gadget, 4 Consumable. Inflação: `preço = base` quando `_boughtCountInflationOverride`=0; só `fur_clock` usa inflação (`roundInflation` 1, `growth` 125, `maxInflationRound` 9) [asset].

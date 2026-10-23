@@ -1,7 +1,22 @@
 import { useEffect, useRef } from 'react';
+import { findItem } from '../catalog/catalog';
 import { hasErrors, type Issue } from '../schema/validate';
 import { type Change, MAX_CHANGES } from '../state/document';
 import { formatValue } from './format';
+
+function itemChangePath(path: string): string | null {
+  const player = /^save\.playerInventories\[(\d+)\]\.itemStringIds\[(\d+)\]$/.exec(path);
+  if (player) return `Itens carregados • jogador ${Number(player[1]) + 1}, posição ${Number(player[2]) + 1}`;
+  const bench = /^save\.gameRoomTools\.itemStringIds\[(\d+)\]$/.exec(path);
+  if (bench) return `Ferramentas na bancada/prateleira • posição ${Number(bench[1]) + 1}`;
+  return null;
+}
+
+function displayChangeValue(path: string, value: unknown): string {
+  if (itemChangePath(path) && typeof value === 'string')
+    return findItem(value)?.label ?? 'Item não reconhecido';
+  return formatValue(value);
+}
 
 interface Props {
   changes: Change[];
@@ -59,11 +74,9 @@ export function SaveDialog({ changes, issues, busy, inPlace, onBackup, onConfirm
               <tbody>
                 {changes.map((c) => (
                   <tr key={c.path}>
-                    <td>
-                      <code>{c.path}</code>
-                    </td>
-                    <td>{formatValue(c.before)}</td>
-                    <td>{formatValue(c.after)}</td>
+                    <td>{itemChangePath(c.path) ?? <code>{c.path}</code>}</td>
+                    <td>{displayChangeValue(c.path, c.before)}</td>
+                    <td>{displayChangeValue(c.path, c.after)}</td>
                   </tr>
                 ))}
               </tbody>

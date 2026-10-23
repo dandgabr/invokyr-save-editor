@@ -88,7 +88,13 @@ export function HubScreen() {
                 #{f.id} {f.label}
               </strong>
               <span className={owned.has(f.id) ? 'green' : 'muted'}>
-                {owned.has(f.id) ? '✓ Ativo' : '✕ Bloqueado'}
+                {f.id === 8
+                  ? owned.has(f.id)
+                    ? '✓ Desbloqueado'
+                    : '✕ Não desbloqueado'
+                  : owned.has(f.id)
+                    ? '✓ Ativo'
+                    : '✕ Bloqueado'}
               </span>
             </button>
           ))}
