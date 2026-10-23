@@ -25,6 +25,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: pip install msgpack # oráculo Python do teste cruzado (reference/save_codec.py)
       # Política: zero vulnerabilidades conhecidas, em qualquer severidade.
       - run: npm audit --audit-level=low
       - run: npm ls --all > /dev/null # falha com peer dependency inválida
