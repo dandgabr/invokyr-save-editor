@@ -101,3 +101,13 @@ test('soltar arquivo fora da zona de drop não navega para ele', async ({ page }
   });
   expect(prevented).toBe(true);
 });
+
+test('as fontes do design (Cinzel e Inter) carregam localmente', async ({ page }) => {
+  await page.goto('/');
+  const loaded = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/["']/g, ''));
+  });
+  expect(loaded).toContain('Cinzel');
+  expect(loaded).toContain('Inter Variable');
+});
