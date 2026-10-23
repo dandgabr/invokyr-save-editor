@@ -1,0 +1,16 @@
+# Saves pessoais contêm SteamID64 de outras pessoas: nunca versionar.
+*.sav
+*.sav.bak*
+.tmp_*
+saves-local/
+
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+.DS_Store
+__pycache__/
+*.pyc
