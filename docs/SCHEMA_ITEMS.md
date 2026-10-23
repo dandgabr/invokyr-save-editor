@@ -43,7 +43,7 @@ Tabela resumida dos grupos (lista completa no JSON):
 
 ## 2. Nomes para a UI (localização)
 
-- **Existem.** Plugin I2 Localization: `MonoBehaviour` "I2Languages" em `resources.assets` (PathID 1510, 588.624 bytes), **949 termos × 13 idiomas** [asset]. Ordem dos idiomas: 0 English, 1 French, **2 Portuguese_brazil (pt-BR)**, 3 Simplified_chinese, 4 Spanish, 5 Polish, 6 Russian, 7 Korean, 8 German, 9 Italian, 10 Japanese, 11 Ukrainian, 12 Traditional_chinese. O dump completo dos termos não é versionado; o JSON do repo já embute en/pt-BR dos termos usados.
+- **Existem.** Plugin I2 Localization: `MonoBehaviour` "I2Languages" em `resources.assets` (PathID 1510, 588.624 bytes), **949 termos × 13 idiomas** [asset]. Ordem dos idiomas: 0 English, 1 French, **2 Portuguese_brazil (pt-BR)**, 3 Simplified_chinese, 4 Spanish, 5 Polish, 6 Russian, 7 Korean, 8 German, 9 Italian, 10 Japanese, 11 Ukrainian, 12 Traditional_chinese. O dump completo dos termos não é versionado; o JSON do repo embute en/pt-BR e os textos Spanish extraídos por `scripts/extract-spanish.py` para os termos usados. O editor apresenta Spanish como `es-419`.
 - Itens: `elementNameTerm`/`elementDescription` do SOTool (`UI/die/die` = Die/Dado, `Item/desc/dice5`…). **59 dos 163 itens não têm nome localizado** (campo vazio ou termo ausente, ex.: `ice`, `dice_smoke`, os `tr_*`, `rulebook`); a UI precisa de rótulo próprio (derivar do alias). 7 gadgets sem nome no SOTool herdam o nome do item de loja equivalente (`source: "shopItem"`).
 - Loja/upgrades/mobílias: termos `Item/shopitem/*` (ex.: `upgrade_health`, `furniture_oldclock`, `consumable_fannypack`, `gadget_mob_radar`) mapeados em `shopItems[].name/desc`. Há também `Item/shopitem/gadget_key_henry` e `..._key_corridor`.
 - House rules: `HouseRules/houserules/name/*` e `desc/*` (nome/descrição por regra em `houseRules[]`).
@@ -53,7 +53,7 @@ Tabela resumida dos grupos (lista completa no JSON):
 
 ### Descrições apresentadas pelo editor
 
-O catálogo oferece **64 aliases** para novas adições: dados especiais, gadgets, tesouros e chaves presentes em `availableTools`. Treze têm descrição pt-BR no asset do jogo. Para os **51 restantes**, [`item-descriptions.json`](item-descriptions.json) registra um texto editorial e o tipo de evidência que o sustenta (`localized-name`, `asset-name` ou `keyName-and-door-asset`). Esses textos identificam o tema do item e deixam explícito quando o efeito exato não foi confirmado; **não são descrições oficiais**. O gerador rejeita qualquer item oferecido sem descrição e qualquer anotação editorial sem alias selecionável.
+O catálogo oferece **64 aliases** para novas adições: dados especiais, gadgets, tesouros e chaves presentes em `availableTools`. Treze têm descrição pt-BR no asset do jogo. Para os **51 restantes**, [`item-descriptions.json`](item-descriptions.json) registra um texto editorial e o tipo de evidência que o sustenta (`localized-name`, `asset-name` ou `keyName-and-door-asset`). A interface usa textos curtos e neutros para não atribuir ao item mecânicas não verificadas; a documentação de origem conserva as limitações. **Não são descrições oficiais.** O gerador rejeita qualquer item oferecido sem descrição e qualquer anotação editorial sem alias selecionável.
 
 Os aliases de dados numéricos e da categoria “Outros” continuam no catálogo para ler e preservar saves existentes, mas `selectable=false` impede novas adições pela interface. A propriedade `descriptionSource` do catálogo gerado distingue `game`, `editorial` e `unknown`.
 

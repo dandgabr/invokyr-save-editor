@@ -4,6 +4,8 @@ Editor web de saves do **Invokyr** (Ludogram, Steam AppID `3883570`). Na interfa
 
 **Use agora:** <https://dan.seg.br/invokyr-save-editor/>
 
+O editor oferece **English (US)**, **Português (Brasil)** e **Español (Latinoamérica)**. A escolha fica salva no navegador; sem preferência ou idioma correspondente, o padrão é **en-US**. A tela inicial informa que o editor foi baseado na build Steam **26154962** (save v15). Isso não garante compatibilidade com outras builds.
+
 > Projeto de fã, **não afiliado à Ludogram**. Edite saves por sua conta e risco e **faça backup antes**. Feche o jogo ao editar: ele pode regravar o save ao sair, e o Steam Cloud pode sobrescrever o arquivo com a versão da nuvem (precauções; não foram testadas aqui). O app foi validado contra o formato do save, mas **ainda não foi verificado que o jogo carrega um save regravado por ele**: teste primeiro em uma cópia.
 
 ## Como usar
@@ -52,6 +54,8 @@ Cada personagem tem 3 espaços para itens, mais até 2 adquiridos com a **Pochet
 
 O botão **Definir 99.999** é um preset do cofre; não há prova de que 99.999 seja o máximo do jogo. A entrada aceita inteiros de 0 a 2.147.483.647, faixa do campo gravado no save. O Relógio Antigo pode ser desbloqueado no editor, mas o estado ativo/quebrado não é inferido enquanto o formato desse estado não for confirmado no jogo.
 
+Os textos oficiais de itens em espanhol vêm do I2 Localization do jogo, extraídos de `resources.assets` com `scripts/extract-spanish.py`. Onde o jogo não fornece uma descrição, o editor mostra um texto editorial neutro; a origem permanece indicada no catálogo gerado. A tradução altera somente o que aparece na tela, sem mudar os identificadores gravados no save.
+
 ## Desenvolvimento
 
 Requer Node 22 ou mais recente. Mais detalhes em [`CONTRIBUTING.md`](CONTRIBUTING.md).
@@ -67,6 +71,7 @@ npm run docs:lint    # Markdown (rumdl)
 npm run build        # build estático em dist/
 npm run check:game   # compara o build do jogo instalado com o do schema verificado
 node scripts/gen-catalog.mjs   # regera o catálogo de itens a partir de docs/schema-items.json
+uv run --with UnityPy python scripts/extract-spanish.py /caminho/Invokyr_Data/resources.assets   # reextrai os termos oficiais em espanhol
 ```
 
 A arquitetura, as decisões e os limites conhecidos estão em [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md); o design das telas em [`docs/design/`](docs/design/). O teste contra um save real é opcional e nunca versionado: `INVOKYR_REAL_SAVE=/caminho/Natural.sav npm test`.

@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { LocaleProvider } from './i18n';
 import { App } from './ui/App';
 import './ui/tokens.css';
 import './ui/app.css';
@@ -9,6 +10,8 @@ if (!container) throw new Error('Elemento #root não encontrado');
 
 createRoot(container).render(
   <StrictMode>
-    <App />
+    <LocaleProvider>
+      <App />
+    </LocaleProvider>
   </StrictMode>,
 );

@@ -1,22 +1,35 @@
+import { useLocale, useText } from '../../i18n';
+import { enumName, localizedName } from '../../i18n-labels';
 import { FURNITURES, KEY_DOORS } from '../../schema/enums';
 import { SKINS } from '../../schema/skins';
 import * as A from '../../state/actions';
 import { useEdit, useValues } from '../hooks';
 
 export function HubScreen() {
+  const t = useText();
+  const { locale } = useLocale();
   const v = useValues();
   const edit = useEdit();
   const skin = v.save.gameRoomSkinIndex;
   const owned = new Set(v.save.furnitures.furnitures);
   const doors = new Set(v.save.unlockedKeyDoors);
-  const skinLabel = SKINS[skin]?.label ?? `Desconhecida (#${skin})`;
+  const skinLabel = SKINS[skin]
+    ? localizedName(SKINS[skin].label, locale)
+    : `${t('Unknown', 'Desconhecida', 'Desconocida')} (#${skin})`;
 
   return (
     <>
       <section className="panel">
-        <h2>Estética & arquitetura do salão (gameRoomSkinIndex)</h2>
+        <h2>
+          {t('Game room appearance', 'Estética & arquitetura do salão', 'Aspecto de la sala de juegos')}
+        </h2>
         <p className="muted">
-          Tema visual do salão de jogos. Skin atual: <strong>{skinLabel}</strong>.
+          {t(
+            'Game room theme. Current skin:',
+            'Tema visual do salão de jogos. Skin atual:',
+            'Tema visual de la sala de juegos. Aspecto actual:',
+          )}{' '}
+          <strong>{skinLabel}</strong>.
         </p>
         <div className="grid grid-6">
           {SKINS.map((s, i) => (
@@ -29,11 +42,10 @@ export function HubScreen() {
             >
               <span className={`swatch swatch-${s.tone}`} aria-hidden="true" />
               <strong>
-                {i}: {s.label}
+                {i}: {localizedName(s.label, locale)}
               </strong>
-              <span className="tiny muted">{s.asset}</span>
               <span className={i === skin ? 'tag tag-green' : 'tag'}>
-                {i === skin ? '✓ Ativa' : 'Selecionar'}
+                {i === skin ? t('✓ Active', '✓ Ativa', '✓ Activa') : t('Select', 'Selecionar', 'Seleccionar')}
               </span>
             </button>
           ))}
@@ -42,9 +54,10 @@ export function HubScreen() {
 
       <section className="panel">
         <header className="panel-head">
-          <h2>Passagens com chave (unlockedKeyDoors)</h2>
+          <h2>{t('Locked passages', 'Passagens com chave', 'Pasajes con llave')}</h2>
           <button type="button" className="btn btn-green" onClick={() => edit(A.unlockAllDoors)}>
-            Destrancar as {KEY_DOORS.length} portas
+            {t('Unlock all', 'Destrancar as', 'Desbloquear las')} {KEY_DOORS.length}{' '}
+            {t('doors', 'portas', 'puertas')}
           </button>
         </header>
         <div className="grid grid-2">
@@ -56,23 +69,36 @@ export function HubScreen() {
               aria-pressed={doors.has(k.id)}
               onClick={() => edit((d) => A.setDoor(d, k.id, !doors.has(k.id)))}
             >
-              <strong>{k.label}</strong>
+              <strong>{enumName(k, locale)}</strong>
               <span className={doors.has(k.id) ? 'green' : 'muted'}>
-                {doors.has(k.id) ? 'Destrancada ✓' : 'Trancada'}
+                {doors.has(k.id)
+                  ? t('Unlocked ✓', 'Destrancada ✓', 'Desbloqueada ✓')
+                  : t('Locked', 'Trancada', 'Bloqueada')}
               </span>
             </button>
           ))}
         </div>
         <p className="muted tiny">
-          O jogo só tem duas portas que usam chave (Henry e Corredor), verificado nos binários.
+          {t(
+            'The verified game build has two key doors: Henry and Corridor.',
+            'A build verificada do jogo tem duas portas com chave: Henry e Corredor.',
+            'La build verificada del juego tiene dos puertas con llave: Henry y Pasillo.',
+          )}
         </p>
       </section>
 
       <section className="panel">
         <header className="panel-head">
-          <h2>Mobílias & relíquias da biblioteca (furnitures)</h2>
+          <h2>
+            {t(
+              'Library furniture & relics',
+              'Mobílias & relíquias da biblioteca',
+              'Muebles y reliquias de la biblioteca',
+            )}
+          </h2>
           <button type="button" className="btn btn-green" onClick={() => edit(A.unlockAllFurnitures)}>
-            Desbloquear as {FURNITURES.length} mobílias
+            {t('Unlock all', 'Desbloquear as', 'Desbloquear los')} {FURNITURES.length}{' '}
+            {t('furniture pieces', 'mobílias', 'muebles')}
           </button>
         </header>
         <div className="grid grid-4">
@@ -84,17 +110,15 @@ export function HubScreen() {
               aria-pressed={owned.has(f.id)}
               onClick={() => edit((d) => A.setFurniture(d, f.id, !owned.has(f.id)))}
             >
-              <strong>
-                #{f.id} {f.label}
-              </strong>
+              <strong>{enumName(f, locale)}</strong>
               <span className={owned.has(f.id) ? 'green' : 'muted'}>
                 {f.id === 8
                   ? owned.has(f.id)
-                    ? '✓ Desbloqueado'
-                    : '✕ Não desbloqueado'
+                    ? t('✓ Unlocked', '✓ Desbloqueado', '✓ Desbloqueado')
+                    : t('✕ Locked', '✕ Não desbloqueado', '✕ Bloqueado')
                   : owned.has(f.id)
-                    ? '✓ Ativo'
-                    : '✕ Bloqueado'}
+                    ? t('✓ Active', '✓ Ativo', '✓ Activo')
+                    : t('✕ Locked', '✕ Bloqueado', '✕ Bloqueado')}
               </span>
             </button>
           ))}

@@ -74,3 +74,59 @@ export function saveLocationFor(os: OsKind): SaveLocation {
       };
   }
 }
+
+export function locationNote(os: OsKind, locale: import('../i18n').Locale): string {
+  if (locale === 'pt-BR') return saveLocationFor(os).note;
+  const notes = {
+    windows: [
+      'Paste the path into the file picker address bar. AppData is hidden.',
+      'Pega la ruta en la barra de direcciones del selector de archivos. AppData está oculta.',
+    ],
+    linux: [
+      'In the file picker, press Ctrl+L to enter the path and Ctrl+H to show hidden files.',
+      'En el selector de archivos, presiona Ctrl+L para escribir la ruta y Ctrl+H para mostrar archivos ocultos.',
+    ],
+    steamdeck: [
+      'In the file picker, press Ctrl+L to enter the path and Ctrl+H to show hidden files.',
+      'En el selector de archivos, presiona Ctrl+L para escribir la ruta y Ctrl+H para mostrar archivos ocultos.',
+    ],
+    macos: [
+      'Invokyr has no native macOS version. If you play through a compatibility layer, look for Ludogram/Invokyr/saves inside its prefix.',
+      'Invokyr no tiene versión nativa para macOS. Si juegas mediante una capa de compatibilidad, busca Ludogram/Invokyr/saves dentro de su prefijo.',
+    ],
+    unknown: [
+      'Could not identify the system. Look for Ludogram/Invokyr/saves inside AppData/LocalLow.',
+      'No se pudo identificar el sistema. Busca Ludogram/Invokyr/saves dentro de AppData/LocalLow.',
+    ],
+  } as const;
+  return notes[os][locale === 'es-419' ? 1 : 0];
+}
+
+export function locationLabel(os: OsKind, locale: import('../i18n').Locale): string {
+  if (os !== 'unknown') return saveLocationFor(os).label;
+  return locale === 'pt-BR'
+    ? 'Sistema não identificado'
+    : locale === 'es-419'
+      ? 'Sistema no identificado'
+      : 'Unknown system';
+}
+
+export function locationAlternatives(os: OsKind, locale: import('../i18n').Locale): string[] {
+  const alternatives = saveLocationFor(os).alternatives;
+  if (locale === 'pt-BR') return alternatives;
+  return alternatives.map((path) =>
+    path
+      .replace(
+        '(Steam via Flatpak)',
+        locale === 'es-419' ? '(Steam mediante Flatpak)' : '(Steam via Flatpak)',
+      )
+      .replace(
+        '<sua biblioteca Steam>',
+        locale === 'es-419' ? '<tu biblioteca Steam>' : '<your Steam library>',
+      )
+      .replace(
+        '(jogo instalado em outro disco)',
+        locale === 'es-419' ? '(juego instalado en otro disco)' : '(game installed on another drive)',
+      ),
+  );
+}

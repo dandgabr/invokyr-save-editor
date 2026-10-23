@@ -1,6 +1,8 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+test.use({ locale: 'pt-BR' });
+
 const fixture = new URL('../tests/fixtures/template.sav', import.meta.url).pathname;
 
 const audit = async (page: import('@playwright/test').Page, where: string) => {

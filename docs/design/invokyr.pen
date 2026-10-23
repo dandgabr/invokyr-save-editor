@@ -4782,7 +4782,7 @@
                           "id": "eVrnp",
                           "name": "Title",
                           "fill": "#F4EBD9",
-                          "content": "ESTÉTICA & ARQUITETURA DO SALÃO (gameRoomSkinIndex)",
+                          "content": "ESTÉTICA & ARQUITETURA DO SALÃO",
                           "fontFamily": "Cinzel",
                           "fontSize": 12,
                           "fontWeight": "bold"
@@ -5321,7 +5321,7 @@
                       "id": "HgNrh",
                       "name": "Title",
                       "fill": "#F4EBD9",
-                      "content": "PASSAGENS & PORTAS DE CARVALHO ENTALHADO (unlockedKeyDoors)",
+                      "content": "PASSAGENS & PORTAS DE CARVALHO ENTALHADO",
                       "fontFamily": "Cinzel",
                       "fontSize": 12,
                       "fontWeight": "bold"
@@ -5564,7 +5564,7 @@
                       "id": "niWq7",
                       "name": "Title",
                       "fill": "#F4EBD9",
-                      "content": "MOBÍLIAS & RELÍQUIAS DA BIBLIOTECA (furnitures)",
+                      "content": "MOBÍLIAS & RELÍQUIAS DA BIBLIOTECA",
                       "fontFamily": "Cinzel",
                       "fontSize": 12,
                       "fontWeight": "bold"

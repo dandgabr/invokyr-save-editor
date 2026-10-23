@@ -32,7 +32,7 @@
    "uk",
    "zh-TW"
   ],
-  "note": "Todos os campos vêm de typetree UnityPy (bundles Addressables 26154962). Strings pt-BR/en vêm de I2Languages (resources.assets, PathID 1510), idiomas indices: 0 en, 2 pt-BR."
+  "note": "Todos os campos vêm de typetree UnityPy (bundles Addressables 26154962). Strings en/pt-BR/es-419 vêm de I2Languages (resources.assets, PathID 1510), idiomas índices 0/2/4; Spanish do jogo é usado como es-419 no editor."
  },
  "items": [
   {
@@ -50,12 +50,14 @@
    "name": {
     "term": "Item/shopitem/gadget_camera",
     "en": "Camera",
-    "pt-BR": "Câmera"
+    "pt-BR": "Câmera",
+    "es-419": "Cámara"
    },
    "desc": {
     "term": "Item/shopitem/gadget_camera_desc",
     "en": "Take pictures of your favorite moments in the manor",
-    "pt-BR": "Tire fotos dos seus momentos favoritos na mansão."
+    "pt-BR": "Tire fotos dos seus momentos favoritos na mansão.",
+    "es-419": "Plasma en fotos tus momentos favoritos en la mansión."
    },
    "bundle": "3992d482eb828bde7ee4f559dbc734c0.bundle",
    "pathId": "-6863871547647284934",
@@ -79,12 +81,14 @@
     "term": "Item/shopitem/gadget_compass",
     "en": "Compass",
     "pt-BR": "Bússola",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Brújula"
    },
    "desc": {
     "term": "Item/shopitem/gadget_compass_desc",
     "en": "Always points toward the Game Room. Getting lost is no excuse.",
-    "pt-BR": "Sempre aponta para o Salão de Jogos. Perder-se não é desculpa."
+    "pt-BR": "Sempre aponta para o Salão de Jogos. Perder-se não é desculpa.",
+    "es-419": "Siempre apunta al salón de juegos. Ya no hay excusas para perderse."
    },
    "bundle": "4bd5f268c52dc0b435a856f092cba553.bundle",
    "pathId": "8768879383464713240",
@@ -105,12 +109,14 @@
    "name": {
     "term": "Item/shopitem/gadget_flamethrower",
     "en": "Flamethrower",
-    "pt-BR": "Lança-chamas"
+    "pt-BR": "Lança-chamas",
+    "es-419": "Lanzallamas"
    },
    "desc": {
     "term": "Item/shopitem/gadget_flamethrower_desc",
     "en": "Set fire to anything standing in your way.\nLimited ammo. Fully reloaded between boards",
-    "pt-BR": "Incendeie tudo o que estiver no seu caminho.\nMunição limitada. Totalmente recarregada entre os tabuleiros"
+    "pt-BR": "Incendeie tudo o que estiver no seu caminho.\nMunição limitada. Totalmente recarregada entre os tabuleiros",
+    "es-419": "Calcina todo lo que se entrometa en tu camino.\nMunición limitada. Se recarga por completo entre tableros"
    },
    "bundle": "347fa5313187c729ec6e585fe0869d2b.bundle",
    "pathId": "1183776751479759221",
@@ -136,12 +142,14 @@
     "term": "Item/shopitem/gadget_mask",
     "en": "Game Master Mask",
     "pt-BR": "Máscara da Mestra do Jogo",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Máscara de maestra de juego"
    },
    "desc": {
     "term": "Item/shopitem/gadget_mask_desc",
     "en": "Wear the Game Master’s face and slip past enemies unnoticed.\nLimited charge. Fully recharged between boards",
-    "pt-BR": "Use o rosto da Mestra do Jogo e passe despercebido pelos inimigos.\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+    "pt-BR": "Use o rosto da Mestra do Jogo e passe despercebido pelos inimigos.\nCarga limitada. Totalmente recarregada entre os tabuleiros",
+    "es-419": "Ponte la cara de la maestra de juego y pasa desapercibido entre los enemigos.\nCarga limitada. Se recarga por completo entre tableros"
    },
    "bundle": "24bff37694c38861dfa7a61666a5fe16.bundle",
    "pathId": "-2093000054922168753",
@@ -167,12 +175,14 @@
     "term": "Item/shopitem/gadget_guitar",
     "en": "Guitar",
     "pt-BR": "Violão",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Guitarra"
    },
    "desc": {
     "term": "Item/shopitem/gadget_guitar_desc",
     "en": "A plain old guitar which probably does not attract attention at all when played",
-    "pt-BR": "Um violão antigo que não deve chamar muita atenção ao ser tocado."
+    "pt-BR": "Um violão antigo que não deve chamar muita atenção ao ser tocado.",
+    "es-419": "Una guitarrucha antigua. Seguro que apenas llama la atención de nadie al tocarla."
    },
    "bundle": "0780e56b75d8f6c892c7d3bb871ebcb7.bundle",
    "pathId": "-4529329631334548294",
@@ -193,12 +203,14 @@
    "name": {
     "term": "Item/shopitem/gadget_huntergun",
     "en": "Hunter Gun",
-    "pt-BR": "Arma de Caça"
+    "pt-BR": "Arma de Caça",
+    "es-419": "Arma del cazador"
    },
    "desc": {
     "term": "Item/shopitem/gadget_huntergun_desc",
     "en": "You're not the prey anymore...are you ?\nLimited ammo. Fully reloaded between boards",
-    "pt-BR": "Você não é mais a presa… é?\nMunição limitada. Totalmente recarregada entre os tabuleiros"
+    "pt-BR": "Você não é mais a presa… é?\nMunição limitada. Totalmente recarregada entre os tabuleiros",
+    "es-419": "La presa se ha convertido en cazador.\nMunición limitada. Se recarga por completo entre tableros"
    },
    "bundle": "24b4d60239149795dd092000964c2441.bundle",
    "pathId": "-2722445086213967820",
@@ -224,12 +236,14 @@
     "term": "Item/shopitem/gadget_megaphone",
     "en": "Megaphone",
     "pt-BR": "Megafone",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Megáfono"
    },
    "desc": {
     "term": "Item/shopitem/gadget_megaphone_desc",
     "en": "Make sure everyone hears you when planning your next move in the manor",
-    "pt-BR": "Garante que todos ouçam o que você planeja para a próxima ação na mansão."
+    "pt-BR": "Garante que todos ouçam o que você planeja para a próxima ação na mansão.",
+    "es-419": "Asegúrate de que todos en la mansión estén al tanto de cuál es tu próximo movimiento."
    },
    "bundle": "5e5e98850d8b75e18cd88bd78a17abeb.bundle",
    "pathId": "-102439273528886203",
@@ -255,12 +269,14 @@
     "term": "Item/shopitem/gadget_mob_radar",
     "en": "G.M.E. Meter",
     "pt-BR": "Medidor de EMJ",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Medidor EMJ"
    },
    "desc": {
     "term": "Item/shopitem/gadget_mob_radar_desc",
     "en": "GameMaster Energy Meter. If malfunctioning, you know who you gonna call ?\nLimited charge. Fully recharged between boards",
-    "pt-BR": "Medidor de Energia da Mestra do Jogo. Se estragar, você sabe quem chamar?\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+    "pt-BR": "Medidor de Energia da Mestra do Jogo. Se estragar, você sabe quem chamar?\nCarga limitada. Totalmente recarregada entre os tabuleiros",
+    "es-419": "Medidor de energía de la maestra de juego. Si deja de funcionar, ¿a quién vas a llamar?\nCarga limitada. Se recarga por completo entre tableros"
    },
    "bundle": "73639a307b6dfbc67aa546a5c402abf6.bundle",
    "pathId": "2369287516611600229",
@@ -285,12 +301,14 @@
    "name": {
     "term": "Item/shopitem/gadget_playerskull",
     "en": "Player Skull",
-    "pt-BR": "Crânio de Jogador"
+    "pt-BR": "Crânio de Jogador",
+    "es-419": "Cráneo de jugador"
    },
    "desc": {
     "term": "Item/shopitem/gadget_playerskull_desc",
     "en": "Talk with your dead companions from anywhere. To be or not to be...",
-    "pt-BR": "Fale de qualquer lugar com os colegas que morreram. Ser ou não ser...?"
+    "pt-BR": "Fale de qualquer lugar com os colegas que morreram. Ser ou não ser...?",
+    "es-419": "Habla con tus compañeros caídos, estés donde estés. Ser o no ser…"
    },
    "bundle": "a76822ec6f96942ac678b2ea2d5c56e5.bundle",
    "pathId": "-796503551714985190",
@@ -312,12 +330,14 @@
     "term": "Item/shopitem/gadget_monsterbox",
     "en": "Monster Sound Box",
     "pt-BR": "Caixa de Som Monstruosa",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Caja de ruidos monstruosos"
    },
    "desc": {
     "term": "Item/shopitem/gadget_monsterbox_desc",
     "en": "Plays the lovely sounds of your favorite monsters",
-    "pt-BR": "Toca os sons adoráveis dos seus monstros favoritos."
+    "pt-BR": "Toca os sons adoráveis dos seus monstros favoritos.",
+    "es-419": "Reproduce los sonidos que emiten tus monstruos favoritos."
    },
    "bundle": "69479e0800364143d12c59e2cb8ce3a9.bundle",
    "pathId": "3588249452797213075",
@@ -339,12 +359,14 @@
     "term": "Item/shopitem/gadget_xray",
     "en": "X-Ray Goggles",
     "pt-BR": "Óculos de Raios X",
-    "source": "shopItem"
+    "source": "shopItem",
+    "es-419": "Gafas de rayos X"
    },
    "desc": {
     "term": "Item/shopitem/gadget_xray_desc",
     "en": "See players and your surroundings through walls.\nLimited charge. Fully recharged between boards",
-    "pt-BR": "Veja as pessoas e os arredores através das paredes.\nCarga limitada. Totalmente recarregada entre os tabuleiros"
+    "pt-BR": "Veja as pessoas e os arredores através das paredes.\nCarga limitada. Totalmente recarregada entre os tabuleiros",
+    "es-419": "Permite ver lo que te rodea, así como a otros jugadores, a través de las paredes.\nCarga limitada. Se recarga por completo entre tableros"
    },
    "bundle": "c72a88506ade4f081b72fa571fbe3944.bundle",
    "pathId": "5091509475908379414",
@@ -370,7 +392,8 @@
    "desc": {
     "term": "Item/desc/open_board",
     "en": "Start the game",
-    "pt-BR": "Começar o jogo"
+    "pt-BR": "Começar o jogo",
+    "es-419": "Comenzar partida"
    },
    "bundle": "94f5cbc56a29484fd8f1ff8350d2de5e.bundle",
    "pathId": "7955863579749535008",
@@ -596,7 +619,8 @@
    "desc": {
     "term": "UI/GameRoom/Rulebook",
     "en": "1. ROLL THE DICE TO MOVE YOUR TOKEN\n2. BRING BACK THE GOLDEN IDOLS\n3. SAY MY NAME TO END THE GAME",
-    "pt-BR": "1. ROLE OS DADOS PARA MOVER SEU PEÃO\n2. RECUPERE OS ÍDOLOS DOURADOS\n3. DIGA MEU NOME PARA ENCERRAR O JOGO"
+    "pt-BR": "1. ROLE OS DADOS PARA MOVER SEU PEÃO\n2. RECUPERE OS ÍDOLOS DOURADOS\n3. DIGA MEU NOME PARA ENCERRAR O JOGO",
+    "es-419": "1. TIRA EL DADO PARA MOVER TU FICHA\n2. TRAE DE VUELTA LOS ÍDOLOS DORADOS\n3. DI MI NOMBRE PARA TERMINAR EL JUEGO"
    },
    "bundle": "36508e0ce691d88ebdd2469756768328.bundle",
    "pathId": "350426133182371073",
@@ -618,7 +642,8 @@
    "desc": {
     "term": "UI/collection/collection_rulebook",
     "en": "<size=52>WELCOME TO MY COLLECTION ROOM!</size>\n\n<size=30>Complete my boards, bring them back to this altar, and the Master Board will finally be yours to play.\n\nBut do try to stay alive. Die, and you’re out for good.\n\nUnless, of course, you planned ahead.\nThere’s an Old Clock waiting in my shop. It can turn back your final mistake… if you’re willing to pay a very painful price.\n\nLife isn’t cheap, you know.</size>",
-    "pt-BR": "ESTA É A MINHA SALA DE COLEÇÕES!\n\nConclua meus tabuleiros e coloque-os neste altar para poder finalmente jogar no Tabuleiro Mestre.\n\nMas tente sobreviver. Se você morrer, não tem volta.\n\nA não ser, é claro, que você tenha se planejado.\nHá um Relógio Antigo na minha loja que pode desfazer seu último erro… se quiser pagar um preço muito doloroso.\n\nA vida não é barata, sabia?"
+    "pt-BR": "ESTA É A MINHA SALA DE COLEÇÕES!\n\nConclua meus tabuleiros e coloque-os neste altar para poder finalmente jogar no Tabuleiro Mestre.\n\nMas tente sobreviver. Se você morrer, não tem volta.\n\nA não ser, é claro, que você tenha se planejado.\nHá um Relógio Antigo na minha loja que pode desfazer seu último erro… se quiser pagar um preço muito doloroso.\n\nA vida não é barata, sabia?",
+    "es-419": "¡OS DOY LA BIENVENIDA A MI COLECCIÓN!\n\nCompletad mis tableros, devolvedlos a este altar y el tablero maestro será todo vuestro.\n\nEso sí, tratad de seguir con vida; de lo contrario, despedíos para siempre.\n\nA no ser, claro, que hayáis planificado las cosas.\nEncontraréis un reloj antiguo en mi tienda; es capaz de deshacer vuestro último error…, a cambio de un precio muy doloroso.\n\nYa sabéis: vivir sale caro."
    },
    "bundle": "1c8ab821461fe544128c3d6149af426c.bundle",
    "pathId": "-2700983641088656565",
@@ -640,7 +665,8 @@
    "desc": {
     "term": "UI/collection/houserules_rulebook",
     "en": "<size=52>MY HOUSE, MY RULES.</size>\n\n<size=30>You’ve beaten the Master Board.\n\nBut nobody stops after one good game, do they?\n\nYou play again.\nThen you start changing the rules, just to keep things interesting...\n\nSo, let's play one more game.\n\nAnd this time, we’ll use my rules.\n\nLet’s see how many you can survive.</size>\n",
-    "pt-BR": "<size=52>MINHA CASA, MINHAS REGRAS.</size>\n\n<size=30>Você venceu o Tabuleiro Mestre.\n\nMas ninguém para depois de uma boa partida, não é?\n\nVocê joga de novo.\nDepois, começa a mudar as regras, só para manter as coisas interessantes...\n\nEntão, vamos jogar mais uma partida.\n\nE desta vez, vamos seguir as minhas regras.\n\nVamos ver quantos tabuleiros você consegue concluir com vida.</size>"
+    "pt-BR": "<size=52>MINHA CASA, MINHAS REGRAS.</size>\n\n<size=30>Você venceu o Tabuleiro Mestre.\n\nMas ninguém para depois de uma boa partida, não é?\n\nVocê joga de novo.\nDepois, começa a mudar as regras, só para manter as coisas interessantes...\n\nEntão, vamos jogar mais uma partida.\n\nE desta vez, vamos seguir as minhas regras.\n\nVamos ver quantos tabuleiros você consegue concluir com vida.</size>",
+    "es-419": "<size=52>MI CASA, MIS REGLAS.</size>\n\n<size=30>Habéis completado el tablero maestro.\n\nPero nadie se detiene después de una buena partida, ¿verdad?\n\nVolvéis a jugar.\nDespués empezáis a cambiar las reglas para que todo siga siendo interesante...\n\nAsí que juguemos una partida más.\n\nY esta vez, seguiremos mis reglas.\n\nVeamos cuántos tableros conseguís superar con vida.</size>"
    },
    "bundle": "34ef958bb7c467263e41c8a6fee81b29.bundle",
    "pathId": "-956954616651892475",
@@ -661,7 +687,8 @@
    "name": {
     "term": "UI/die/antigravity",
     "en": "Anti-Gravity Die",
-    "pt-BR": "Dado Antigravidade"
+    "pt-BR": "Dado Antigravidade",
+    "es-419": "Dado antigravitatorio"
    },
    "desc": {
     "term": "Item/desc/dice_antigravity",
@@ -688,7 +715,8 @@
    "name": {
     "term": "UI/die/boom",
     "en": "Boom Die",
-    "pt-BR": "Dado Bomba"
+    "pt-BR": "Dado Bomba",
+    "es-419": "Dado explosivo"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -715,7 +743,8 @@
    "name": {
     "term": "UI/die/boom",
     "en": "Boom Die",
-    "pt-BR": "Dado Bomba"
+    "pt-BR": "Dado Bomba",
+    "es-419": "Dado explosivo"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -742,7 +771,8 @@
    "name": {
     "term": "UI/die/boom_or_cocoon",
     "en": "Boom or Cocoon Die",
-    "pt-BR": "Dado Bomba ou Teia"
+    "pt-BR": "Dado Bomba ou Teia",
+    "es-419": "Dado explosivo o de seda"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -769,7 +799,8 @@
    "name": {
     "term": "UI/die/boom_or_heal",
     "en": "Boom or Heal Die",
-    "pt-BR": "Dado Bomba ou Cura"
+    "pt-BR": "Dado Bomba ou Cura",
+    "es-419": "Dado explosivo o curativo"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -796,7 +827,8 @@
    "name": {
     "term": "UI/die/chaos_die",
     "en": "Chaos Die",
-    "pt-BR": "Dado do Caos"
+    "pt-BR": "Dado do Caos",
+    "es-419": "Dado caótico"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -823,7 +855,8 @@
    "name": {
     "term": "UI/die/chaos_die",
     "en": "Chaos Die",
-    "pt-BR": "Dado do Caos"
+    "pt-BR": "Dado do Caos",
+    "es-419": "Dado caótico"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -850,7 +883,8 @@
    "name": {
     "term": "UI/die/cocoon_die",
     "en": "Cocoon Die",
-    "pt-BR": "Dado Teia"
+    "pt-BR": "Dado Teia",
+    "es-419": "Dado de seda"
    },
    "desc": {
     "term": "Item/desc/dice_cocoon",
@@ -877,7 +911,8 @@
    "name": {
     "term": "UI/die/cocoon_die",
     "en": "Cocoon Die",
-    "pt-BR": "Dado Teia"
+    "pt-BR": "Dado Teia",
+    "es-419": "Dado de seda"
    },
    "desc": {
     "term": "Item/desc/dice_cocoon",
@@ -904,7 +939,8 @@
    "name": {
     "term": "UI/die/fire_or_cocoon",
     "en": "Fire or Cocoon Die",
-    "pt-BR": "Dado de Fogo ou Teia"
+    "pt-BR": "Dado de Fogo ou Teia",
+    "es-419": "Dado de fuego o seda"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -931,7 +967,8 @@
    "name": {
     "term": "UI/die/fire_die",
     "en": "Fire Die",
-    "pt-BR": "Dado de Fogo"
+    "pt-BR": "Dado de Fogo",
+    "es-419": "Dado de fuego"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -958,7 +995,8 @@
    "name": {
     "term": "UI/die/fire_die",
     "en": "Fire Die",
-    "pt-BR": "Dado de Fogo"
+    "pt-BR": "Dado de Fogo",
+    "es-419": "Dado de fuego"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -985,7 +1023,8 @@
    "name": {
     "term": "UI/die/firework",
     "en": "Firework Die",
-    "pt-BR": "Dado de Fogos de Artifício"
+    "pt-BR": "Dado de Fogos de Artifício",
+    "es-419": "Dado pirotécnico"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1012,7 +1051,8 @@
    "name": {
     "term": "UI/die/freeze",
     "en": "Freeze Die",
-    "pt-BR": "Dado Congelante"
+    "pt-BR": "Dado Congelante",
+    "es-419": "Dado congelante"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -1039,7 +1079,8 @@
    "name": {
     "term": "UI/die/heal_die",
     "en": "Heal Die",
-    "pt-BR": "Dado de Cura"
+    "pt-BR": "Dado de Cura",
+    "es-419": "Dado curativo"
    },
    "desc": {
     "term": "Item/desc/dice_heal",
@@ -1066,7 +1107,8 @@
    "name": {
     "term": "UI/die/heal_die",
     "en": "Heal Die",
-    "pt-BR": "Dado de Cura"
+    "pt-BR": "Dado de Cura",
+    "es-419": "Dado curativo"
    },
    "desc": {
     "term": "Item/desc/dice_heal",
@@ -1093,7 +1135,8 @@
    "name": {
     "term": "UI/die/flare",
     "en": "Lantern Die",
-    "pt-BR": "Dado Lanterna"
+    "pt-BR": "Dado Lanterna",
+    "es-419": "Dado farol"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1120,7 +1163,8 @@
    "name": {
     "term": "UI/die/lightning",
     "en": "Lightning Die",
-    "pt-BR": "Dado Relâmpago"
+    "pt-BR": "Dado Relâmpago",
+    "es-419": "Dado de rayo"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -1147,7 +1191,8 @@
    "name": {
     "term": "UI/die/lightning",
     "en": "Lightning Die",
-    "pt-BR": "Dado Relâmpago"
+    "pt-BR": "Dado Relâmpago",
+    "es-419": "Dado de rayo"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -1174,7 +1219,8 @@
    "name": {
     "term": "UI/die/pelote",
     "en": "Thread Die",
-    "pt-BR": "Dado de Linha"
+    "pt-BR": "Dado de Linha",
+    "es-419": "Dado de hilo"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1227,12 +1273,14 @@
    "name": {
     "term": "UI/die/resurrect_die",
     "en": "Resurrect Die",
-    "pt-BR": "Dado de Ressurreição"
+    "pt-BR": "Dado de Ressurreição",
+    "es-419": "Dado de resurrección"
    },
    "desc": {
     "term": "Item/desc/dice_resurrect",
     "en": "Resurrect a random dead player",
-    "pt-BR": "Ressuscitar um jogador morto aleatório"
+    "pt-BR": "Ressuscitar um jogador morto aleatório",
+    "es-419": "Resucita a un jugador muerto aleatorio"
    },
    "bundle": "984e9c41d80e777a106f26c4f498a62f.bundle",
    "pathId": "6416422252597093745",
@@ -1255,12 +1303,14 @@
    "name": {
     "term": "UI/die/resurrect_die",
     "en": "Resurrect Die",
-    "pt-BR": "Dado de Ressurreição"
+    "pt-BR": "Dado de Ressurreição",
+    "es-419": "Dado de resurrección"
    },
    "desc": {
     "term": "Item/desc/dice_resurrect",
     "en": "Resurrect a random dead player",
-    "pt-BR": "Ressuscitar um jogador morto aleatório"
+    "pt-BR": "Ressuscitar um jogador morto aleatório",
+    "es-419": "Resucita a un jugador muerto aleatorio"
    },
    "bundle": "5e5e98850d8b75e18cd88bd78a17abeb.bundle",
    "pathId": "8997481314378476340",
@@ -1283,7 +1333,8 @@
    "name": {
     "term": "UI/die/scanner",
     "en": "Echo Die",
-    "pt-BR": "Dado de Eco"
+    "pt-BR": "Dado de Eco",
+    "es-419": "Dado de eco"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1333,7 +1384,8 @@
    "name": {
     "term": "UI/die/cube",
     "en": "Cube Die",
-    "pt-BR": "Dado de Cubo"
+    "pt-BR": "Dado de Cubo",
+    "es-419": "Dado cúbico"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -1360,7 +1412,8 @@
    "name": {
     "term": "UI/die/summon",
     "en": "Rally Die",
-    "pt-BR": "Dado de Reagrupamento"
+    "pt-BR": "Dado de Reagrupamento",
+    "es-419": "Dado de reagrupación"
    },
    "desc": {
     "term": "Item/desc/dice_gather",
@@ -1387,7 +1440,8 @@
    "name": {
     "term": "UI/die/teleport_die",
     "en": "Teleport Die",
-    "pt-BR": "Dado de Teletransporte"
+    "pt-BR": "Dado de Teletransporte",
+    "es-419": "Dado de teletransporte"
    },
    "desc": {
     "term": "Item/desc/dice_heal",
@@ -1414,7 +1468,8 @@
    "name": {
     "term": "UI/die/tele_or_rez",
     "en": "Tele or Rez Die",
-    "pt-BR": "Dado de Teletransporte ou Ressurreição"
+    "pt-BR": "Dado de Teletransporte ou Ressurreição",
+    "es-419": "Dado de TP o resu"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -1441,7 +1496,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1468,7 +1524,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1495,7 +1552,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice12",
@@ -1522,7 +1580,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice123",
@@ -1549,7 +1608,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dicestart",
@@ -1576,7 +1636,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1603,7 +1664,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice12",
@@ -1630,7 +1692,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice2",
@@ -1657,7 +1720,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice3",
@@ -1684,7 +1748,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice34",
@@ -1711,7 +1776,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice4",
@@ -1738,7 +1804,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice456",
@@ -1765,7 +1832,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice5",
@@ -1792,7 +1860,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice56",
@@ -1819,7 +1888,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice6",
@@ -1846,7 +1916,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice8910",
@@ -1873,7 +1944,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1900,7 +1972,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1927,7 +2000,8 @@
    "name": {
     "term": "UI/die/heal_die",
     "en": "Heal Die",
-    "pt-BR": "Dado de Cura"
+    "pt-BR": "Dado de Cura",
+    "es-419": "Dado curativo"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1954,7 +2028,8 @@
    "name": {
     "term": "UI/die/heal_die",
     "en": "Heal Die",
-    "pt-BR": "Dado de Cura"
+    "pt-BR": "Dado de Cura",
+    "es-419": "Dado curativo"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -1981,7 +2056,8 @@
    "name": {
     "term": "UI/die/heal_die",
     "en": "Heal Die",
-    "pt-BR": "Dado de Cura"
+    "pt-BR": "Dado de Cura",
+    "es-419": "Dado curativo"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2008,7 +2084,8 @@
    "name": {
     "term": "UI/die/heal_die",
     "en": "Heal Die",
-    "pt-BR": "Dado de Cura"
+    "pt-BR": "Dado de Cura",
+    "es-419": "Dado curativo"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2127,7 +2204,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2154,7 +2232,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2181,7 +2260,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2208,7 +2288,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2235,7 +2316,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2262,7 +2344,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2289,7 +2372,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2316,7 +2400,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2343,7 +2428,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2370,7 +2456,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2397,7 +2484,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2424,7 +2512,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2451,7 +2540,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2478,7 +2568,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2505,7 +2596,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2532,7 +2624,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2559,7 +2652,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2586,7 +2680,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2613,7 +2708,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2640,7 +2736,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2667,7 +2764,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2694,7 +2792,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2721,7 +2820,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2748,7 +2848,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2775,7 +2876,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2802,7 +2904,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2829,7 +2932,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2856,7 +2960,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2883,7 +2988,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2910,7 +3016,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2937,7 +3044,8 @@
    "name": {
     "term": "UI/die/blessed",
     "en": "Blessed Die",
-    "pt-BR": "Dado Abençoado"
+    "pt-BR": "Dado Abençoado",
+    "es-419": "Dado bendito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2964,7 +3072,8 @@
    "name": {
     "term": "UI/die/cursed",
     "en": "Cursed Die",
-    "pt-BR": "Dado Amaldiçoado"
+    "pt-BR": "Dado Amaldiçoado",
+    "es-419": "Dado maldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -2991,7 +3100,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -3018,7 +3128,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -3045,7 +3156,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -3072,7 +3184,8 @@
    "name": {
     "term": "UI/die/die",
     "en": "Die",
-    "pt-BR": "Dado"
+    "pt-BR": "Dado",
+    "es-419": "Dado"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -3623,7 +3736,8 @@
    "name": {
     "term": "Item/shopitem/gadget_key_corridor",
     "en": "Corridor Key",
-    "pt-BR": "Chave do Corredor"
+    "pt-BR": "Chave do Corredor",
+    "es-419": "Llave del pasillo"
    },
    "desc": null,
    "bundle": "f92a6872dc56b2278fc8a9ce4201b2ec.bundle",
@@ -3646,7 +3760,8 @@
    "name": {
     "term": "Item/shopitem/gadget_key_henry",
     "en": "Henry's Bedroom Key",
-    "pt-BR": "Chave do Quarto do Henry"
+    "pt-BR": "Chave do Quarto do Henry",
+    "es-419": "Llave del cuarto de Henry"
    },
    "desc": null,
    "bundle": "20628b663544b9a97b3bd66d87b981a1.bundle",
@@ -3669,7 +3784,8 @@
    "name": {
     "term": "UI/die/cube",
     "en": "Cube Die",
-    "pt-BR": "Dado de Cubo"
+    "pt-BR": "Dado de Cubo",
+    "es-419": "Dado cúbico"
    },
    "desc": {
     "term": "Item/desc/dice_explosion",
@@ -3858,7 +3974,8 @@
    "name": {
     "term": "UI/die/antigravity",
     "en": "Anti-Gravity Die",
-    "pt-BR": "Dado Antigravidade"
+    "pt-BR": "Dado Antigravidade",
+    "es-419": "Dado antigravitatorio"
    },
    "desc": {
     "term": "Item/desc/dice_antigravity",
@@ -3885,7 +4002,8 @@
    "name": {
     "term": "UI/die/scanner",
     "en": "Echo Die",
-    "pt-BR": "Dado de Eco"
+    "pt-BR": "Dado de Eco",
+    "es-419": "Dado de eco"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -3912,7 +4030,8 @@
    "name": {
     "term": "UI/die/summon",
     "en": "Rally Die",
-    "pt-BR": "Dado de Reagrupamento"
+    "pt-BR": "Dado de Reagrupamento",
+    "es-419": "Dado de reagrupación"
    },
    "desc": {
     "term": "Item/desc/dice_gather",
@@ -3939,7 +4058,8 @@
    "name": {
     "term": "UI/die/teleport_die",
     "en": "Teleport Die",
-    "pt-BR": "Dado de Teletransporte"
+    "pt-BR": "Dado de Teletransporte",
+    "es-419": "Dado de teletransporte"
    },
    "desc": {
     "term": "Item/desc/dice_heal",
@@ -3966,7 +4086,8 @@
    "name": {
     "term": "UI/die/blursed",
     "en": "Blursed Die",
-    "pt-BR": "Dado Abençodiçoado"
+    "pt-BR": "Dado Abençodiçoado",
+    "es-419": "Dado bendimaldito"
    },
    "desc": {
     "term": "Item/desc/dice1",
@@ -4075,7 +4196,8 @@
    "desc": {
     "term": "UI/collection/custommode_rulebook",
     "en": "YOUR BOARD, YOUR RULES!\n\n1. Pick a board and place it in the slot at the center of the table\n2. Add rules and monster figurines to the table\n3. Bring the custom board to the game room and play!\n\nAnd don't worry. Win or lose, you'll return to exactly where you were before playing.",
-    "pt-BR": "SEU TABULEIRO, SUAS REGRAS!\n\n1. Escolha um tabuleiro e coloque-o no espaço reservado no centro da mesa\n2. Coloque regras e miniaturas de monstros sobre a mesa\n3. Leve o tabuleiro personalizado até a sala de jogos e jogue!\n\nE não se preocupe. Vencendo ou perdendo, você voltará exatamente ao ponto em que estava antes de jogar."
+    "pt-BR": "SEU TABULEIRO, SUAS REGRAS!\n\n1. Escolha um tabuleiro e coloque-o no espaço reservado no centro da mesa\n2. Coloque regras e miniaturas de monstros sobre a mesa\n3. Leve o tabuleiro personalizado até a sala de jogos e jogue!\n\nE não se preocupe. Vencendo ou perdendo, você voltará exatamente ao ponto em que estava antes de jogar.",
+    "es-419": "¡TU TABLERO, TUS REGLAS!\n\n1. Elige un tablero y colócalo en el espacio previsto en el centro de la mesa\n2. Coloca reglas y miniaturas de monstruos sobre la mesa\n3. Lleva el tablero personalizado a la sala de juegos y ¡a jugar!\n\nY no te preocupes. Ganes o pierdas, volverás exactamente al punto en el que estabas antes de jugar."
    },
    "bundle": "828abe809ac22229bac47b587fa1c2fa.bundle",
    "pathId": "7530709519441930660",
@@ -4097,7 +4219,8 @@
    "desc": {
     "term": "UI/gameroom/infobook",
     "en": "The game automatically saves your progress after each completed board. You can quit at any time and resume your game from the last board you completed.\n\nIf a player encounters an issue and needs to rejoin, everyone can safely quit the game. The host can then load the existing save from the main menu and invite the other players back to continue playing together.",
-    "pt-BR": "O jogo salva seu progresso automaticamente após a conclusão de cada tabuleiro. Você pode sair do jogo a qualquer momento e retomar a partida a partir do último tabuleiro concluído.\n\nSe um jogador tiver algum problema e precisar entrar novamente, todos podem sair do jogo sem perder o progresso salvo. Depois, o anfitrião pode carregar o arquivo de salvamento existente pelo menu principal e convidar os outros jogadores novamente para continuarem jogando juntos."
+    "pt-BR": "O jogo salva seu progresso automaticamente após a conclusão de cada tabuleiro. Você pode sair do jogo a qualquer momento e retomar a partida a partir do último tabuleiro concluído.\n\nSe um jogador tiver algum problema e precisar entrar novamente, todos podem sair do jogo sem perder o progresso salvo. Depois, o anfitrião pode carregar o arquivo de salvamento existente pelo menu principal e convidar os outros jogadores novamente para continuarem jogando juntos.",
+    "es-419": "El juego guarda automáticamente tu progreso después de completar cada tablero. Puedes salir en cualquier momento y reanudar la partida desde el último tablero que hayas completado.\n\nSi un jugador tiene un problema y necesita volver a unirse, todos podéis salir del juego sin perder el progreso guardado. Después, el anfitrión puede cargar la partida guardada desde el menú principal y volver a invitar a los demás para seguir jugando juntos."
    },
    "bundle": "9c8f02f7bbee5f55e513726bee96ad7c.bundle",
    "pathId": "7",
